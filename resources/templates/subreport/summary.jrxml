@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="summary" pageWidth="420" pageHeight="841" columnWidth="420" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f92d6b72-f3fa-43ce-9a71-586be0b23022">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="Heading info" 
+           hAlign="Left" 
+           vAlign="Middle" 
+           fontName="JasperFont" 
+           fontSize="12"/>
+    <style name="Heading info right" 
+           style="Heading info" 
+           hAlign="Right"/>
+    <style name="Heading table" 
+           mode="Opaque" 
+           forecolor="#FFFFFF" 
+           backcolor="#FF3333" 
+           hAlign="Right" 
+           vAlign="Middle" 
+           fontName="JasperFont" 
+           fontSize="8" 
+           isBold="false" 
+           isItalic="false">
+        <box leftPadding="5" 
+             rightPadding="5"/>
+    </style>
+    <style name="Heading table name" 
+               style="Heading table" 
+               hAlign="Left"/>
+    <style name="Table default" 
+               hAlign="Right" 
+               vAlign="Middle" 
+               fontName="JasperFont" 
+               fontSize="8">
+        <box leftPadding="5" 
+                     rightPadding="5"/>
+    </style>
+    <style name="Table default name" 
+               style="Table default" 
+               hAlign="Left"/>
+    <style name="Table default gray" 
+               style="Table default" 
+               forecolor="#9093A3"/>
+    <parameter name="summary" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="account_number" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="account_name" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="open" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="in" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="out" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="close" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="total" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <queryString>
+	<![CDATA[
+            SELECT
+                CLIENTID,
+                CLIENTNAME,
+                FROMDATE,
+                TILLDATE,
+                IBAN,
+                ACCOUNTNAME,
+                CURRENCYCODE,
+                OPENBAL,
+                INMOVE,
+                OUTMOVE,
+                CLOSEBAL
+            FROM
+                VP_MAINACCSTMTSUM
+        ]]>
+    </queryString>
+    <field name="CLIENTID" class="java.math.BigDecimal"/>
+    <field name="CLIENTNAME" class="java.lang.String"/>
+    <field name="FROMDATE" class="oracle.sql.TIMESTAMP"/>
+    <field name="TILLDATE" class="oracle.sql.TIMESTAMP"/>
+    <field name="IBAN" class="java.lang.String"/>
+    <field name="ACCOUNTNAME" class="java.lang.String"/>
+    <field name="CURRENCYCODE" class="java.lang.String"/>
+    <field name="OPENBAL" class="java.math.BigDecimal"/>
+    <field name="INMOVE" class="java.math.BigDecimal"/>
+    <field name="OUTMOVE" class="java.math.BigDecimal"/>
+    <field name="CLOSEBAL" class="java.math.BigDecimal"/>
+    <variable name="total" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[$F{CLOSEBAL}]]></variableExpression>
+    </variable>
+    <variable name="ccode" class="java.lang.String" calculation="First">
+        <variableExpression><![CDATA[$F{CURRENCYCODE}]]></variableExpression>
+    </variable>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <pageHeader>
+        <band height="20">
+            <printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
+            <textField>
+                <reportElement style="Heading info" x="0" y="0" width="144" height="20" uuid="c9f90fdc-8fe6-4e2f-b420-391a6893993d"/>
+                <textFieldExpression><![CDATA[$P{summary}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info right" x="352" y="0" width="68" height="20" uuid="e54acee4-c4dd-46a4-a216-063cb4cff4f5"/>
+                <textFieldExpression><![CDATA[$V{ccode}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="10" splitType="Stretch">
+            <textField>
+                <reportElement style="Heading table name" x="0" y="0" width="100" height="10" uuid="37707f30-50b0-4053-8f82-9b80767530ff"/>
+                <textFieldExpression><![CDATA[$P{account_number}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading table" x="100" y="0" width="44" height="10" uuid="eaf076b4-0ca8-4cb7-95a2-7778c0fd111c"/>
+                <textFieldExpression><![CDATA[$P{account_name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading table" x="144" y="0" width="69" height="10" uuid="db0b196b-abea-4477-a0bd-0e8ec644e3e2"/>
+                <textFieldExpression><![CDATA[$P{open}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading table" x="213" y="0" width="69" height="10" uuid="498f6fd0-8e2f-4b89-98bb-e35413663b97"/>
+                <textFieldExpression><![CDATA[$P{in}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading table" x="282" y="0" width="69" height="10" uuid="1bc4d000-3641-436e-b39d-e39f8c7c78d3"/>
+                <textFieldExpression><![CDATA[$P{out}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading table" x="351" y="0" width="69" height="10" uuid="5b3c3fbe-6637-4f97-8707-4696fe8243c8"/>
+                <textFieldExpression><![CDATA[$P{close}]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="10" splitType="Stretch">
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="0" width="100" height="10" uuid="737c33d5-6d2c-4e1c-8a59-3e5fc0972ac7"/>
+                <textFieldExpression><![CDATA[$F{IBAN}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Table default" x="100" y="0" width="44" height="10" uuid="fbbb56f1-5b3a-4e7d-ac22-670816f5dabc"/>
+                <textFieldExpression><![CDATA[$F{ACCOUNTNAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Table default" x="144" y="0" width="69" height="10" uuid="f22eb4e5-50b5-448a-af30-dc5e6c191dbf"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Table default" x="213" y="0" width="69" height="10" uuid="c0bddf89-3c93-486d-be52-900c288766e0"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{INMOVE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Table default" x="282" y="0" width="69" height="10" uuid="2b21f5d4-b2b9-460a-9002-94162178e68b"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OUTMOVE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Table default" x="351" y="0" width="69" height="10" uuid="a7182124-f8fd-4e96-983e-6c520860b9cd"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="1">
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="5fe8ca69-f3fd-4bc6-ae6f-391ccae51f89"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+        </band>
+    </detail>
+    <summary>
+        <band height="10">
+            <textField>
+                <reportElement style="Table default name" x="0" y="0" width="100" height="10" uuid="db0c23b7-6a02-41c1-9887-0c55f3878c32"/>
+                <textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Table default" x="351" y="0" width="69" height="10" uuid="ffe3edf8-d87a-4b46-86fd-3cd0d908e506"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $V{total}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <line>
+                <reportElement x="0" y="9" width="420" height="1" uuid="5fe8ca69-f3fd-4bc6-ae6f-391ccae51f89"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+        </band>
+    </summary>
+</jasperReport>
