@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontFamilies>
+
+   <fontFamily name="JasperFont">
+	<normal><![CDATA[fonts/AvenirNextLTPro-Regular.otf]]></normal>
+	<bold><![CDATA[fonts/AvenirNextLTPro-Bold.otf]]></bold>
+	<pdfEncoding>Identity-H</pdfEncoding>
+	<pdfEmbedded>true</pdfEmbedded>
+   </fontFamily>
+
+
+</fontFamilies>
