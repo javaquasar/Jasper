@@ -102,9 +102,9 @@
                 <subreportParameter name="total">
                     <subreportParameterExpression><![CDATA[$R{total}]]></subreportParameterExpression>
                 </subreportParameter>
-                <dataSourceExpression>
+<!--                <dataSourceExpression>
                     <![CDATA[$P{summary_ds}]]>
-                </dataSourceExpression>
+                </dataSourceExpression>-->
                 <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
                 <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "summary.jasper"]]></subreportExpression>
             </subreport>
