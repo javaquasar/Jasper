@@ -6,6 +6,8 @@
 package com.javaquasar.jasper.customds;
 
 import com.javaquasar.jasper.customds.CustomDataSource;
+import com.javaquasar.jasper.util.JasperCompailer;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import net.sf.jasperreports.engine.JREmptyDataSource;
@@ -17,13 +19,13 @@ import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 
 /**
  *
- * @author artur
+ * @author Java Quasar
  */
 public class Test {
     
     //https://www.sqliteconcepts.org/pl_proc.html
-    public static void main(String[] args) throws JRException {
-        
+    public static void main(String[] args) throws JRException, IOException {
+        JasperCompailer.compaile("./resources/templates/custom_ds/");
         long start = System.currentTimeMillis();
         //Preparing parameters
         Map<String, Object> parameters = new HashMap<String, Object>();
@@ -32,11 +34,10 @@ public class Test {
 
         //JasperFillManager.fillReportToFile("./build/reports/DataSourceReport.jasper", parameters, new CustomDataSource());
         
-        JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/ds_test/DataSourceReport.jasper", parameters, new CustomDataSource());
+        JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/templates/custom_ds/DataSourceReport.jasper", parameters, new CustomDataSource());
         //JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/ds_test/DataSourceReport.jasper", parameters, new JRBeanArrayDataSource(CustomBeanFactory.getBeanArray()));
 
-//JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/templates/bank_transfer_confirmation.jasper", map, connection/*new JREmptyDataSource()*/);
-        JasperExportManager.exportReportToPdfFile(jasperPrint, "./pdf/test/test_2.pdf");
+        JasperExportManager.exportReportToPdfFile(jasperPrint, "./pdf/custom_ds/custom_ds.pdf");
         System.err.println("Filling time : " + (System.currentTimeMillis() - start));
     }
 }
