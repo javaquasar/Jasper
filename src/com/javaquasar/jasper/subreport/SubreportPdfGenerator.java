@@ -34,7 +34,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 public class SubreportPdfGenerator {
 
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-    private static final String JDBC_URL = ""; //"jdbc:oracle:thin:@dipocket1.intranet:1521/dip";
+    private static final String JDBC_URL = "";
     private static final String DRIVER_NAME = "";
     private static final String USER_NAME = "";
     private static final String PASSWORD = "";
