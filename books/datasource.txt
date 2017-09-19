@@ -1,0 +1,17 @@
+If you have your datasource as a List<MyBean> as simple method is:
+
+1. Pass it in the parameter map 
+
+param.put("SUBREPORT_DATA", myBeanList);
+
+2. Define the parameter in jrxml
+
+<parameter name="SUBREPORT_DATA" class="java.util.List"/>
+
+3. Create a JRBeanCollectionDataSource using your parameter
+
+<subreport>
+    <reportElement x="0" y="0" width="200" height="100" uuid="406c9014-e74b-42d9-b9e1-4af106bfb779"/>
+    <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{SUBREPORT_DATA})]]></dataSourceExpression>
+    <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "theSubreport.jasper"]]></subreportExpression>
+</subreport>
