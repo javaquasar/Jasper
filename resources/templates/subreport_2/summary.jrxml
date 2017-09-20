@@ -14,12 +14,15 @@
     <property name="ireport.y" value="0"/>
     <style name="Heading info" 
            hAlign="Left" 
-           vAlign="Middle" 
+           vAlign="Bottom" 
            fontName="JasperFont" 
            fontSize="12"/>
     <style name="Heading info right" 
            style="Heading info" 
-           hAlign="Right"/>
+           hAlign="Right">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
     <style name="Heading table" 
            mode="Opaque" 
            forecolor="#FFFFFF" 
@@ -111,17 +114,6 @@
     </variable>
     
     
-
-<!--    <pageHeader>
-        <band height="20">
-            <printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
-            <textField>
-                <reportElement style="Heading info" x="0" y="0" width="144" height="20" uuid="c9f90fdc-8fe6-4e2f-b420-391a6893993d"/>
-                <textFieldExpression><![CDATA[$P{summary}]]></textFieldExpression>
-            </textField>
-        </band>
-    </pageHeader>-->
-    
     <group name="Account">
         <groupExpression><![CDATA[$F{CURRENCYCODE}]]></groupExpression>
         <groupHeader>
@@ -178,6 +170,15 @@
     <background>
         <band splitType="Stretch"/>
     </background>
+    <pageHeader>
+        <band height="20">
+            <printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
+            <textField>
+                <reportElement style="Heading info" x="0" y="0" width="144" height="20" uuid="c9f90fdc-8fe6-4e2f-b420-391a6893993d"/>
+                <textFieldExpression><![CDATA[$P{summary}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageHeader>
     <detail>
         <band height="10" splitType="Stretch">
             <textField isStretchWithOverflow="true">

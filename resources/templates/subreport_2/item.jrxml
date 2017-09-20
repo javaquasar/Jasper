@@ -18,9 +18,12 @@
     
     <style name="Heading info"
            hAlign="Left"
-           vAlign="Middle"
+           vAlign="Bottom"
            fontName="JasperFont"
-           fontSize="12"/>
+           fontSize="12">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
     <style name="Heading info right"
            style="Heading info"
            hAlign="Right"/>
@@ -196,11 +199,11 @@
                 </textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Table default gray" x="340" y="2" width="60" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <reportElement style="Table default" x="340" y="2" width="60" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{AMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Table default gray" x="400" y="2" width="60" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <reportElement style="Table default" x="400" y="2" width="60" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{BAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField isStretchWithOverflow="true">

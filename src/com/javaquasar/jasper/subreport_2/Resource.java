@@ -1,4 +1,4 @@
-package com.javaquasar.jasper.subreport;
+package com.javaquasar.jasper.subreport_2;
 
 import java.io.IOException;
 import java.io.InputStream;

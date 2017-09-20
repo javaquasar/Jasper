@@ -1,8 +1,8 @@
-package com.javaquasar.jasper.subreport;
+package com.javaquasar.jasper.subreport_2;
 
-import com.javaquasar.jasper.subreport.ds.SummaryDataSource;
-import com.javaquasar.jasper.subreport.SubreportJasperLocale;
-import com.javaquasar.jasper.subreport.ds.ItemDataSource;
+import com.javaquasar.jasper.subreport_2.ds.SummaryDataSource;
+import com.javaquasar.jasper.subreport_2.SubreportJasperLocale;
+import com.javaquasar.jasper.subreport_2.ds.ItemDataSource;
 import com.javaquasar.jasper.util.JasperCompailer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -44,7 +44,7 @@ public class SubreportPdfGenerator {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //String s = new SimpleDateFormat("MMMM, yyyy", new Locale("en")).format(new Date());
         //System.out.println(s);
-        JasperCompailer.compaile("./resources/templates/subreport/");
+        JasperCompailer.compaile("./resources/templates/subreport_2/");
         //Class.forName(DRIVER_NAME);
         //conn = DriverManager.getConnection(JDBC_URL, USER_NAME, PASSWORD);
         try /*(Connection conn = DriverManager.getConnection(JDBC_URL, USER_NAME, PASSWORD);
@@ -91,7 +91,7 @@ public class SubreportPdfGenerator {
                     + "  FROM VP_MainAccStmtItem");
             convertResultSetToList(rs2);*/
 
-            generateReport(null, "en", "./pdf/subreport/subreport.pdf");
+            generateReport(null, "en", "./pdf/subreport/subreport_2.pdf");
         } catch (Exception ex) {
             System.out.println(ex);
             ex.printStackTrace();
@@ -115,10 +115,10 @@ public class SubreportPdfGenerator {
         PropertyResourceBundle prop = new PropertyResourceBundle(fis);
 
         map.put("REPORT_RESOURCE_BUNDLE", prop);
-        map.put("SUBREPORT_DIR", "./resources/templates/subreport/");
+        map.put("SUBREPORT_DIR", "./resources/templates/subreport_2/");
 
         //JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/templates/subreport/statements_final.jasper", map, connection/*new JREmptyDataSource()*/);
-        JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/templates/subreport/statements_final.jasper", map, new JREmptyDataSource());
+        JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/templates/subreport_2/statements_final.jasper", map, new JREmptyDataSource());
 
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathForReport);
         byte[] mass = JasperExportManager.exportReportToPdf(jasperPrint);

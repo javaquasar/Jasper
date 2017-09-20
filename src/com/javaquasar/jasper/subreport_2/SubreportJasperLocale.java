@@ -1,4 +1,4 @@
-package com.javaquasar.jasper.subreport;
+package com.javaquasar.jasper.subreport_2;
 /**
  *
  * @author Java Quasar
@@ -6,9 +6,7 @@ package com.javaquasar.jasper.subreport;
 public enum SubreportJasperLocale {
 
     EN("en", "./resources/localization/localization_en.properties"),
-    PL("pl", "./resources/localization/localization_pl.properties"),
-    UK("uk", "./resources/localization/localization_uk.properties"),
-    RU("ru", "./resources/localization/localization_ru.properties");
+    PL("pl", "./resources/localization/localization_pl.properties");
 
     private final String locale;
     private final String pathToFile;

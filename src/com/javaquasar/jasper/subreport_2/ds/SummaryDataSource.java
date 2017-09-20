@@ -1,4 +1,4 @@
-package com.javaquasar.jasper.subreport.ds;
+package com.javaquasar.jasper.subreport_2.ds;
 
 import java.math.BigDecimal;
 import net.sf.jasperreports.engine.JRDataSource;
