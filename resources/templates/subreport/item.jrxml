@@ -3,9 +3,9 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
               name="item"
-              pageWidth="420"
+              pageWidth="460"
               pageHeight="841"
-              columnWidth="420"
+              columnWidth="460"
               leftMargin="0"
               rightMargin="0"
               topMargin="0"
@@ -116,11 +116,11 @@
         <groupHeader>
             <band height="45">
                 <textField>
-                    <reportElement style="Heading info" x="0" y="5" width="370" height="20" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <reportElement style="Heading info" x="0" y="5" width="410" height="20" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$F{IBAN}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading info right" x="370" y="5" width="50" height="20" uuid="1caa5c92-144c-4d34-9b73-7046da5e4fbe"/>
+                    <reportElement style="Heading info right" x="410" y="5" width="50" height="20" uuid="1caa5c92-144c-4d34-9b73-7046da5e4fbe"/>
                     <textFieldExpression><![CDATA[$F{CURRENCYCODE}]]></textFieldExpression>
                 </textField>
                 <textField>
@@ -128,15 +128,15 @@
                     <textFieldExpression><![CDATA[$P{when}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table name red" x="50" y="25" width="250" height="10" uuid="5e0fdc65-aebf-444e-a80a-229b94c3bd6f"/>
+                    <reportElement style="Heading table name red" x="50" y="25" width="290" height="10" uuid="5e0fdc65-aebf-444e-a80a-229b94c3bd6f"/>
                     <textFieldExpression><![CDATA[$P{what}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table red" x="300" y="25" width="60" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
+                    <reportElement style="Heading table red" x="340" y="25" width="60" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
                     <textFieldExpression><![CDATA[$P{how_much}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table red" x="360" y="25" width="60" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
+                    <reportElement style="Heading table red" x="400" y="25" width="60" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
                     <textFieldExpression><![CDATA[$P{balance}]]></textFieldExpression>
                 </textField>
                 <textField>
@@ -144,7 +144,7 @@
                     <textFieldExpression><![CDATA[$P{opening_balance}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Table default" x="320" y="35" width="100" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e426a829"/>
+                    <reportElement style="Table default" x="400" y="35" width="60" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e426a829"/>
                     <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
                 </textField>
             </band>
@@ -152,13 +152,13 @@
         <groupFooter>
             <band height="11">
                 <line>
-                    <reportElement x="0" y="0" width="420" height="1" uuid="473b68a5-7393-423b-839b-943e2e6615b9"/>
+                    <reportElement x="0" y="0" width="440" height="1" uuid="473b68a5-7393-423b-839b-943e2e6615b9"/>
                     <graphicElement>
                         <pen lineWidth="0.5"/>
                     </graphicElement>
                 </line>
                 <textField>
-                    <reportElement style="Table default name" x="50" y="1" width="270" height="10" uuid="b05f12dc-59ed-4542-8693-f81d4e9f899e"/>
+                    <reportElement style="Table default name" x="50" y="1" width="310" height="10" uuid="b05f12dc-59ed-4542-8693-f81d4e9f899e"/>
                     <textFieldExpression><![CDATA[$P{closing_balance}]]></textFieldExpression>
                 </textField>
                 <textField>
@@ -166,7 +166,7 @@
                     <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
                 </textField>
                 <line>
-                    <reportElement x="0" y="10" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                    <reportElement x="0" y="10" width="460" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
                     <graphicElement>
                         <pen lineWidth="0.5"/>
                     </graphicElement>
@@ -180,7 +180,7 @@
     <detail>
         <band height="42" splitType="Stretch">
             <line>
-                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <reportElement x="0" y="0" width="460" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
                 <graphicElement>
                     <pen lineWidth="0.5"/>
                 </graphicElement>
@@ -191,8 +191,9 @@
                     <paragraph lineSpacing="1_1_2"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$F{TYPENAME} +
-($F{FULLNAME} != null ? "\n" + $F{FULLNAME} : "") +
-($F{DETAILS} != null ? "\n" + $F{DETAILS} : "")]]></textFieldExpression>
+                    ($F{FULLNAME} != null ? "\n" + $F{FULLNAME} : "") +
+                    ($F{DETAILS} != null ? "\n" + $F{DETAILS} : "")]]>
+                </textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
                 <reportElement style="Table default gray" x="320" y="2" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>

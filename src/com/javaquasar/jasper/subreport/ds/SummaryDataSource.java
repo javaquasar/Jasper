@@ -9,7 +9,9 @@ public class SummaryDataSource implements JRDataSource {
 
     private final Object[][] data = {
         {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", new BigDecimal("1107720"), new BigDecimal("0"), new BigDecimal("28800"), new BigDecimal("1078920")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EURN", new BigDecimal("1107720"), new BigDecimal("10"), new BigDecimal("28800"), new BigDecimal("1078920")}
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", new BigDecimal("1107720"), new BigDecimal("0"), new BigDecimal("28800"), new BigDecimal("1078920")},
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EUR", new BigDecimal("1107720"), new BigDecimal("10"), new BigDecimal("28800"), new BigDecimal("1078920")},
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EUR", new BigDecimal("1107720"), new BigDecimal("10"), new BigDecimal("28800"), new BigDecimal("1078920")}
     };
 
     private int index = -1;

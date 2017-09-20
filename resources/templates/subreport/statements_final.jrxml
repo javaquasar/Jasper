@@ -61,7 +61,7 @@
     <title>
         <band height="95" splitType="Stretch">
             <textField>
-                <reportElement style="Heading" x="0" y="0" width="447" height="51" uuid="1fc46e59-046c-4b8f-8a18-ff9a6ee7f3ef"/>
+                <reportElement style="Heading" x="0" y="0" width="457" height="51" uuid="1fc46e59-046c-4b8f-8a18-ff9a6ee7f3ef"/>
                 <textFieldExpression><![CDATA[$R{header_name}]]></textFieldExpression>
             </textField>
             <textField>
@@ -69,11 +69,11 @@
                 <textFieldExpression><![CDATA[$R{statement_for}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="82" y="51" width="335" height="20" uuid="e4d4f73e-0dcc-4935-ac84-c8166772e085"/>
+                <reportElement style="Heading info" x="82" y="51" width="375" height="20" uuid="e4d4f73e-0dcc-4935-ac84-c8166772e085"/>
                 <textFieldExpression><![CDATA[$P{client_name}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="0" y="71" width="417" height="20" uuid="15db14f0-71af-4acc-a003-f7b174e1032f"/>
+                <reportElement style="Heading info" x="0" y="71" width="457" height="20" uuid="15db14f0-71af-4acc-a003-f7b174e1032f"/>
                 <textFieldExpression><![CDATA[new SimpleDateFormat("MMMM, yyyy", new Locale($P{locale})).format($P{report_date})]]></textFieldExpression>
             </textField>
         </band>
@@ -81,7 +81,7 @@
     <detail>
         <band height="15" splitType="Stretch">
             <subreport>
-                <reportElement x="0" y="0" width="447" height="15" uuid="e038e28a-cf6b-45f0-92b7-98e1c47fe305"/>
+                <reportElement x="0" y="0" width="457" height="15" uuid="e038e28a-cf6b-45f0-92b7-98e1c47fe305"/>
                 <subreportParameter name="summary">
                     <subreportParameterExpression><![CDATA[$R{summary}]]></subreportParameterExpression>
                 </subreportParameter>
@@ -117,7 +117,7 @@
         </band>
         <band height="20">
             <subreport>
-                <reportElement x="0" y="5" width="447" height="15" uuid="82d374ad-6c0c-4b97-b8d1-537caa04223c"/>
+                <reportElement x="0" y="5" width="457" height="15" uuid="82d374ad-6c0c-4b97-b8d1-537caa04223c"/>
                 <subreportParameter name="locale">
                     <subreportParameterExpression><![CDATA[$P{locale}]]></subreportParameterExpression>
                 </subreportParameter>
