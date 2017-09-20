@@ -1,4 +1,4 @@
-package com.javaquasar.jasper.subreport;
+package com.javaquasar.jasper.subreport.ds;
 
 import java.math.BigDecimal;
 import net.sf.jasperreports.engine.JRDataSource;
@@ -8,7 +8,8 @@ import net.sf.jasperreports.engine.JRField;
 public class SummaryDataSource implements JRDataSource {
 
     private final Object[][] data = {
-        {new BigDecimal("2410"), "BFX Investements LLC" ,"08/01/17","09/01/17","PL10124069604100800000000215","Main Account","PLN", new BigDecimal("1107720"), new BigDecimal("0"), new BigDecimal("28800"), new BigDecimal("1078920")}
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", new BigDecimal("1107720"), new BigDecimal("0"), new BigDecimal("28800"), new BigDecimal("1078920")},
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EURN", new BigDecimal("1107720"), new BigDecimal("10"), new BigDecimal("28800"), new BigDecimal("1078920")}
     };
 
     private int index = -1;
@@ -28,7 +29,7 @@ public class SummaryDataSource implements JRDataSource {
         Object value = null;
 
         String fieldName = field.getName();
-                
+
         if (null != fieldName) {
             switch (fieldName) {
                 case "CLIENTID":

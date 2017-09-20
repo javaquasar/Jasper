@@ -37,20 +37,24 @@
            vAlign="Middle"
            fontSize="7"/>
     <parameter name="client_name" class="java.lang.String">
-        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
+        <defaultValueExpression><![CDATA["Client Name"]]></defaultValueExpression>
     </parameter>
     <parameter name="report_date" class="java.util.Date">
-        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>      
     <parameter name="locale" class="java.lang.String">
         <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
     </parameter>
     <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-        <defaultValueExpression><![CDATA["./resources/templates/portal/2/"]]></defaultValueExpression>
+        <defaultValueExpression><![CDATA["./resources/templates/subreport/"]]></defaultValueExpression>
     </parameter>
     <parameter name="summary_ds" class="net.sf.jasperreports.engine.JRDataSource">
         <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
     </parameter>
+    <parameter name="item_ds" class="net.sf.jasperreports.engine.JRDataSource">
+        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
+    </parameter>
+    
     <background>
         <band splitType="Stretch"/>
     </background>
@@ -102,10 +106,12 @@
                 <subreportParameter name="total">
                     <subreportParameterExpression><![CDATA[$R{total}]]></subreportParameterExpression>
                 </subreportParameter>
-<!--                <dataSourceExpression>
-                    <![CDATA[$P{summary_ds}]]>
-                </dataSourceExpression>-->
-                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportParameter name="summary_ds">
+                    <subreportParameterExpression><![CDATA[$P{summary_ds}]]></subreportParameterExpression>                   
+                </subreportParameter>
+                <dataSourceExpression><![CDATA[$P{summary_ds}]]></dataSourceExpression>
+
+<!--                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
                 <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "summary.jasper"]]></subreportExpression>
             </subreport>
         </band>
@@ -130,7 +136,11 @@
                 <subreportParameter name="how_much">
                     <subreportParameterExpression><![CDATA[$R{how_much}]]></subreportParameterExpression>
                 </subreportParameter>
-                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportParameter name="balance">
+                    <subreportParameterExpression><![CDATA[$R{balance}]]></subreportParameterExpression>
+                </subreportParameter>
+                <dataSourceExpression><![CDATA[$P{item_ds}]]></dataSourceExpression>
+<!--                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
                 <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "item.jasper"]]></subreportExpression>
             </subreport>
         </band>

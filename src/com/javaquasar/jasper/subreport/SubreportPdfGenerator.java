@@ -1,6 +1,8 @@
 package com.javaquasar.jasper.subreport;
 
+import com.javaquasar.jasper.subreport.ds.SummaryDataSource;
 import com.javaquasar.jasper.subreport.SubreportJasperLocale;
+import com.javaquasar.jasper.subreport.ds.ItemDataSource;
 import com.javaquasar.jasper.util.JasperCompailer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -104,6 +106,9 @@ public class SubreportPdfGenerator {
         map.put("locale", jl.getLocale());
         map.put("report_date", format.parse("2017-08-01"));
         map.put("client_name", "Corp Corp");
+        map.put("summary_ds", new SummaryDataSource());
+        map.put("item_ds", new ItemDataSource());
+        
         map.put(JRParameter.REPORT_LOCALE, new Locale(jl.getLocale()));
 
         FileInputStream fis = new FileInputStream(jl.getPathToFile());

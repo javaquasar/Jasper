@@ -5,7 +5,7 @@ package com.javaquasar.jasper.subreport;
  */
 public enum SubreportJasperLocale {
 
-    EN("en", "./resources/localization/localization.properties"),
+    EN("en", "./resources/localization/localization_en.properties"),
     PL("pl", "./resources/localization/localization_pl.properties"),
     UK("uk", "./resources/localization/localization_uk.properties"),
     RU("ru", "./resources/localization/localization_ru.properties");
