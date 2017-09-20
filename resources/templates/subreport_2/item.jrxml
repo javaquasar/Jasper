@@ -10,6 +10,7 @@
               rightMargin="0"
               topMargin="0"
               bottomMargin="0"
+              isTitleNewPage="true"
               uuid="f92d6b72-f3fa-43ce-9a71-586be0b23022">
     
     <property name="ireport.zoom" value="1.0"/>
@@ -127,19 +128,19 @@
                     <textFieldExpression><![CDATA[$F{CURRENCYCODE}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table name red" x="0" y="25" width="50" height="10" uuid="bf3e1d84-4843-4a29-af29-79648bbc2277"/>
+                    <reportElement style="Heading table name red" x="0" y="25" width="51" height="10" uuid="bf3e1d84-4843-4a29-af29-79648bbc2277"/>
                     <textFieldExpression><![CDATA[$P{when}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table name red" x="50" y="25" width="290" height="10" uuid="5e0fdc65-aebf-444e-a80a-229b94c3bd6f"/>
+                    <reportElement style="Heading table name red" x="50" y="25" width="291" height="10" uuid="5e0fdc65-aebf-444e-a80a-229b94c3bd6f"/>
                     <textFieldExpression><![CDATA[$P{what}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table red" x="340" y="25" width="60" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
+                    <reportElement style="Heading table red" x="340" y="25" width="61" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
                     <textFieldExpression><![CDATA[$P{how_much}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table red" x="400" y="25" width="60" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
+                    <reportElement style="Heading table red" x="400" y="25" width="61" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
                     <textFieldExpression><![CDATA[$P{balance}]]></textFieldExpression>
                 </textField>
                 <textField>
