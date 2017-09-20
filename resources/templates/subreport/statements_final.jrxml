@@ -115,7 +115,7 @@
                 <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "summary.jasper"]]></subreportExpression>
             </subreport>
         </band>
-        <band height="20">
+        <band height="25">
             <subreport>
                 <reportElement x="0" y="5" width="457" height="15" uuid="82d374ad-6c0c-4b97-b8d1-537caa04223c"/>
                 <subreportParameter name="locale">
