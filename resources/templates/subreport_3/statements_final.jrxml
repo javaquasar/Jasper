@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="statements_final"
+              pageWidth="595"
+              pageHeight="842"
+              columnWidth="447"
+              leftMargin="69"
+              rightMargin="69"
+              topMargin="15"
+              bottomMargin="14"
+              resourceBundle="localization"
+              uuid="24ebbb1c-f380-4370-b464-3de2e2a587f7">
+    
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+        
+    <style name="Font"
+           fontName="JasperFont"/>
+    <style name="Heading"
+           style="Font"
+           forecolor="#FF422A"
+           hAlign="Left"
+           vAlign="Middle"
+           fontSize="24"/>
+    <style name="Heading info"
+           style="Font"
+           hAlign="Left"
+           vAlign="Middle"
+           fontSize="12"/>
+    <style name="Note"
+           style="Font"
+           forecolor="#9093A3"
+           hAlign="Center"
+           vAlign="Middle"
+           fontSize="7"/>
+    <parameter name="client_name" class="java.lang.String">
+        <defaultValueExpression><![CDATA["Client Name"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="report_date" class="java.util.Date">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>      
+    <parameter name="locale" class="java.lang.String">
+        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["./resources/templates/subreport/"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="summary_ds" class="net.sf.jasperreports.engine.JRDataSource">
+        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="item_ds" class="net.sf.jasperreports.engine.JRDataSource">
+        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
+    </parameter>
+    
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="95" splitType="Stretch">
+            <textField>
+                <reportElement style="Heading" x="0" y="0" width="457" height="51" uuid="1fc46e59-046c-4b8f-8a18-ff9a6ee7f3ef"/>
+                <textFieldExpression><![CDATA[$R{header_name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="0" y="51" width="78" height="20" uuid="f792c670-c102-4c7e-a32a-f6690cb90181"/>
+                <textFieldExpression><![CDATA[$R{statement_for}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="82" y="51" width="375" height="20" uuid="e4d4f73e-0dcc-4935-ac84-c8166772e085"/>
+                <textFieldExpression><![CDATA[$P{client_name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="0" y="71" width="457" height="20" uuid="15db14f0-71af-4acc-a003-f7b174e1032f"/>
+                <textFieldExpression><![CDATA[new SimpleDateFormat("MMMM, yyyy", new Locale($P{locale})).format($P{report_date})]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <detail>
+        <band height="15" splitType="Stretch">
+            <subreport>
+                <reportElement x="0" y="0" width="457" height="15" uuid="e038e28a-cf6b-45f0-92b7-98e1c47fe305"/>
+                <subreportParameter name="summary">
+                    <subreportParameterExpression><![CDATA[$R{summary}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="account_number">
+                    <subreportParameterExpression><![CDATA[$R{account_number}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="account_name">
+                    <subreportParameterExpression><![CDATA[$R{account_name}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="transferred_to_card">
+                    <subreportParameterExpression><![CDATA[$R{transferred_to_card}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="received_from_card">
+                    <subreportParameterExpression><![CDATA[$R{received_from_card}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="total">
+                    <subreportParameterExpression><![CDATA[$R{total}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="summary_ds">
+                    <subreportParameterExpression><![CDATA[$P{summary_ds}]]></subreportParameterExpression>                   
+                </subreportParameter>
+                <dataSourceExpression><![CDATA[$P{summary_ds}]]></dataSourceExpression>
+
+<!--                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "summary.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+        <band height="30">
+            <subreport>
+                <reportElement x="0" y="5" width="457" height="15" uuid="82d374ad-6c0c-4b97-b8d1-537caa04223c"/>
+                <subreportParameter name="locale">
+                    <subreportParameterExpression><![CDATA[$P{locale}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="opening_balance">
+                    <subreportParameterExpression><![CDATA[$R{opening_balance}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="closing_balance">
+                    <subreportParameterExpression><![CDATA[$R{closing_balance}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="when">
+                    <subreportParameterExpression><![CDATA[$R{when}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="what">
+                    <subreportParameterExpression><![CDATA[$R{what}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="how_much">
+                    <subreportParameterExpression><![CDATA[$R{how_much}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="balance">
+                    <subreportParameterExpression><![CDATA[$R{balance}]]></subreportParameterExpression>
+                </subreportParameter>
+                <dataSourceExpression><![CDATA[$P{item_ds}]]></dataSourceExpression>
+<!--                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "item.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </detail>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

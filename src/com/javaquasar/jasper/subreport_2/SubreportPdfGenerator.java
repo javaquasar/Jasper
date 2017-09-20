@@ -1,7 +1,7 @@
 package com.javaquasar.jasper.subreport_2;
 
 import com.javaquasar.jasper.subreport_2.ds.SummaryDataSource;
-import com.javaquasar.jasper.subreport_2.SubreportJasperLocale;
+import com.javaquasar.jasper.subreport.SubreportJasperLocale;
 import com.javaquasar.jasper.subreport_2.ds.ItemDataSource;
 import com.javaquasar.jasper.util.JasperCompailer;
 import java.io.FileInputStream;

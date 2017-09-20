@@ -62,16 +62,10 @@
     <parameter name="account_name" class="java.lang.String">
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
-    <parameter name="open" class="java.lang.String">
+    <parameter name="transferred_to_card" class="java.lang.String">
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
-    <parameter name="in" class="java.lang.String">
-        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
-    </parameter>
-    <parameter name="out" class="java.lang.String">
-        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
-    </parameter>
-    <parameter name="close" class="java.lang.String">
+    <parameter name="received_from_card" class="java.lang.String">
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
     <parameter name="total" class="java.lang.String">
@@ -79,60 +73,41 @@
     </parameter>
     <!--    <queryString>
         <![CDATA[
-            SELECT
-                CLIENTID,
+            SELECT CLIENTID,
                 CLIENTNAME,
                 FROMDATE,
                 TILLDATE,
-                IBAN,
-                ACCOUNTNAME,
+                IBAN, 
+                ACCOUNTNAME, 
                 CURRENCYCODE,
-                OPENBAL,
-                INMOVE,
-                OUTMOVE,
-                CLOSEBAL
-            FROM
-                VP_MAINACCSTMTSUM
+                OUTAMOUNT,
+                INAMOUNT
+            FROM 
+                VP_MAINACCCARDSTMTSUM
         ]]>
     </queryString>-->
     <field name="CLIENTID" class="java.math.BigDecimal"/>
     <field name="CLIENTNAME" class="java.lang.String"/>
-    <!--    <field name="FROMDATE" class="oracle.sql.TIMESTAMP"/>
-    <field name="TILLDATE" class="oracle.sql.TIMESTAMP"/>-->
+    <field name="FROMDATE" class="oracle.sql.TIMESTAMP"/>
+    <field name="TILLDATE" class="oracle.sql.TIMESTAMP"/>
     <field name="IBAN" class="java.lang.String"/>
     <field name="ACCOUNTNAME" class="java.lang.String"/>
     <field name="CURRENCYCODE" class="java.lang.String"/>
-    <field name="OPENBAL" class="java.math.BigDecimal"/>
-    <field name="INMOVE" class="java.math.BigDecimal"/>
-    <field name="OUTMOVE" class="java.math.BigDecimal"/>
-    <field name="CLOSEBAL" class="java.math.BigDecimal"/>
-    <variable name="total_open" 
+    <field name="OUTAMOUNT" class="java.math.BigDecimal"/>
+    <field name="INAMOUNT" class="java.math.BigDecimal"/>
+    <variable name="total_out" 
               class="java.math.BigDecimal" 
               calculation="Sum"
               resetType="Group" 
               resetGroup="Account">
-        <variableExpression><![CDATA[$F{OPENBAL}]]></variableExpression>
+        <variableExpression><![CDATA[$F{OUTAMOUNT}]]></variableExpression>
     </variable>
     <variable name="total_in" 
               class="java.math.BigDecimal" 
               calculation="Sum"
               resetType="Group" 
               resetGroup="Account">
-        <variableExpression><![CDATA[$F{INMOVE}]]></variableExpression>
-    </variable>
-    <variable name="total_out" 
-              class="java.math.BigDecimal" 
-              calculation="Sum"
-              resetType="Group" 
-              resetGroup="Account">
-        <variableExpression><![CDATA[$F{OUTMOVE}]]></variableExpression>
-    </variable>
-    <variable name="total_close" 
-              class="java.math.BigDecimal" 
-              calculation="Sum"
-              resetType="Group" 
-              resetGroup="Account">
-        <variableExpression><![CDATA[$F{CLOSEBAL}]]></variableExpression>
+        <variableExpression><![CDATA[$F{INAMOUNT}]]></variableExpression>
     </variable>
     <variable name="ccode" class="java.lang.String" calculation="First">
         <variableExpression><![CDATA[$F{CURRENCYCODE}]]></variableExpression>
@@ -152,24 +127,16 @@
                     <textFieldExpression><![CDATA[$P{account_number}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table name" x="140" y="20" width="81" height="10" uuid="eaf076b4-0ca8-4cb7-95a2-7778c0fd111c"/>
+                    <reportElement style="Heading table name" x="140" y="20" width="111" height="10" uuid="eaf076b4-0ca8-4cb7-95a2-7778c0fd111c"/>
                     <textFieldExpression><![CDATA[$P{account_name}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table" x="220" y="20" width="61" height="10" uuid="db0b196b-abea-4477-a0bd-0e8ec644e3e2"/>
-                    <textFieldExpression><![CDATA[$P{open}]]></textFieldExpression>
+                    <reportElement style="Heading table" x="250" y="20" width="106" height="10" uuid="1bc4d000-3641-436e-b39d-e39f8c7c78d3"/>
+                    <textFieldExpression><![CDATA[$P{transferred_to_card}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table" x="280" y="20" width="61" height="10" uuid="498f6fd0-8e2f-4b89-98bb-e35413663b97"/>
-                    <textFieldExpression><![CDATA[$P{in}]]></textFieldExpression>
-                </textField>
-                <textField>
-                    <reportElement style="Heading table" x="340" y="20" width="61" height="10" uuid="1bc4d000-3641-436e-b39d-e39f8c7c78d3"/>
-                    <textFieldExpression><![CDATA[$P{out}]]></textFieldExpression>
-                </textField>
-                <textField>
-                    <reportElement style="Heading table" x="400" y="20" width="60" height="10" uuid="5b3c3fbe-6637-4f97-8707-4696fe8243c8"/>
-                    <textFieldExpression><![CDATA[$P{close}]]></textFieldExpression>
+                    <reportElement style="Heading table" x="355" y="20" width="105" height="10" uuid="5b3c3fbe-6637-4f97-8707-4696fe8243c8"/>
+                    <textFieldExpression><![CDATA[$P{received_from_card}]]></textFieldExpression>
                 </textField>
             </band>
         </groupHeader>
@@ -180,20 +147,12 @@
                     <textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Table default" x="220" y="0" width="60" height="10" uuid="ffe3edf8-d87a-4b46-86fd-3cd0d908e506"/>
-                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $V{total_open}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
-                </textField>
-                <textField>
-                    <reportElement style="Table default" x="280" y="0" width="60" height="10" uuid="ffe3edf8-d87a-4b46-86fd-3cd0d908e506"/>
+                    <reportElement style="Table default" x="250" y="0" width="105" height="10" uuid="ffe3edf8-d87a-4b46-86fd-3cd0d908e506"/>
                     <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $V{total_in}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Table default" x="340" y="0" width="60" height="10" uuid="ffe3edf8-d87a-4b46-86fd-3cd0d908e506"/>
+                    <reportElement style="Table default" x="355" y="0" width="105" height="10" uuid="ffe3edf8-d87a-4b46-86fd-3cd0d908e506"/>
                     <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $V{total_out}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
-                </textField>
-                <textField>
-                    <reportElement style="Table default" x="400" y="0" width="60" height="10" uuid="ffe3edf8-d87a-4b46-86fd-3cd0d908e506"/>
-                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $V{total_close}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
                 </textField>
                 <line>
                     <reportElement x="0" y="9" width="460" height="1" uuid="5fe8ca69-f3fd-4bc6-ae6f-391ccae51f89"/>
@@ -223,24 +182,16 @@
                 <textFieldExpression><![CDATA[$F{IBAN}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default name" x="140" y="0" width="80" height="10" uuid="fbbb56f1-5b3a-4e7d-ac22-670816f5dabc"/>
+                <reportElement style="Table default name" x="140" y="0" width="111" height="10" uuid="fbbb56f1-5b3a-4e7d-ac22-670816f5dabc"/>
                 <textFieldExpression><![CDATA[$F{ACCOUNTNAME}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="220" y="0" width="60" height="10" uuid="f22eb4e5-50b5-448a-af30-dc5e6c191dbf"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <reportElement style="Table default" x="250" y="0" width="106" height="10" uuid="2b21f5d4-b2b9-460a-9002-94162178e68b"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{INAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="280" y="0" width="60" height="10" uuid="c0bddf89-3c93-486d-be52-900c288766e0"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{INMOVE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement style="Table default" x="340" y="0" width="60" height="10" uuid="2b21f5d4-b2b9-460a-9002-94162178e68b"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OUTMOVE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement style="Table default" x="400" y="0" width="60" height="10" uuid="a7182124-f8fd-4e96-983e-6c520860b9cd"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <reportElement style="Table default" x="355" y="0" width="105" height="10" uuid="a7182124-f8fd-4e96-983e-6c520860b9cd"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OUTAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
         </band>
         <band height="1">

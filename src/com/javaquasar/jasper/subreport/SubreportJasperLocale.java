@@ -1,4 +1,4 @@
-package com.javaquasar.jasper.subreport_2;
+package com.javaquasar.jasper.subreport;
 /**
  *
  * @author Java Quasar
