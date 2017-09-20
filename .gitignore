@@ -1,3 +1,6 @@
 /resources/templates/custom_ds/DataSourceReport.jasper
 /nbproject/private/
 /build/
+/resources/templates/subreport/item.jasper
+/resources/templates/subreport/summary.jasper
+/resources/templates/subreport/statements_final.jasper
