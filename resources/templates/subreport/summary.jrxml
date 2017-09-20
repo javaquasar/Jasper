@@ -110,36 +110,36 @@
                 <reportElement style="Heading info" x="0" y="0" width="144" height="20" uuid="c9f90fdc-8fe6-4e2f-b420-391a6893993d"/>
                 <textFieldExpression><![CDATA[$P{summary}]]></textFieldExpression>
             </textField>
-            <textField>
-                <reportElement style="Heading info right" x="352" y="0" width="68" height="20" uuid="e54acee4-c4dd-46a4-a216-063cb4cff4f5"/>
-                <textFieldExpression><![CDATA[$V{ccode}]]></textFieldExpression>
-            </textField>
         </band>
     </pageHeader>
     <columnHeader>
-        <band height="10" splitType="Stretch">
+        <band height="30" splitType="Stretch">
             <textField>
-                <reportElement style="Heading table name" x="0" y="0" width="135" height="10" uuid="37707f30-50b0-4053-8f82-9b80767530ff"/>
+                <reportElement style="Heading info right" x="380" y="0" width="60" height="20" uuid="e54acee4-c4dd-46a4-a216-063cb4cff4f5"/>
+                <textFieldExpression><![CDATA[$V{ccode}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading table name" x="0" y="20" width="140" height="10" uuid="37707f30-50b0-4053-8f82-9b80767530ff"/>
                 <textFieldExpression><![CDATA[$P{account_number}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading table" x="135" y="0" width="45" height="10" uuid="eaf076b4-0ca8-4cb7-95a2-7778c0fd111c"/>
+                <reportElement style="Heading table name" x="140" y="20" width="80" height="10" uuid="eaf076b4-0ca8-4cb7-95a2-7778c0fd111c"/>
                 <textFieldExpression><![CDATA[$P{account_name}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading table" x="180" y="0" width="60" height="10" uuid="db0b196b-abea-4477-a0bd-0e8ec644e3e2"/>
+                <reportElement style="Heading table" x="220" y="20" width="60" height="10" uuid="db0b196b-abea-4477-a0bd-0e8ec644e3e2"/>
                 <textFieldExpression><![CDATA[$P{open}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading table" x="240" y="0" width="60" height="10" uuid="498f6fd0-8e2f-4b89-98bb-e35413663b97"/>
+                <reportElement style="Heading table" x="280" y="20" width="60" height="10" uuid="498f6fd0-8e2f-4b89-98bb-e35413663b97"/>
                 <textFieldExpression><![CDATA[$P{in}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading table" x="300" y="0" width="60" height="10" uuid="1bc4d000-3641-436e-b39d-e39f8c7c78d3"/>
+                <reportElement style="Heading table" x="340" y="20" width="60" height="10" uuid="1bc4d000-3641-436e-b39d-e39f8c7c78d3"/>
                 <textFieldExpression><![CDATA[$P{out}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading table" x="360" y="0" width="60" height="10" uuid="5b3c3fbe-6637-4f97-8707-4696fe8243c8"/>
+                <reportElement style="Heading table" x="400" y="20" width="60" height="10" uuid="5b3c3fbe-6637-4f97-8707-4696fe8243c8"/>
                 <textFieldExpression><![CDATA[$P{close}]]></textFieldExpression>
             </textField>
         </band>
@@ -147,33 +147,33 @@
     <detail>
         <band height="10" splitType="Stretch">
             <textField isStretchWithOverflow="true">
-                <reportElement style="Table default name" x="0" y="0" width="135" height="10" uuid="737c33d5-6d2c-4e1c-8a59-3e5fc0972ac7"/>
+                <reportElement style="Table default name" x="0" y="0" width="140" height="10" uuid="737c33d5-6d2c-4e1c-8a59-3e5fc0972ac7"/>
                 <textFieldExpression><![CDATA[$F{IBAN}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="135" y="0" width="45" height="10" uuid="fbbb56f1-5b3a-4e7d-ac22-670816f5dabc"/>
+                <reportElement style="Table default name" x="140" y="0" width="80" height="10" uuid="fbbb56f1-5b3a-4e7d-ac22-670816f5dabc"/>
                 <textFieldExpression><![CDATA[$F{ACCOUNTNAME}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="180" y="0" width="60" height="10" uuid="f22eb4e5-50b5-448a-af30-dc5e6c191dbf"/>
+                <reportElement style="Table default" x="220" y="0" width="60" height="10" uuid="f22eb4e5-50b5-448a-af30-dc5e6c191dbf"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="240" y="0" width="60" height="10" uuid="c0bddf89-3c93-486d-be52-900c288766e0"/>
+                <reportElement style="Table default" x="280" y="0" width="60" height="10" uuid="c0bddf89-3c93-486d-be52-900c288766e0"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{INMOVE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="300" y="0" width="60" height="10" uuid="2b21f5d4-b2b9-460a-9002-94162178e68b"/>
+                <reportElement style="Table default" x="340" y="0" width="60" height="10" uuid="2b21f5d4-b2b9-460a-9002-94162178e68b"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OUTMOVE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="360" y="0" width="60" height="10" uuid="a7182124-f8fd-4e96-983e-6c520860b9cd"/>
+                <reportElement style="Table default" x="400" y="0" width="60" height="10" uuid="a7182124-f8fd-4e96-983e-6c520860b9cd"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
         </band>
         <band height="1">
             <line>
-                <reportElement x="0" y="0" width="420" height="1" uuid="5fe8ca69-f3fd-4bc6-ae6f-391ccae51f89"/>
+                <reportElement x="0" y="0" width="460" height="1" uuid="5fe8ca69-f3fd-4bc6-ae6f-391ccae51f89"/>
                 <graphicElement>
                     <pen lineWidth="0.5"/>
                 </graphicElement>
@@ -187,11 +187,11 @@
                 <textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="351" y="0" width="69" height="10" uuid="ffe3edf8-d87a-4b46-86fd-3cd0d908e506"/>
+                <reportElement style="Table default" x="380" y="0" width="60" height="10" uuid="ffe3edf8-d87a-4b46-86fd-3cd0d908e506"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $V{total}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <line>
-                <reportElement x="0" y="9" width="420" height="1" uuid="5fe8ca69-f3fd-4bc6-ae6f-391ccae51f89"/>
+                <reportElement x="0" y="9" width="440" height="1" uuid="5fe8ca69-f3fd-4bc6-ae6f-391ccae51f89"/>
                 <graphicElement>
                     <pen lineWidth="0.5"/>
                 </graphicElement>
