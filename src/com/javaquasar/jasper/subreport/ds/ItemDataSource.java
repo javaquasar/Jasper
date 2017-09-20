@@ -1,7 +1,11 @@
 package com.javaquasar.jasper.subreport.ds;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -9,28 +13,42 @@ import net.sf.jasperreports.engine.JRField;
 
 public class ItemDataSource implements JRDataSource {
 
+    private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
     private final Object[][] data = {
-        {"PL10124069604100800000000215", "PLN", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-100"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-100"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-100"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-100"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("200"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("200"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("200"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("200"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("200"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("0"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000217", "EUR", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("0"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000217", "EUR", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("0"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000217", "EUR", new Date(), "Przelew DiP", "Bla bla bla", "495561689", new BigDecimal("1107721000"), new BigDecimal("0"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000216", "EUR", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-100"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000216", "EUR", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-100"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000216", "EUR", new Date(), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-100"), new BigDecimal("28800"), new BigDecimal("107892100")}
+        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"PL10124069604100800000000215", "PLN", createDate("2017-09-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"PL10124069604100800000000215", "PLN", createDate("2017-10-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"PL10124069604100800000000215", "PLN", createDate("2019-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"ER10124069604100800000000217", "EUR", createDate("2017-08-25"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"ER10124069604100800000000217", "EUR", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"ER10124069604100800000000217", "EUR", createDate("2017-12-01"), "Przelew DiP", "Bla bla bla", "495561689", new BigDecimal("1107721000"), new BigDecimal("0"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"ER10124069604100800000000216", "EUR", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"ER10124069604100800000000216", "EUR", createDate("2017-01-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
+        {"ER10124069604100800000000216", "EUR", createDate("2017-03-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("1107721000"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")}
     };
 
     private int index = -1;
 
     public ItemDataSource() {
+    }
+
+    private java.sql.Timestamp createDate(String date) {
+        try {
+            Date parsed = format.parse(date);
+            java.sql.Date sqlDate = new java.sql.Date(parsed.getTime());
+            java.sql.Timestamp time = new java.sql.Timestamp(sqlDate.getTime());
+            return time;
+        } catch (ParseException ex) {
+            Logger.getLogger(ItemDataSource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return new java.sql.Timestamp((new Date()).getTime());
     }
 
     @Override
@@ -45,7 +63,7 @@ public class ItemDataSource implements JRDataSource {
         Object value = null;
 
         String fieldName = field.getName();
-                
+
         if (null != fieldName) {
             switch (fieldName) {
                 case "IBAN":
@@ -119,4 +137,4 @@ public class ItemDataSource implements JRDataSource {
     <field name="BAL" class="java.math.BigDecimal"/>
     <field name="CLOSEBAL" class="java.math.BigDecimal"/>
 
-*/
+ */
