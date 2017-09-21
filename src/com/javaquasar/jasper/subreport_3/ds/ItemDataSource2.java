@@ -12,24 +12,24 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-public class ItemDataSource implements JRDataSource {
+public class ItemDataSource2 implements JRDataSource {
 
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     private final Object[][] data = {
-        {826, "PLN", "PL10124069604100800000000215", "545598******1802", "495561689", "+380509872464", "Name", createDate("2017-07-01"), "Przelew DiP", null, new BigDecimal("-10000")},
-        {826, "PLN", "PL10124069604100800000000215", "545598******1802", "495561689", "+380509872464", "Name", createDate("2017-08-01"), "Przelew DiP", new BigDecimal("0"), new BigDecimal("-5000")},
-        {826, "PLN", "PL10124069604100800000000216", "545598******5678", "125671983", "+380505217131", "Name 3", createDate("2017-08-01"), "Przelew ZiP", new BigDecimal("70000"), new BigDecimal("-20000")},
-        {826, "PLN", "PL10124069604100800000000216", "545598******5678", "125671983", "+380505217131", "Name 3", createDate("2017-06-01"), "Przelew FiP", new BigDecimal("20000"), null},
-        {826, "PLN", "PL10124069604100800000000216", "545598******5678", "125671983", "+380505217131", "Name 3", createDate("2017-08-01"), "Przelew ZiP", new BigDecimal("10050"), new BigDecimal("-10000")},
-        {826, "PLN", "PL10124069604100800000000217", "545598******1234", "980937469", "+380504447131", "Name New", createDate("2017-05-01"), "Przelew XXXiP", new BigDecimal("10050"), null},
-        {826, "PLN", "PL10124069604100800000000217", "545598******1234", "980937469", "+380504447131", "Name New", createDate("2017-06-01"), "Przelew XXXiP", new BigDecimal("20030"), null},
-        {826, "PLN", "PL10124069604100800000000217", "545598******1234", "980937469", "+380504447131", "Name New", createDate("2017-07-01"), "Przelew XXXiP", new BigDecimal("20020"), null}
+        {826, "PLN", "PL10124069604100800000000216", new BigDecimal("5009"), "545598******5678", "125671983", "+380501111111", "Name 11", createDate("2017-08-01"), "Przelew ZiP", new BigDecimal("70000"), new BigDecimal("-20000")},
+        {826, "PLN", "PL10124069604100800000000216", new BigDecimal("5009"), "545598******5678", "125671983", "+380501111111", "Name 11", createDate("2017-06-01"), "Przelew FiP", new BigDecimal("20000"), null},
+        {826, "PLN", "PL10124069604100800000000216", new BigDecimal("5009"), "545598******5678", "125671983", "+380501111111", "Name 11", createDate("2017-06-01"), "Przelew FiP", new BigDecimal("20000"), null},
+        {826, "PLN", "PL10124069604100800000000216", new BigDecimal("5008"), "545598******7897", "797989797", "+380502222222", "Name 20", createDate("2017-06-01"), "Przelew FiP", new BigDecimal("20000"), null},
+        {826, "PLN", "PL10124069604100800000000216", new BigDecimal("5008"), "545598******7897", "797989797", "+380502222222", "Name 20", createDate("2017-06-01"), "Przelew FiP", new BigDecimal("20000"), null},
+        {826, "PLN", "PL10124069604100800000000216", new BigDecimal("5020"), "545598******8936", "768243675", "+380503333333", "Name 30", createDate("2017-06-01"), "Przelew FiP", new BigDecimal("20000"), null},
+        {826, "PLN", "PL10124069604100800000000216", new BigDecimal("5020"), "545598******8936", "768243675", "+380503333333", "Name 30", createDate("2017-06-01"), "Przelew FiP", new BigDecimal("20000"), null},
+        {826, "PLN", "PL10124069604100800000000216", new BigDecimal("5020"), "545598******8936", "768243675", "+380503333333", "Name 30", createDate("2017-08-01"), "Przelew ZiP", new BigDecimal("10050"), new BigDecimal("-10000")}
     };
 
     private int index = -1;
 
-    public ItemDataSource() {
+    public ItemDataSource2() {
     }
 
     private java.sql.Timestamp createDate(String date) {
@@ -39,7 +39,7 @@ public class ItemDataSource implements JRDataSource {
             java.sql.Timestamp time = new java.sql.Timestamp(sqlDate.getTime());
             return time;
         } catch (ParseException ex) {
-            Logger.getLogger(ItemDataSource.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItemDataSource2.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new java.sql.Timestamp((new Date()).getTime());
     }
@@ -68,29 +68,32 @@ public class ItemDataSource implements JRDataSource {
                 case "IBAN":
                     value = data[index][2];
                     break;
-                case "MASKEDPAN":
+                case "CARDID":
                     value = data[index][3];
                     break;
-                case "DETAILS":
+                case "MASKEDPAN":
                     value = data[index][4];
                     break;
-                case "PHONE":
+                case "DETAILS":
                     value = data[index][5];
                     break;
-                case "FULLNAME":
+                case "PHONE":
                     value = data[index][6];
                     break;
-                case "ITEMDATE":
+                case "FULLNAME":
                     value = data[index][7];
                     break;
-                case "TYPENAME":
+                case "ITEMDATE":
                     value = data[index][8];
                     break;
-                case "OUTAMOUNT":
+                case "TYPENAME":
                     value = data[index][9];
                     break;
-                case "INAMOUNT":
+                case "OUTAMOUNT":
                     value = data[index][10];
+                    break;
+                case "INAMOUNT":
+                    value = data[index][11];
                     break;
                 default:
                     break;

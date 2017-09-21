@@ -1,7 +1,6 @@
 package com.javaquasar.jasper.subreport_3;
 
 import com.javaquasar.jasper.subreport.SubreportJasperLocale;
-import com.javaquasar.jasper.subreport_3.ds.ItemDataSource;
 import com.javaquasar.jasper.subreport_3.ds.SummaryDataSource;
 import com.javaquasar.jasper.util.JasperCompailer;
 import java.io.FileInputStream;
@@ -51,7 +50,6 @@ public class SubreportPdfGenerator {
         map.put("report_date", format.parse("2017-08-01"));
         map.put("client_name", "Corp Corp");
         map.put("summary_ds", new SummaryDataSource());
-        map.put("item_ds", new ItemDataSource());
 
         map.put(JRParameter.REPORT_LOCALE, new Locale(jl.getLocale()));
 

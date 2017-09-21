@@ -17,6 +17,9 @@
            vAlign="Bottom" 
            fontName="JasperFont" 
            fontSize="12"/>
+    <style name="Heading info top" 
+           style="Heading info"  
+           vAlign="Top"/>
     <style name="Heading info right" 
            style="Heading info" 
            hAlign="Right">
@@ -26,7 +29,7 @@
     <style name="Heading table" 
            mode="Opaque" 
            forecolor="#FFFFFF" 
-           backcolor="#FF3333" 
+           backcolor="#FF422A" 
            hAlign="Right" 
            vAlign="Middle" 
            fontName="JasperFont" 
@@ -53,6 +56,12 @@
     <style name="Table default gray" 
            style="Table default" 
            forecolor="#9093A3"/>
+    <parameter name="locale" class="java.lang.String">
+        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["./resources/templates/subreport_3/"]]></defaultValueExpression>
+    </parameter>
     <parameter name="summary" class="java.lang.String">
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
@@ -68,8 +77,29 @@
     <parameter name="received_from_cards" class="java.lang.String">
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
+    <parameter name="opening_balance" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="closing_balance" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="when" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="what" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
     <parameter name="total" class="java.lang.String">
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="transferred_to_card" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="received_from_card" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="item_ds" class="net.sf.jasperreports.engine.JRDataSource">
+        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
     </parameter>
     <!--    <queryString>
         <![CDATA[
@@ -99,6 +129,7 @@
     <field name="ACCOUNTNAME" class="java.lang.String"/>
     <field name="OUTAMOUNT" class="java.math.BigDecimal"/>
     <field name="INAMOUNT" class="java.math.BigDecimal"/>
+    <field name="ITEM_DS" class="net.sf.jasperreports.engine.JRDataSource"/>
     <variable name="total" 
               class="java.math.BigDecimal" 
               calculation="Sum"
@@ -120,33 +151,37 @@
         <variableExpression><![CDATA[$F{CURRENCYCODE}]]></variableExpression>
     </variable>   
     <group name="Account">
-        <groupExpression><![CDATA[$F{CURRENCYCODE}]]></groupExpression>
+        <groupExpression><![CDATA[$F{IBAN}]]></groupExpression>
         <groupHeader>
-            <band height="30" splitType="Stretch">
+            <band height="50" splitType="Stretch">
                 <textField>
-                    <reportElement style="Heading info right" x="400" y="0" width="60" height="20" uuid="e54acee4-c4dd-46a4-a216-063cb4cff4f5"/>
+                    <reportElement style="Heading info top" x="0" y="10" width="140" height="30" uuid="e54acee4-c4dd-46a4-a216-063cb4cff4f5"/>
+                    <textFieldExpression><![CDATA[$P{summary}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info right" x="400" y="20" width="60" height="20" uuid="e54acee4-c4dd-46a4-a216-063cb4cff4f5"/>
                     <textFieldExpression><![CDATA[$F{CURRENCYCODE}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table name" x="0" y="20" width="141" height="10" uuid="37707f30-50b0-4053-8f82-9b80767530ff"/>
+                    <reportElement style="Heading table name" x="0" y="40" width="141" height="10" uuid="37707f30-50b0-4053-8f82-9b80767530ff"/>
                     <textFieldExpression><![CDATA[$P{account_number}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table name" x="140" y="20" width="111" height="10" uuid="eaf076b4-0ca8-4cb7-95a2-7778c0fd111c"/>
+                    <reportElement style="Heading table name" x="140" y="40" width="111" height="10" uuid="eaf076b4-0ca8-4cb7-95a2-7778c0fd111c"/>
                     <textFieldExpression><![CDATA[$P{account_name}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table" x="250" y="20" width="106" height="10" uuid="1bc4d000-3641-436e-b39d-e39f8c7c78d3"/>
+                    <reportElement style="Heading table" x="250" y="40" width="106" height="10" uuid="1bc4d000-3641-436e-b39d-e39f8c7c78d3"/>
                     <textFieldExpression><![CDATA[$P{transferred_to_cards}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table" x="355" y="20" width="105" height="10" uuid="5b3c3fbe-6637-4f97-8707-4696fe8243c8"/>
+                    <reportElement style="Heading table" x="355" y="40" width="105" height="10" uuid="5b3c3fbe-6637-4f97-8707-4696fe8243c8"/>
                     <textFieldExpression><![CDATA[$P{received_from_cards}]]></textFieldExpression>
                 </textField>
             </band>
         </groupHeader>
         <groupFooter>
-            <band height="10">
+            <band height="20" splitType="Stretch">
                 <textField>
                     <reportElement style="Table default name" x="0" y="0" width="100" height="10" uuid="db0c23b7-6a02-41c1-9887-0c55f3878c32"/>
                     <textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
@@ -161,20 +196,37 @@
                         <pen lineWidth="0.5"/>
                     </graphicElement>
                 </line>
+                
+                <subreport>
+                    <reportElement x="0" y="10" width="460" height="9" uuid="82d374ad-6c0c-4b97-b8d1-537caa04223c"/>
+                    <subreportParameter name="total">
+                        <subreportParameterExpression><![CDATA[$P{total}]]></subreportParameterExpression>
+                    </subreportParameter>
+                    <subreportParameter name="locale">
+                        <subreportParameterExpression><![CDATA[$P{locale}]]></subreportParameterExpression>
+                    </subreportParameter>
+                    <subreportParameter name="when">
+                        <subreportParameterExpression><![CDATA[$P{when}]]></subreportParameterExpression>
+                    </subreportParameter>
+                    <subreportParameter name="what">
+                        <subreportParameterExpression><![CDATA[$P{what}]]></subreportParameterExpression>
+                    </subreportParameter>
+                    <subreportParameter name="transferred_to_card">
+                        <subreportParameterExpression><![CDATA[$P{transferred_to_card}]]></subreportParameterExpression>
+                    </subreportParameter>
+                    <subreportParameter name="received_from_card">
+                        <subreportParameterExpression><![CDATA[$P{received_from_card}]]></subreportParameterExpression>
+                    </subreportParameter>
+                    <dataSourceExpression><![CDATA[$F{ITEM_DS}]]></dataSourceExpression>
+<!--                    <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
+                    <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "item.jasper"]]></subreportExpression>
+                </subreport>
             </band>
         </groupFooter>
     </group>
     <background>
         <band splitType="Stretch"/>
     </background>
-    <pageHeader>
-        <band height="20">
-            <textField>
-                <reportElement style="Heading info" x="0" y="0" width="144" height="20" uuid="c9f90fdc-8fe6-4e2f-b420-391a6893993d"/>
-                <textFieldExpression><![CDATA[$P{summary}]]></textFieldExpression>
-            </textField>
-        </band>
-    </pageHeader>
     <detail>
         <band height="10" splitType="Stretch">
             <textField isStretchWithOverflow="true">

@@ -10,7 +10,7 @@
               rightMargin="0"
               topMargin="0"
               bottomMargin="0"
-              isTitleNewPage="true"
+              
               uuid="f92d6b72-f3fa-43ce-9a71-586be0b23022">
     
     <property name="ireport.zoom" value="1.0"/>
@@ -99,6 +99,7 @@
                 CURRENCYID
                 CURRENCYCODE,
                 IBAN,
+                CARDID,
                 MASKEDPAN,
                 DETAILS,
                 PHONE,
@@ -116,6 +117,7 @@
     <field name="CURRENCYID" class="java.lang.Integer"/>
     <field name="CURRENCYCODE" class="java.lang.String"/>
     <field name="IBAN" class="java.lang.String"/>
+    <field name="CARDID" class="java.math.BigDecimal"/>
     <field name="MASKEDPAN" class="java.lang.String"/>
     <field name="DETAILS" class="java.lang.String"/>
     <field name="PHONE" class="java.lang.String"/>
@@ -128,20 +130,31 @@
                   class="java.math.BigDecimal" 
                   calculation="Sum"
                   resetType="Group" 
-                  resetGroup="Account">
+                  resetGroup="Item">
         <variableExpression><![CDATA[$F{INAMOUNT}]]></variableExpression>
     </variable>
     <variable name="total_out" 
+                  class="java.math.BigDecimal" 
+                  calculation="Sum"
+                  resetType="Group" 
+                  resetGroup="Item">
+        <variableExpression><![CDATA[$F{OUTAMOUNT}]]></variableExpression>
+    </variable>
+<!--    <variable name="total_out" 
                       class="java.math.BigDecimal" 
                       calculation="Sum"
                       resetType="Group" 
-                      resetGroup="Account">
-        <variableExpression><![CDATA[$F{OUTAMOUNT}]]></variableExpression>
-    </variable>
-    <group name="Account">
+                      resetGroup="Item">
+        <variableExpression>
+            <![CDATA[
+                $F{OUTAMOUNT} != null ? $F{OUTAMOUNT} : new java.math.BigDecimal("0")
+            ]]>
+        </variableExpression>
+    </variable>-->
+    <group name="Item">
         <groupExpression>
             <![CDATA[ 
-                $F{IBAN}
+                $F{CARDID}
             ]]>
         </groupExpression>
         <groupHeader>
@@ -156,23 +169,19 @@
                     </textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading info right" x="410" y="15" width="50" height="20" uuid="1caa5c92-144c-4d34-9b73-7046da5e4fbe"/>
-                    <textFieldExpression><![CDATA[$F{CURRENCYCODE}]]></textFieldExpression>
-                </textField>
-                <textField>
                     <reportElement style="Heading table name red" x="0" y="35" width="51" height="10" uuid="bf3e1d84-4843-4a29-af29-79648bbc2277"/>
                     <textFieldExpression><![CDATA[$P{when}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table name red" x="50" y="35" width="291" height="10" uuid="5e0fdc65-aebf-444e-a80a-229b94c3bd6f"/>
+                    <reportElement style="Heading table name red" x="50" y="35" width="201" height="10" uuid="5e0fdc65-aebf-444e-a80a-229b94c3bd6f"/>
                     <textFieldExpression><![CDATA[$P{what}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table red" x="340" y="35" width="61" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
+                    <reportElement style="Heading table red" x="250" y="35" width="106" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
                     <textFieldExpression><![CDATA[$P{transferred_to_card}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table red" x="400" y="35" width="60" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
+                    <reportElement style="Heading table red" x="355" y="35" width="105" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
                     <textFieldExpression><![CDATA[$P{received_from_card}]]></textFieldExpression>
                 </textField>
             </band>
@@ -186,15 +195,15 @@
                     </graphicElement>
                 </line>
                 <textField>
-                    <reportElement style="Table default name" x="50" y="1" width="290" height="10" uuid="b05f12dc-59ed-4542-8693-f81d4e9f899e"/>
+                    <reportElement style="Table default name" x="50" y="1" width="201" height="10" uuid="b05f12dc-59ed-4542-8693-f81d4e9f899e"/>
                     <textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Table default" x="340" y="1" width="60" height="10" uuid="54676a3e-dcc1-42ac-9f8c-2891b78e799a"/>
+                    <reportElement style="Table default" x="250" y="1" width="106" height="10" uuid="54676a3e-dcc1-42ac-9f8c-2891b78e799a"/>
                     <textFieldExpression><![CDATA[$V{total_in} != null ? String.format(Locale.ENGLISH, "%,.2f", $V{total_in}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Table default" x="400" y="1" width="60" height="10" uuid="54676a3e-dcc1-42ac-9f8c-2891b78e799a"/>
+                    <reportElement style="Table default" x="355" y="1" width="105" height="10" uuid="54676a3e-dcc1-42ac-9f8c-2891b78e799a"/>
                     <textFieldExpression><![CDATA[$V{total_out} != null ? String.format(Locale.ENGLISH, "%,.2f", $V{total_out}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
                 </textField>
                 <line>
@@ -218,7 +227,7 @@
                 </graphicElement>
             </line>
             <textField isStretchWithOverflow="true">
-                <reportElement style="Table default name" x="50" y="2" width="290" height="10" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <reportElement style="Table default name" x="50" y="2" width="200" height="10" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
                 <textElement verticalAlignment="Top">
                     <paragraph lineSpacing="1_1_2"/>
                 </textElement>
@@ -226,11 +235,11 @@
                 </textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Table default" x="340" y="2" width="60" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <reportElement style="Table default" x="250" y="2" width="105" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
                 <textFieldExpression><![CDATA[$F{INAMOUNT} != null ? String.format(Locale.ENGLISH, "%,.2f", $F{INAMOUNT}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Table default" x="400" y="2" width="60" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <reportElement style="Table default" x="355" y="2" width="105" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
                 <textFieldExpression><![CDATA[$F{OUTAMOUNT} != null ? String.format(Locale.ENGLISH, "%,.2f", $F{OUTAMOUNT}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
             </textField>
             <textField isStretchWithOverflow="true">

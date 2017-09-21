@@ -6,8 +6,8 @@
               pageWidth="595"
               pageHeight="842"
               columnWidth="447"
-              leftMargin="69"
-              rightMargin="69"
+              leftMargin="67"
+              rightMargin="68"
               topMargin="15"
               bottomMargin="14"
               resourceBundle="localization"
@@ -46,12 +46,9 @@
         <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
     </parameter>
     <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-        <defaultValueExpression><![CDATA["./resources/templates/subreport/"]]></defaultValueExpression>
+        <defaultValueExpression><![CDATA["./resources/templates/subreport_3/"]]></defaultValueExpression>
     </parameter>
     <parameter name="summary_ds" class="net.sf.jasperreports.engine.JRDataSource">
-        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
-    </parameter>
-    <parameter name="item_ds" class="net.sf.jasperreports.engine.JRDataSource">
         <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
     </parameter>
     
@@ -81,7 +78,7 @@
     <detail>
         <band height="15" splitType="Stretch">
             <subreport>
-                <reportElement x="0" y="0" width="457" height="15" uuid="e038e28a-cf6b-45f0-92b7-98e1c47fe305"/>
+                <reportElement x="0" y="0" width="460" height="15" uuid="e038e28a-cf6b-45f0-92b7-98e1c47fe305"/>
                 <subreportParameter name="summary">
                     <subreportParameterExpression><![CDATA[$R{summary}]]></subreportParameterExpression>
                 </subreportParameter>
@@ -103,20 +100,8 @@
                 <subreportParameter name="summary_ds">
                     <subreportParameterExpression><![CDATA[$P{summary_ds}]]></subreportParameterExpression>                   
                 </subreportParameter>
-                <dataSourceExpression><![CDATA[$P{summary_ds}]]></dataSourceExpression>
-
-<!--                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
-                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "summary.jasper"]]></subreportExpression>
-            </subreport>
-        </band>
-        <band height="30">
-            <subreport>
-                <reportElement x="0" y="5" width="457" height="15" uuid="82d374ad-6c0c-4b97-b8d1-537caa04223c"/>
-                <subreportParameter name="locale">
-                    <subreportParameterExpression><![CDATA[$P{locale}]]></subreportParameterExpression>
-                </subreportParameter>
-                <subreportParameter name="total">
-                    <subreportParameterExpression><![CDATA[$R{total}]]></subreportParameterExpression>
+                <subreportParameter name="SUBREPORT_DIR">
+                    <subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
                 </subreportParameter>
                 <subreportParameter name="when">
                     <subreportParameterExpression><![CDATA[$R{when}]]></subreportParameterExpression>
@@ -130,9 +115,10 @@
                 <subreportParameter name="received_from_card">
                     <subreportParameterExpression><![CDATA[$R{received_from_card}]]></subreportParameterExpression>
                 </subreportParameter>
-                <dataSourceExpression><![CDATA[$P{item_ds}]]></dataSourceExpression>
+                <dataSourceExpression><![CDATA[$P{summary_ds}]]></dataSourceExpression>
+
 <!--                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
-                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "item.jasper"]]></subreportExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "summary.jasper"]]></subreportExpression>
             </subreport>
         </band>
     </detail>
