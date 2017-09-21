@@ -66,6 +66,9 @@
     <style name="Table default gray"
            style="Table default"
            forecolor="#9093A3"/>
+    <parameter name="iban" class="java.lang.String">
+        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
+    </parameter>
     <parameter name="locale" class="java.lang.String">
         <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
     </parameter>
@@ -92,9 +95,10 @@
     </parameter>
     <!--    <queryString>
         <![CDATA[
-            SELECT 
-                IBAN,
+            SELECT
+                CURRENCYID
                 CURRENCYCODE,
+                IBAN,
                 MASKEDPAN,
                 DETAILS,
                 PHONE,
@@ -105,10 +109,13 @@
                 INAMOUNT
             FROM 
                 VP_MAINACCCARDSTMTITEM
+            WHERE
+                IBAN = $P{iban} 
         ]]>
     </queryString>-->
-    <field name="IBAN" class="java.lang.String"/>
+    <field name="CURRENCYID" class="java.lang.Integer"/>
     <field name="CURRENCYCODE" class="java.lang.String"/>
+    <field name="IBAN" class="java.lang.String"/>
     <field name="MASKEDPAN" class="java.lang.String"/>
     <field name="DETAILS" class="java.lang.String"/>
     <field name="PHONE" class="java.lang.String"/>

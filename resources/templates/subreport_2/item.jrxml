@@ -96,10 +96,10 @@
                 TYPENAME,
                 FULLNAME,
                 DETAILS,
-                OPENBAL,
+                OPENBALANCE,
                 AMOUNT,
-                BAL,
-                CLOSEBAL
+                BALANCE,
+                CLOSEBALANCE
             FROM 
                 VP_MAINACCSTMTITEM;
         ]]>
@@ -111,10 +111,10 @@
     <field name="TYPENAME" class="java.lang.String"/>
     <field name="FULLNAME" class="java.lang.String"/>
     <field name="DETAILS" class="java.lang.String"/>
-    <field name="OPENBAL" class="java.math.BigDecimal"/>
+    <field name="OPENBALANCE" class="java.math.BigDecimal"/>
     <field name="AMOUNT" class="java.math.BigDecimal"/>
-    <field name="BAL" class="java.math.BigDecimal"/>
-    <field name="CLOSEBAL" class="java.math.BigDecimal"/>
+    <field name="BALANCE" class="java.math.BigDecimal"/>
+    <field name="CLOSEBALANCE" class="java.math.BigDecimal"/>
     <group name="Account">
         <groupExpression><![CDATA[$F{IBAN}]]></groupExpression>
         <groupHeader>
@@ -149,7 +149,7 @@
                 </textField>
                 <textField>
                     <reportElement style="Table default" x="400" y="35" width="60" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e426a829"/>
-                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
                 </textField>
             </band>
         </groupHeader>
@@ -167,7 +167,7 @@
                 </textField>
                 <textField>
                     <reportElement style="Table default" x="400" y="1" width="60" height="10" uuid="54676a3e-dcc1-42ac-9f8c-2891b78e799a"/>
-                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
                 </textField>
                 <line>
                     <reportElement x="0" y="10" width="460" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
@@ -194,9 +194,13 @@
                 <textElement verticalAlignment="Top">
                     <paragraph lineSpacing="1_1_2"/>
                 </textElement>
-                <textFieldExpression><![CDATA[$F{TYPENAME} +
-                    ($F{FULLNAME} != null ? "\n" + $F{FULLNAME} : "") +
-                    ($F{DETAILS} != null ? "\n" + $F{DETAILS} : "")]]>
+                <textFieldExpression>
+                    <![CDATA[
+                        $F{TYPENAME} +
+                        ($F{FULLNAME} != null 
+                            ? "\n" + $F{FULLNAME} + ", " + ($F{DETAILS} != null ? $F{DETAILS} : "")
+                            : ($F{DETAILS} != null ? "\n" + $F{DETAILS} : ""))
+                    ]]>
                 </textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
@@ -205,7 +209,7 @@
             </textField>
             <textField isBlankWhenNull="true">
                 <reportElement style="Table default" x="400" y="2" width="60" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{BAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{BALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField isStretchWithOverflow="true">
                 <reportElement style="Table default name" x="0" y="2" width="50" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>

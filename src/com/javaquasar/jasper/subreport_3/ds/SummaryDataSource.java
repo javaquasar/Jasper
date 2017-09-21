@@ -9,11 +9,8 @@ import net.sf.jasperreports.engine.JRField;
 public class SummaryDataSource implements JRDataSource {
 
     private final Object[][] data = {
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", null, new BigDecimal("1000000")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", new BigDecimal("-25050"), null},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EUR", new BigDecimal("-10010"), new BigDecimal("1000000")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EUR", new BigDecimal("-20020"), new BigDecimal("30050")}
-    };
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", 794, "PLN", "PL10124069604100800000000215", "Main Account", null, new BigDecimal("-1000000")},
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", 826, "EUR", "PL10124069604100800000000216", "EUR Account", new BigDecimal("+10010"), null},};
 
     private int index = -1;
 
@@ -47,20 +44,23 @@ public class SummaryDataSource implements JRDataSource {
                 case "TILLDATE":
                     value = data[index][3];
                     break;
-                case "IBAN":
+                case "CURRENCYID":
                     value = data[index][4];
                     break;
-                case "ACCOUNTNAME":
+                case "CURRENCYCODE":
                     value = data[index][5];
                     break;
-                case "CURRENCYCODE":
+                case "IBAN":
                     value = data[index][6];
                     break;
-                case "OUTAMOUNT":
+                case "ACCOUNTNAME":
                     value = data[index][7];
                     break;
-                case "INAMOUNT":
+                case "OUTAMOUNT":
                     value = data[index][8];
+                    break;
+                case "INAMOUNT":
+                    value = data[index][9];
                     break;
                 default:
                     break;

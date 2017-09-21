@@ -87,10 +87,10 @@
                 IBAN,
                 ACCOUNTNAME,
                 CURRENCYCODE,
-                OPENBAL,
+                OPENBALANCE,
                 INMOVE,
                 OUTMOVE,
-                CLOSEBAL
+                CLOSEBALANCE
             FROM
                 VP_MAINACCSTMTSUM
         ]]>
@@ -102,16 +102,16 @@
     <field name="IBAN" class="java.lang.String"/>
     <field name="ACCOUNTNAME" class="java.lang.String"/>
     <field name="CURRENCYCODE" class="java.lang.String"/>
-    <field name="OPENBAL" class="java.math.BigDecimal"/>
+    <field name="OPENBALANCE" class="java.math.BigDecimal"/>
     <field name="INMOVE" class="java.math.BigDecimal"/>
     <field name="OUTMOVE" class="java.math.BigDecimal"/>
-    <field name="CLOSEBAL" class="java.math.BigDecimal"/>
+    <field name="CLOSEBALANCE" class="java.math.BigDecimal"/>
     <variable name="total_open" 
               class="java.math.BigDecimal" 
               calculation="Sum"
               resetType="Group" 
               resetGroup="Account">
-        <variableExpression><![CDATA[$F{OPENBAL}]]></variableExpression>
+        <variableExpression><![CDATA[$F{OPENBALANCE}]]></variableExpression>
     </variable>
     <variable name="total_in" 
               class="java.math.BigDecimal" 
@@ -132,7 +132,7 @@
               calculation="Sum"
               resetType="Group" 
               resetGroup="Account">
-        <variableExpression><![CDATA[$F{CLOSEBAL}]]></variableExpression>
+        <variableExpression><![CDATA[$F{CLOSEBALANCE}]]></variableExpression>
     </variable>
     <variable name="ccode" class="java.lang.String" calculation="First">
         <variableExpression><![CDATA[$F{CURRENCYCODE}]]></variableExpression>
@@ -228,7 +228,7 @@
             </textField>
             <textField>
                 <reportElement style="Table default" x="220" y="0" width="60" height="10" uuid="f22eb4e5-50b5-448a-af30-dc5e6c191dbf"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement style="Table default" x="280" y="0" width="60" height="10" uuid="c0bddf89-3c93-486d-be52-900c288766e0"/>
@@ -240,7 +240,7 @@
             </textField>
             <textField>
                 <reportElement style="Table default" x="400" y="0" width="60" height="10" uuid="a7182124-f8fd-4e96-983e-6c520860b9cd"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
         </band>
         <band height="1">

@@ -9,9 +9,9 @@ public class SummaryDataSource implements JRDataSource {
 
     private final Object[][] data = {
         {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", new BigDecimal("1107720"), new BigDecimal("550"), new BigDecimal("28800"), new BigDecimal("1078920")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", new BigDecimal("1107720"), new BigDecimal("450"), new BigDecimal("28800"), new BigDecimal("1078920")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EUR", new BigDecimal("1107720"), new BigDecimal("10"), new BigDecimal("25000"), new BigDecimal("1078920")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EUR", new BigDecimal("1107720"), new BigDecimal("10"), new BigDecimal("20000"), new BigDecimal("1078920")}
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000216", "Main Account", "PLN", new BigDecimal("1107720"), new BigDecimal("450"), new BigDecimal("28800"), new BigDecimal("1078920")},
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000217", "EUR Account", "EUR", new BigDecimal("1107720"), new BigDecimal("10"), new BigDecimal("25000"), new BigDecimal("1078920")},
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000218", "EUR Account", "EUR", new BigDecimal("1107720"), new BigDecimal("10"), new BigDecimal("20000"), new BigDecimal("1078920")}
     };
 
     private int index = -1;
@@ -55,7 +55,7 @@ public class SummaryDataSource implements JRDataSource {
                 case "CURRENCYCODE":
                     value = data[index][6];
                     break;
-                case "OPENBAL":
+                case "OPENBALANCE":
                     value = data[index][7];
                     break;
                 case "INMOVE":
@@ -64,7 +64,7 @@ public class SummaryDataSource implements JRDataSource {
                 case "OUTMOVE":
                     value = data[index][9];
                     break;
-                case "CLOSEBAL":
+                case "CLOSEBALANCE":
                     value = data[index][10];
                     break;
                 default:
