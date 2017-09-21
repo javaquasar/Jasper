@@ -129,7 +129,7 @@
                       calculation="Sum"
                       resetType="Group" 
                       resetGroup="Account">
-        <variableExpression><![CDATA[$F{INAMOUNT}.add($F{OUTAMOUNT})]]></variableExpression>
+        <variableExpression><![CDATA[$F{OUTAMOUNT}.add($F{OUTAMOUNT})]]></variableExpression>
     </variable>
     <group name="Account">
         <groupExpression>
@@ -184,11 +184,11 @@
                 </textField>
                 <textField>
                     <reportElement style="Table default" x="340" y="1" width="60" height="10" uuid="54676a3e-dcc1-42ac-9f8c-2891b78e799a"/>
-                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $V{total_in}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[$V{total_in} != null ? String.format(Locale.ENGLISH, "%,.2f", $V{total_in}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
                 </textField>
                 <textField>
                     <reportElement style="Table default" x="400" y="1" width="60" height="10" uuid="54676a3e-dcc1-42ac-9f8c-2891b78e799a"/>
-                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $V{total_out}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[$V{total_in} != null ? String.format(Locale.ENGLISH, "%,.2f", $V{total_out}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
                 </textField>
                 <line>
                     <reportElement x="0" y="10" width="460" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
@@ -220,11 +220,11 @@
             </textField>
             <textField isBlankWhenNull="true">
                 <reportElement style="Table default" x="340" y="2" width="60" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{INAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{INAMOUNT} != null ? String.format(Locale.ENGLISH, "%,.2f", $F{INAMOUNT}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
                 <reportElement style="Table default" x="400" y="2" width="60" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OUTAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{OUTAMOUNT} != null ? String.format(Locale.ENGLISH, "%,.2f", $F{OUTAMOUNT}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
             </textField>
             <textField isStretchWithOverflow="true">
                 <reportElement style="Table default name" x="0" y="2" width="50" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>

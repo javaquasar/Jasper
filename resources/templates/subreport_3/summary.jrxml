@@ -100,7 +100,19 @@
               calculation="Sum"
               resetType="Group" 
               resetGroup="Account">
-        <variableExpression><![CDATA[$F{INAMOUNT}.add($F{OUTAMOUNT})]]></variableExpression>
+        
+       
+        <variableExpression>
+            <![CDATA[
+                $F{INAMOUNT} != null 
+                ? $F{INAMOUNT}.add(
+                        $F{OUTAMOUNT} != null ? $F{OUTAMOUNT} : new java.math.BigDecimal("0")
+                    )
+                : (new java.math.BigDecimal("0")).add(
+                        $F{OUTAMOUNT} != null ? $F{OUTAMOUNT} : new java.math.BigDecimal("0")
+                    )
+            ]]>
+        </variableExpression>
     </variable>
     <variable name="ccode" class="java.lang.String" calculation="First">
         <variableExpression><![CDATA[$F{CURRENCYCODE}]]></variableExpression>
@@ -176,11 +188,11 @@
             </textField>
             <textField>
                 <reportElement style="Table default" x="250" y="0" width="106" height="10" uuid="2b21f5d4-b2b9-460a-9002-94162178e68b"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{INAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{INAMOUNT} != null ? String.format(Locale.ENGLISH, "%,.2f", $F{INAMOUNT}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement style="Table default" x="355" y="0" width="105" height="10" uuid="a7182124-f8fd-4e96-983e-6c520860b9cd"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OUTAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{OUTAMOUNT} != null ? String.format(Locale.ENGLISH, "%,.2f", $F{OUTAMOUNT}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
             </textField>
         </band>
         <band height="1">

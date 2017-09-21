@@ -9,10 +9,10 @@ import net.sf.jasperreports.engine.JRField;
 public class SummaryDataSource implements JRDataSource {
 
     private final Object[][] data = {
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", new BigDecimal("-18800"), new BigDecimal("1078920")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", new BigDecimal("-28800"), new BigDecimal("1078920")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EUR", new BigDecimal("-1078920"), new BigDecimal("1078920")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EUR", new BigDecimal("-20000"), new BigDecimal("1078920")}
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", null, new BigDecimal("1000000")},
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", new BigDecimal("-25050"), null},
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EUR", new BigDecimal("-10010"), new BigDecimal("1000000")},
+        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "EUR Account", "EUR", new BigDecimal("-20020"), new BigDecimal("30050")}
     };
 
     private int index = -1;

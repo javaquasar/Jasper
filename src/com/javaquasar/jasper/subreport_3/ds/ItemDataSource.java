@@ -17,11 +17,14 @@ public class ItemDataSource implements JRDataSource {
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     private final Object[][] data = {
-        {"PL10124069604100800000000215", "PLN", "545598******1802", "495561689", "+380509872464", "Name", createDate("2017-07-01"), "Przelew DiP", new BigDecimal("110772100"), new BigDecimal("-28800")},
-        {"PL10124069604100800000000215", "PLN", "545598******1802", "495561689", "+380509872464", "Name", createDate("2017-08-01"), "Przelew DiP", new BigDecimal("110772100"), new BigDecimal("-28800")},
-        {"PL10124069604100800000000216", "PLN", "545598******1802", "234234", "+380505217131", "Name 3", createDate("2017-08-01"), "Przelew ZiP", new BigDecimal("110772100"), new BigDecimal("-28800")},
-        {"PL10124069604100800000000216", "PLN", "545598******1802", "234242", "+380505217131", "Name 3", createDate("2017-06-01"), "Przelew FiP", new BigDecimal("110772100"), new BigDecimal("-28800")},
-        {"PL10124069604100800000000216", "EUR", "545598******1802", "24234234", "+380505217131", "Name 3", createDate("2017-08-01"), "Przelew ZiP", new BigDecimal("110772100"), new BigDecimal("-28800")}
+        {"PL10124069604100800000000215", "PLN", "545598******1802", "495561689", "+380509872464", "Name", createDate("2017-07-01"), "Przelew DiP", null, new BigDecimal("-10000")},
+        {"PL10124069604100800000000215", "PLN", "545598******1802", "495561689", "+380509872464", "Name", createDate("2017-08-01"), "Przelew DiP", new BigDecimal("0"), new BigDecimal("-5000")},
+        {"PL10124069604100800000000216", "PLN", "545598******5678", "125671983", "+380505217131", "Name 3", createDate("2017-08-01"), "Przelew ZiP", new BigDecimal("70000"), new BigDecimal("-20000")},
+        {"PL10124069604100800000000216", "PLN", "545598******5678", "125671983", "+380505217131", "Name 3", createDate("2017-06-01"), "Przelew FiP", new BigDecimal("20000"), null},
+        {"PL10124069604100800000000216", "EUR", "545598******5678", "125671983", "+380505217131", "Name 3", createDate("2017-08-01"), "Przelew ZiP", new BigDecimal("10050"), new BigDecimal("-10000")},
+        {"PL10124069604100800000000217", "PLN", "545598******1234", "980937469", "+380504447131", "Name New", createDate("2017-05-01"), "Przelew XXXiP", new BigDecimal("10050"), null},
+        {"PL10124069604100800000000217", "PLN", "545598******1234", "980937469", "+380504447131", "Name New", createDate("2017-06-01"), "Przelew XXXiP", new BigDecimal("20030"), null},
+        {"PL10124069604100800000000217", "EUR", "545598******1234", "980937469", "+380504447131", "Name New", createDate("2017-07-01"), "Przelew XXXiP", new BigDecimal("20020"), null}    
     };
 
     private int index = -1;
