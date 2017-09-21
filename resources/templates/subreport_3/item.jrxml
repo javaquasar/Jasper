@@ -122,14 +122,14 @@
                   calculation="Sum"
                   resetType="Group" 
                   resetGroup="Account">
-        <variableExpression><![CDATA[$F{INAMOUNT}.add($F{INAMOUNT})]]></variableExpression>
+        <variableExpression><![CDATA[$F{INAMOUNT}]]></variableExpression>
     </variable>
     <variable name="total_out" 
                       class="java.math.BigDecimal" 
                       calculation="Sum"
                       resetType="Group" 
                       resetGroup="Account">
-        <variableExpression><![CDATA[$F{OUTAMOUNT}.add($F{OUTAMOUNT})]]></variableExpression>
+        <variableExpression><![CDATA[$F{OUTAMOUNT}]]></variableExpression>
     </variable>
     <group name="Account">
         <groupExpression>
@@ -188,7 +188,7 @@
                 </textField>
                 <textField>
                     <reportElement style="Table default" x="400" y="1" width="60" height="10" uuid="54676a3e-dcc1-42ac-9f8c-2891b78e799a"/>
-                    <textFieldExpression><![CDATA[$V{total_in} != null ? String.format(Locale.ENGLISH, "%,.2f", $V{total_out}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[$V{total_out} != null ? String.format(Locale.ENGLISH, "%,.2f", $V{total_out}.divide(new java.math.BigDecimal("100"))) : ""]]></textFieldExpression>
                 </textField>
                 <line>
                     <reportElement x="0" y="10" width="460" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>

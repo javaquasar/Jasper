@@ -28,7 +28,9 @@ public class SubreportPdfGenerator {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         BigDecimal b1 =  new BigDecimal("-28100");
-        BigDecimal b2 =  new BigDecimal("28800");
+        BigDecimal b2 =  new BigDecimal("0");
+        System.out.println(b2.equals(new BigDecimal("0")));
+        
         System.out.println(b2.add(b1).toString());
         b2.add(b1);
         JasperCompailer.compaile("./resources/templates/subreport_3/");
