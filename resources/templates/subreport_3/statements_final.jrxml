@@ -91,11 +91,11 @@
                 <subreportParameter name="account_name">
                     <subreportParameterExpression><![CDATA[$R{account_name}]]></subreportParameterExpression>
                 </subreportParameter>
-                <subreportParameter name="transferred_to_card">
-                    <subreportParameterExpression><![CDATA[$R{transferred_to_card}]]></subreportParameterExpression>
+                <subreportParameter name="transferred_to_cards">
+                    <subreportParameterExpression><![CDATA[$R{transferred_to_cards}]]></subreportParameterExpression>
                 </subreportParameter>
-                <subreportParameter name="received_from_card">
-                    <subreportParameterExpression><![CDATA[$R{received_from_card}]]></subreportParameterExpression>
+                <subreportParameter name="received_from_cards">
+                    <subreportParameterExpression><![CDATA[$R{received_from_cards}]]></subreportParameterExpression>
                 </subreportParameter>
                 <subreportParameter name="total">
                     <subreportParameterExpression><![CDATA[$R{total}]]></subreportParameterExpression>
@@ -115,11 +115,8 @@
                 <subreportParameter name="locale">
                     <subreportParameterExpression><![CDATA[$P{locale}]]></subreportParameterExpression>
                 </subreportParameter>
-                <subreportParameter name="opening_balance">
-                    <subreportParameterExpression><![CDATA[$R{opening_balance}]]></subreportParameterExpression>
-                </subreportParameter>
-                <subreportParameter name="closing_balance">
-                    <subreportParameterExpression><![CDATA[$R{closing_balance}]]></subreportParameterExpression>
+                <subreportParameter name="total">
+                    <subreportParameterExpression><![CDATA[$R{total}]]></subreportParameterExpression>
                 </subreportParameter>
                 <subreportParameter name="when">
                     <subreportParameterExpression><![CDATA[$R{when}]]></subreportParameterExpression>
@@ -127,11 +124,11 @@
                 <subreportParameter name="what">
                     <subreportParameterExpression><![CDATA[$R{what}]]></subreportParameterExpression>
                 </subreportParameter>
-                <subreportParameter name="how_much">
-                    <subreportParameterExpression><![CDATA[$R{how_much}]]></subreportParameterExpression>
+                <subreportParameter name="transferred_to_card">
+                    <subreportParameterExpression><![CDATA[$R{transferred_to_card}]]></subreportParameterExpression>
                 </subreportParameter>
-                <subreportParameter name="balance">
-                    <subreportParameterExpression><![CDATA[$R{balance}]]></subreportParameterExpression>
+                <subreportParameter name="received_from_card">
+                    <subreportParameterExpression><![CDATA[$R{received_from_card}]]></subreportParameterExpression>
                 </subreportParameter>
                 <dataSourceExpression><![CDATA[$P{item_ds}]]></dataSourceExpression>
 <!--                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->

@@ -17,22 +17,11 @@ public class ItemDataSource implements JRDataSource {
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     private final Object[][] data = {
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-09-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-10-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2019-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000217", "EUR", createDate("2017-08-25"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000217", "EUR", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000217", "EUR", createDate("2017-12-01"), "Przelew DiP", "Bla bla bla", "495561689", new BigDecimal("110772100"), new BigDecimal("0"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000216", "EUR", createDate("2017-08-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000216", "EUR", createDate("2017-01-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000216", "EUR", createDate("2017-03-01"), "Przelew DiP", ". .", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")}
+        {"PL10124069604100800000000215", "PLN", "545598******1802", "495561689", "+380509872464", "Name", createDate("2017-07-01"), "Przelew DiP", new BigDecimal("110772100"), new BigDecimal("-28800")},
+        {"PL10124069604100800000000215", "PLN", "545598******1802", "495561689", "+380509872464", "Name", createDate("2017-08-01"), "Przelew DiP", new BigDecimal("110772100"), new BigDecimal("-28800")},
+        {"PL10124069604100800000000216", "PLN", "545598******1802", "234234", "+380505217131", "Name 3", createDate("2017-08-01"), "Przelew ZiP", new BigDecimal("110772100"), new BigDecimal("-28800")},
+        {"PL10124069604100800000000216", "PLN", "545598******1802", "234242", "+380505217131", "Name 3", createDate("2017-06-01"), "Przelew FiP", new BigDecimal("110772100"), new BigDecimal("-28800")},
+        {"PL10124069604100800000000216", "EUR", "545598******1802", "24234234", "+380505217131", "Name 3", createDate("2017-08-01"), "Przelew ZiP", new BigDecimal("110772100"), new BigDecimal("-28800")}
     };
 
     private int index = -1;
@@ -73,28 +62,28 @@ public class ItemDataSource implements JRDataSource {
                 case "CURRENCYCODE":
                     value = data[index][1];
                     break;
-                case "ITEMDATE":
+                case "MASKEDPAN":
                     value = data[index][2];
                     break;
-                case "TYPENAME":
+                case "DETAILS":
                     value = data[index][3];
                     break;
-                case "FULLNAME":
+                case "PHONE":
                     value = data[index][4];
                     break;
-                case "DETAILS":
+                case "FULLNAME":
                     value = data[index][5];
                     break;
-                case "OPENBAL":
+                case "ITEMDATE":
                     value = data[index][6];
                     break;
-                case "AMOUNT":
+                case "TYPENAME":
                     value = data[index][7];
                     break;
-                case "BAL":
+                case "OUTAMOUNT":
                     value = data[index][8];
                     break;
-                case "CLOSEBAL":
+                case "INAMOUNT":
                     value = data[index][9];
                     break;
                 default:
@@ -106,36 +95,3 @@ public class ItemDataSource implements JRDataSource {
     }
 
 }
-
-
-/*
-<!--    <queryString>
-	<![CDATA[
-            SELECT 
-                IBAN,
-                CURRENCYCODE,
-                ITEMDATE,
-                TYPENAME,
-                FULLNAME,
-                DETAILS,
-                OPENBAL,
-                AMOUNT,
-                BAL,
-                CLOSEBAL
-            FROM 
-                VP_MAINACCSTMTITEM;
-        ]]>
-    </queryString>-->
-    <field name="IBAN" class="java.lang.String"/>
-    <field name="CURRENCYCODE" class="java.lang.String"/>
-    <field name="ACCOUNTNAME" class="java.lang.String"/>
-    <field name="ITEMDATE" class="java.sql.Timestamp"/>
-    <field name="TYPENAME" class="java.lang.String"/>
-    <field name="FULLNAME" class="java.lang.String"/>
-    <field name="DETAILS" class="java.lang.String"/>
-    <field name="OPENBAL" class="java.math.BigDecimal"/>
-    <field name="AMOUNT" class="java.math.BigDecimal"/>
-    <field name="BAL" class="java.math.BigDecimal"/>
-    <field name="CLOSEBAL" class="java.math.BigDecimal"/>
-
- */

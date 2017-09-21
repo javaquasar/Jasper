@@ -6,6 +6,7 @@ import com.javaquasar.jasper.subreport_3.ds.SummaryDataSource;
 import com.javaquasar.jasper.util.JasperCompailer;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -26,6 +27,10 @@ public class SubreportPdfGenerator {
 
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+        BigDecimal b1 =  new BigDecimal("-28100");
+        BigDecimal b2 =  new BigDecimal("28800");
+        System.out.println(b2.add(b1).toString());
+        b2.add(b1);
         JasperCompailer.compaile("./resources/templates/subreport_3/");
         try {
             generateReport(null, "en", "./pdf/subreport/subreport_3.pdf");
