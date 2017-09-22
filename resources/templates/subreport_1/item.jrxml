@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="item"
+              pageWidth="420"
+              pageHeight="841"
+              columnWidth="420"
+              leftMargin="0"
+              rightMargin="0"
+              topMargin="0"
+              bottomMargin="0"
+              uuid="f92d6b72-f3fa-43ce-9a71-586be0b23022">
+    
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="236"/>
+    
+    <style name="Heading info"
+           hAlign="Left"
+           vAlign="Middle"
+           fontName="JasperFont"
+           fontSize="12"/>
+    <style name="Heading info right"
+           style="Heading info"
+           hAlign="Right"/>
+    <style name="Heading table"
+           mode="Opaque"
+           forecolor="#FFFFFF"
+           backcolor="#383F5A"
+           hAlign="Right"
+           vAlign="Middle"
+           fontName="JasperFont"
+           fontSize="8"
+           isBold="false"
+           isItalic="false">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
+    <style name="Heading table red"
+           style="Heading table"
+           backcolor="#FF422A"/>
+    <style name="Heading table name"
+           style="Heading table"
+           hAlign="Left"/>
+    <style name="Heading table name red" 
+           style="Heading table name" backcolor="#FF422A"/>
+    <style name="Table default"
+           hAlign="Right"
+           vAlign="Middle"
+           fontName="JasperFont"
+           fontSize="8">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
+    <style name="Table default name"
+           style="Table default"
+           hAlign="Left"/>
+    <style name="Table default name gray"
+           style="Table default name"
+           forecolor="#9093A3"/>
+    <style name="Table default gray"
+           style="Table default"
+           forecolor="#9093A3"/>
+    <parameter name="statement_id" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="locale" class="java.lang.String">
+        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="SUBREPORT_DIR" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="opening_balance" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="closing_balance" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="when" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="what" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="how_much" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="rate" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="conversion_fee" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <parameter name="transaction_fee" class="java.lang.String">
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
+    </parameter>
+    <queryString>
+	<![CDATA[
+            SELECT
+                STATEMENTID,
+                SUMMARYID,
+                ACCOUNTNAME,
+                OPENBAL,
+                CLOSEBAL,
+                ISSHARED,
+                FULLNAME,
+                DETAILS,
+                ITEMDATE,
+                EVENTDATE,
+                TRNAMOUNT,
+                TRNCURRENCYID,
+                TRNCURRENCYCODE,
+                ACCAMOUNT,
+                ACCCURRENCYID,
+                ACCCURRENCYCODE,
+                RATE,
+                TRNFEEAMOUNT,
+                TRNFEECURRENCYID,
+                TRNFEECURRENCYCODE,
+                CONVFEEAMOUNT,
+                CONVFEECURRENCYID,
+                CONVFEECURRENCYCODE,
+                TYPENAME,
+                MADEBY
+            FROM 
+                VM_StatementItem
+            WHERE 
+                StatementID = $P{statement_id}
+            ORDER BY 
+                ISSHARED, 
+                ISMAINACC DESC, 
+                ACCOUNTNAME,
+                SUMMARYID, 
+                ITEMDATE
+        ]]>
+    </queryString>
+    <field name="STATEMENTID" class="java.math.BigDecimal"/>
+    <field name="SUMMARYID" class="java.math.BigDecimal"/>
+    <field name="ACCOUNTNAME" class="java.lang.String"/>
+    <field name="OPENBAL" class="java.math.BigDecimal"/>
+    <field name="CLOSEBAL" class="java.math.BigDecimal"/>
+    <field name="ISSHARED" class="java.math.BigDecimal"/>
+    <field name="FULLNAME" class="java.lang.String"/>
+    <field name="DETAILS" class="java.lang.String"/>
+    <field name="ITEMDATE" class="java.sql.Timestamp"/>
+    <field name="EVENTDATE" class="java.sql.Timestamp"/>
+    <field name="TRNAMOUNT" class="java.math.BigDecimal"/>
+    <field name="TRNCURRENCYID" class="java.math.BigDecimal"/>
+    <field name="TRNCURRENCYCODE" class="java.lang.String"/>
+    <field name="ACCAMOUNT" class="java.math.BigDecimal"/>
+    <field name="ACCCURRENCYID" class="java.math.BigDecimal"/>
+    <field name="ACCCURRENCYCODE" class="java.lang.String"/>
+    <field name="RATE" class="java.math.BigDecimal"/>
+    <field name="TRNFEEAMOUNT" class="java.math.BigDecimal"/>
+    <field name="TRNFEECURRENCYID" class="java.math.BigDecimal"/>
+    <field name="TRNFEECURRENCYCODE" class="java.lang.String"/>
+    <field name="CONVFEEAMOUNT" class="java.math.BigDecimal"/>
+    <field name="CONVFEECURRENCYID" class="java.math.BigDecimal"/>
+    <field name="CONVFEECURRENCYCODE" class="java.lang.String"/>
+    <field name="TYPENAME" class="java.lang.String"/>
+    <field name="MADEBY" class="java.lang.String"/>
+    <group name="Account">
+        <groupExpression><![CDATA[$F{SUMMARYID}]]></groupExpression>
+        <groupHeader>
+            <band height="45">
+                <printWhenExpression><![CDATA[$F{ISSHARED}.equals(new java.math.BigDecimal("0"))]]></printWhenExpression>
+                <textField>
+                    <reportElement style="Heading info" x="0" y="5" width="370" height="20" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$F{ACCOUNTNAME}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info right" x="370" y="5" width="50" height="20" uuid="1caa5c92-144c-4d34-9b73-7046da5e4fbe"/>
+                    <textFieldExpression><![CDATA[$F{ACCCURRENCYCODE}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading table name red" x="0" y="25" width="50" height="10" uuid="bf3e1d84-4843-4a29-af29-79648bbc2277"/>
+                    <textFieldExpression><![CDATA[$P{when}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading table name red" x="50" y="25" width="270" height="10" uuid="5e0fdc65-aebf-444e-a80a-229b94c3bd6f"/>
+                    <textFieldExpression><![CDATA[$P{what}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading table red" x="320" y="25" width="100" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
+                    <textFieldExpression><![CDATA[$P{how_much}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Table default name" x="50" y="35" width="270" height="10" uuid="1e6a6383-5d29-4ce9-896a-b192c605ce1f"/>
+                    <textFieldExpression><![CDATA[$P{opening_balance}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Table default" x="320" y="35" width="100" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e426a829"/>
+                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                </textField>
+            </band>
+            <band height="45">
+                <printWhenExpression><![CDATA[$F{ISSHARED}.equals(new java.math.BigDecimal("1"))]]></printWhenExpression>
+                <textField>
+                    <reportElement style="Heading info" x="0" y="5" width="370" height="20" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$F{ACCOUNTNAME}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info right" x="370" y="5" width="50" height="20" uuid="1caa5c92-144c-4d34-9b73-7046da5e4fbe"/>
+                    <textFieldExpression><![CDATA[$F{ACCCURRENCYCODE}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading table name" x="0" y="25" width="50" height="10" uuid="bf3e1d84-4843-4a29-af29-79648bbc2277"/>
+                    <textFieldExpression><![CDATA[$P{when}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading table name" x="50" y="25" width="270" height="10" uuid="5e0fdc65-aebf-444e-a80a-229b94c3bd6f"/>
+                    <textFieldExpression><![CDATA[$P{what}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading table" x="320" y="25" width="100" height="10" uuid="cd9dc023-fef2-4e3f-b0ce-2b226a875e36"/>
+                    <textFieldExpression><![CDATA[$P{how_much}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Table default name" x="50" y="35" width="270" height="10" uuid="1e6a6383-5d29-4ce9-896a-b192c605ce1f"/>
+                    <textFieldExpression><![CDATA[$P{opening_balance}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Table default" x="320" y="35" width="100" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e426a829"/>
+                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                </textField>
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band height="11">
+                <line>
+                    <reportElement x="0" y="0" width="420" height="1" uuid="473b68a5-7393-423b-839b-943e2e6615b9"/>
+                    <graphicElement>
+                        <pen lineWidth="0.5"/>
+                    </graphicElement>
+                </line>
+                <textField>
+                    <reportElement style="Table default name" x="50" y="1" width="270" height="10" uuid="b05f12dc-59ed-4542-8693-f81d4e9f899e"/>
+                    <textFieldExpression><![CDATA[$P{closing_balance}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Table default" x="320" y="1" width="100" height="10" uuid="54676a3e-dcc1-42ac-9f8c-2891b78e799a"/>
+                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                </textField>
+                <line>
+                    <reportElement x="0" y="10" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                    <graphicElement>
+                        <pen lineWidth="0.5"/>
+                    </graphicElement>
+                </line>
+            </band>
+        </groupFooter>
+    </group>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <detail>
+        <band height="42" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} == null) && (!$F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} != null) && (($F{CONVFEEAMOUNT} != null) || ($F{TRNFEEAMOUNT} != null))]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="50" y="2" width="220" height="40" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textElement verticalAlignment="Top">
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{TYPENAME} +
+($F{FULLNAME} != null ? "\n" + $F{FULLNAME} : "") +
+($F{DETAILS} != null ? "\n" + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="2" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{TRNCURRENCYCODE} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default" x="320" y="12" width="100" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="22" width="100" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
+                    <printWhenExpression><![CDATA[$F{RATE} != null]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$P{rate} + " " + $F{RATE}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="270" y="32" width="150" height="10" isRemoveLineWhenBlank="true" uuid="e7c9772e-d9f9-4a06-8254-da5751818e86"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[($F{CONVFEEAMOUNT} != null ? $P{conversion_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "") +
+($F{TRNFEEAMOUNT} != null ? ($F{CONVFEEAMOUNT} != null ? "\n" : "") + $P{transaction_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "")]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="32" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} == null) && (!$F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} != null) && (($F{CONVFEEAMOUNT} == null) && ($F{TRNFEEAMOUNT} == null))]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="50" y="2" width="220" height="30" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textElement verticalAlignment="Top">
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{TYPENAME} +
+($F{FULLNAME} != null ? "\n" + $F{FULLNAME} : "") +
+($F{DETAILS} != null ? "\n" + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="2" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{TRNCURRENCYCODE} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default" x="320" y="12" width="100" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="22" width="100" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
+                    <printWhenExpression><![CDATA[$F{RATE} != null]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$P{rate} + " " + $F{RATE}]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="22" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} == null) && (!$F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} == null)]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="50" y="2" width="220" height="20" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textElement verticalAlignment="Top">
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{TYPENAME} +
+($F{FULLNAME} != null ? "\n" + $F{FULLNAME} : "") +
+($F{DETAILS} != null ? "\n" + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="2" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{TRNCURRENCYCODE} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" isBlankWhenNull="true">
+                <reportElement style="Table default" x="270" y="12" width="150" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100"))) +
+($F{CONVFEEAMOUNT} != null ? "\n" + $P{conversion_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "") +
+($F{TRNFEEAMOUNT} != null ? "\n" + $P{transaction_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "")]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="32" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} == null) && ($F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} != null) && (($F{CONVFEEAMOUNT} != null) || ($F{TRNFEEAMOUNT} != null))]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="50" y="2" width="220" height="30" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textElement verticalAlignment="Top">
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{TYPENAME} +
+($F{FULLNAME} != null ? "\n" + $F{FULLNAME} : "") +
+($F{DETAILS} != null ? "\n" + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default" x="320" y="2" width="100" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="12" width="100" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
+                    <printWhenExpression><![CDATA[$F{RATE} != null]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$P{rate} + " " + $F{RATE}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="270" y="22" width="150" height="10" isRemoveLineWhenBlank="true" uuid="e7c9772e-d9f9-4a06-8254-da5751818e86"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[($F{CONVFEEAMOUNT} != null ? $P{conversion_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "") +
+($F{TRNFEEAMOUNT} != null ? ($F{CONVFEEAMOUNT} != null ? "\n" : "") + $P{transaction_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "")]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="32" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} == null) && ($F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} != null) && (($F{CONVFEEAMOUNT} == null) && ($F{TRNFEEAMOUNT} == null))]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="50" y="2" width="220" height="30" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textElement verticalAlignment="Top">
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{TYPENAME} +
+($F{FULLNAME} != null ? "\n" + $F{FULLNAME} : "") +
+($F{DETAILS} != null ? "\n" + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default" x="320" y="2" width="100" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="12" width="100" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
+                    <printWhenExpression><![CDATA[$F{RATE} != null]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$P{rate} + " " + $F{RATE}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="270" y="22" width="150" height="10" isRemoveLineWhenBlank="true" uuid="e7c9772e-d9f9-4a06-8254-da5751818e86"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[($F{CONVFEEAMOUNT} != null ? $P{conversion_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "") +
+($F{TRNFEEAMOUNT} != null ? ($F{CONVFEEAMOUNT} != null ? "\n" : "") + $P{transaction_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "")]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="12" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} == null) && ($F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} == null)]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="50" y="2" width="220" height="10" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{TYPENAME} +
+($F{FULLNAME} != null ? "\n" + $F{FULLNAME} : "") +
+($F{DETAILS} != null ? "\n" + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" isBlankWhenNull="true">
+                <reportElement style="Table default" x="270" y="2" width="150" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100"))) +
+($F{CONVFEEAMOUNT} != null ? "\n" + $P{conversion_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "") +
+($F{TRNFEEAMOUNT} != null ? "\n" + $P{transaction_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "")]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="42" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} != null) && (!$F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} != null) && (($F{CONVFEEAMOUNT} != null) || ($F{TRNFEEAMOUNT} != null))]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField>
+                <reportElement style="Table default name" x="50" y="2" width="220" height="10" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textFieldExpression><![CDATA[$F{TYPENAME}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="2" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{TRNCURRENCYCODE} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <image>
+                <reportElement x="40" y="12" width="10" height="10" uuid="80ee93fe-c2cc-4b28-be53-d8eb030208dc">
+                    <printWhenExpression><![CDATA[$F{MADEBY} != null]]></printWhenExpression>
+                </reportElement>
+                <imageExpression><![CDATA[$P{SUBREPORT_DIR} + "share.png"]]></imageExpression>
+            </image>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default name gray" x="50" y="12" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{MADEBY}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="50" y="22" width="220" height="20" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textElement verticalAlignment="Top">
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[($F{FULLNAME} != null ? $F{FULLNAME} : "") +
+($F{DETAILS} != null ? ($F{FULLNAME} != null ? "\n" : "") + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default" x="320" y="12" width="100" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="22" width="100" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
+                    <printWhenExpression><![CDATA[$F{RATE} != null]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$P{rate} + " " + $F{RATE}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="270" y="32" width="150" height="10" isRemoveLineWhenBlank="true" uuid="e7c9772e-d9f9-4a06-8254-da5751818e86"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[($F{CONVFEEAMOUNT} != null ? $P{conversion_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "") +
+($F{TRNFEEAMOUNT} != null ? ($F{CONVFEEAMOUNT} != null ? "\n" : "") + $P{transaction_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "")]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="32" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} != null) && (!$F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} != null) && (($F{CONVFEEAMOUNT} == null) && ($F{TRNFEEAMOUNT} == null))]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField>
+                <reportElement style="Table default name" x="50" y="2" width="220" height="10" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textFieldExpression><![CDATA[$F{TYPENAME}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="2" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{TRNCURRENCYCODE} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <image>
+                <reportElement x="40" y="12" width="10" height="10" uuid="80ee93fe-c2cc-4b28-be53-d8eb030208dc">
+                    <printWhenExpression><![CDATA[$F{MADEBY} != null]]></printWhenExpression>
+                </reportElement>
+                <imageExpression><![CDATA[$P{SUBREPORT_DIR} + "share.png"]]></imageExpression>
+            </image>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default name gray" x="50" y="12" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{MADEBY}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" isBlankWhenNull="true">
+                <reportElement style="Table default name" x="50" y="22" width="220" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[($F{FULLNAME} != null ? $F{FULLNAME} : "") +
+($F{DETAILS} != null ? ($F{FULLNAME} != null ? "\n" : "") + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default" x="320" y="12" width="100" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="22" width="100" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
+                    <printWhenExpression><![CDATA[$F{RATE} != null]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$P{rate} + " " + $F{RATE}]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="32" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} != null) && (!$F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} == null)]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField>
+                <reportElement style="Table default name" x="50" y="2" width="220" height="10" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textFieldExpression><![CDATA[$F{TYPENAME}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="2" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{TRNCURRENCYCODE} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <image>
+                <reportElement x="40" y="12" width="10" height="10" uuid="80ee93fe-c2cc-4b28-be53-d8eb030208dc">
+                    <printWhenExpression><![CDATA[$F{MADEBY} != null]]></printWhenExpression>
+                </reportElement>
+                <imageExpression><![CDATA[$P{SUBREPORT_DIR} + "share.png"]]></imageExpression>
+            </image>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default name gray" x="50" y="12" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{MADEBY}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="50" y="22" width="220" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[($F{FULLNAME} != null ? $F{FULLNAME} : "") +
+($F{DETAILS} != null ? ($F{FULLNAME} != null ? "\n" : "") + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" isBlankWhenNull="true">
+                <reportElement style="Table default" x="270" y="12" width="150" height="20" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textElement verticalAlignment="Top">
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100"))) +
+($F{CONVFEEAMOUNT} != null ? "\n" + $P{conversion_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "") +
+($F{TRNFEEAMOUNT} != null ? "\n" + $P{transaction_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "")]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="32" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} != null) && ($F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} != null) && (($F{CONVFEEAMOUNT} != null) || ($F{TRNFEEAMOUNT} != null))]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField>
+                <reportElement style="Table default name" x="50" y="2" width="220" height="10" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textFieldExpression><![CDATA[$F{TYPENAME}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <image>
+                <reportElement x="40" y="12" width="10" height="10" uuid="80ee93fe-c2cc-4b28-be53-d8eb030208dc">
+                    <printWhenExpression><![CDATA[$F{MADEBY} != null]]></printWhenExpression>
+                </reportElement>
+                <imageExpression><![CDATA[$P{SUBREPORT_DIR} + "share.png"]]></imageExpression>
+            </image>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default name gray" x="50" y="12" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{MADEBY}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" isBlankWhenNull="true">
+                <reportElement style="Table default name" x="50" y="22" width="220" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[($F{FULLNAME} != null ? $F{FULLNAME} : "") +
+($F{DETAILS} != null ? ($F{FULLNAME} != null ? "\n" : "") + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default" x="320" y="2" width="100" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="12" width="100" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
+                    <printWhenExpression><![CDATA[$F{RATE} != null]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$P{rate} + " " + $F{RATE}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="270" y="22" width="150" height="10" isRemoveLineWhenBlank="true" uuid="27610ebd-6a26-4b24-837e-1d7fe01fc288"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[($F{CONVFEEAMOUNT} != null ? $P{conversion_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "") +
+($F{TRNFEEAMOUNT} != null ? ($F{CONVFEEAMOUNT} != null ? "\n" : "") + $P{transaction_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "")]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="32" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} != null) && ($F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} != null) && (($F{CONVFEEAMOUNT} == null) && ($F{TRNFEEAMOUNT} == null))]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField>
+                <reportElement style="Table default name" x="50" y="2" width="220" height="10" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textFieldExpression><![CDATA[$F{TYPENAME}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <image>
+                <reportElement x="40" y="12" width="10" height="10" uuid="80ee93fe-c2cc-4b28-be53-d8eb030208dc">
+                    <printWhenExpression><![CDATA[$F{MADEBY} != null]]></printWhenExpression>
+                </reportElement>
+                <imageExpression><![CDATA[$P{SUBREPORT_DIR} + "share.png"]]></imageExpression>
+            </image>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default name gray" x="50" y="12" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{MADEBY}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" isBlankWhenNull="true">
+                <reportElement style="Table default name" x="50" y="22" width="220" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[($F{FULLNAME} != null ? $F{FULLNAME} : "") +
+($F{DETAILS} != null ? ($F{FULLNAME} != null ? "\n" : "") + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default" x="320" y="2" width="100" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="320" y="12" width="100" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
+                    <printWhenExpression><![CDATA[$F{RATE} != null]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$P{rate} + " " + $F{RATE}]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="32" splitType="Stretch">
+            <printWhenExpression><![CDATA[($F{MADEBY} != null) && ($F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} == null)]]></printWhenExpression>
+            <line>
+                <reportElement x="0" y="0" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField>
+                <reportElement style="Table default name" x="50" y="2" width="220" height="10" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <textFieldExpression><![CDATA[$F{TYPENAME}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="0" y="2" width="40" height="10" uuid="72995413-f099-46ec-9a41-2a96e08490b0"/>
+                <textFieldExpression><![CDATA[($F{EVENTDATE} != null ? new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{EVENTDATE}) + "/\n": "") +
+new SimpleDateFormat("MMM d", new Locale($P{locale})).format($F{ITEMDATE})]]></textFieldExpression>
+            </textField>
+            <image>
+                <reportElement x="40" y="12" width="10" height="10" uuid="80ee93fe-c2cc-4b28-be53-d8eb030208dc">
+                    <printWhenExpression><![CDATA[$F{MADEBY} != null]]></printWhenExpression>
+                </reportElement>
+                <imageExpression><![CDATA[$P{SUBREPORT_DIR} + "share.png"]]></imageExpression>
+            </image>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default name gray" x="50" y="12" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textFieldExpression><![CDATA[$F{MADEBY}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" isBlankWhenNull="true">
+                <reportElement style="Table default name" x="50" y="22" width="220" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <textElement>
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[($F{FULLNAME} != null ? $F{FULLNAME} : "") +
+($F{DETAILS} != null ? ($F{FULLNAME} != null ? "\n" : "") + $F{DETAILS} : "")]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true" isBlankWhenNull="true">
+                <reportElement style="Table default" x="270" y="2" width="150" height="30" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textElement verticalAlignment="Top">
+                    <paragraph lineSpacing="1_1_2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100"))) +
+($F{CONVFEEAMOUNT} != null ? "\n" + $P{conversion_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "") +
+($F{TRNFEEAMOUNT} != null ? "\n" + $P{transaction_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "")]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>

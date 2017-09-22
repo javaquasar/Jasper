@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" 
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" 
               name="summary" 
-              pageWidth="460" 
+              pageWidth="420" 
               pageHeight="841" 
-              columnWidth="460" 
+              columnWidth="420" 
               leftMargin="0" 
               rightMargin="0" 
               topMargin="0" 
               bottomMargin="0" 
               uuid="f92d6b72-f3fa-43ce-9a71-586be0b23022">
+    
     <property name="ireport.zoom" value="1.0"/>
     <property name="ireport.x" value="0"/>
     <property name="ireport.y" value="0"/>
+
     <style name="Heading info" 
            hAlign="Left" 
-           vAlign="Bottom" 
-           fontName="JasperFont" 
+           vAlign="Middle"
+           fontName="JasperFont"
            fontSize="12"/>
-    <style name="Heading info right" 
-           style="Heading info" 
-           hAlign="Right">
-        <box leftPadding="5"
-             rightPadding="5"/>
-    </style>
+    <style style="Heading info" 
+           name="Heading info right" 
+           hAlign="Right"/>
     <style name="Heading table" 
            mode="Opaque" 
-           forecolor="#FFFFFF" 
            backcolor="#FF3333" 
            hAlign="Right" 
            vAlign="Middle" 
+           forecolor="#FFFFFF"
            fontName="JasperFont" 
            fontSize="8" 
            isBold="false" 
@@ -36,30 +37,31 @@
         <box leftPadding="5" 
              rightPadding="5"/>
     </style>
-    <style name="Heading table name" 
-           style="Heading table" 
+    <style style="Heading table"
+           name="Heading table name"
            hAlign="Left"/>
     <style name="Table default" 
            hAlign="Right" 
-           vAlign="Middle" 
-           fontName="JasperFont" 
+           vAlign="Middle"
+           fontName="JasperFont"
            fontSize="8">
         <box leftPadding="5" 
              rightPadding="5"/>
     </style>
-    <style name="Table default name" 
-           style="Table default" 
+    <style style="Table default"
+           name="Table default name" 
            hAlign="Left"/>
-    <style name="Table default gray" 
-           style="Table default" 
+    <style style="Table default"
+           name="Table default gray" 
            forecolor="#9093A3"/>
+
     <parameter name="summary" class="java.lang.String">
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
-    <parameter name="account_number" class="java.lang.String">
+    <parameter name="client" class="java.lang.String">
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
-    <parameter name="account_name" class="java.lang.String">
+    <parameter name="card" class="java.lang.String">
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
     <parameter name="open" class="java.lang.String">
@@ -77,35 +79,46 @@
     <parameter name="total" class="java.lang.String">
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
-    <!--    
+<!--    
     <queryString>
-        <![CDATA[
-            SELECT
-                CLIENTID,
-                CLIENTNAME,
+	<![CDATA[
+            SELECT 
+                CORPCLIENTID,
+                CORPCLIENTNAME,
                 FROMDATE,
                 TILLDATE,
-                IBAN,
-                ACCOUNTNAME,
+                CURRENCYID,
                 CURRENCYCODE,
+                MASKEDPAN,
+                CARDTOKEN,
+                CLIENTNAME,
+                PHONENO,
                 OPENBALANCE,
                 INMOVE,
                 OUTMOVE,
-                CLOSEBALANCE
-            FROM
-                VP_MAINACCSTMTSUM
+                CLOSEBALANCE,
+                PRIORITY
+            FROM 
+                VP_CARDSTMTSUM
         ]]>
     </queryString>
-    -->
-    <field name="CLIENTID" class="java.math.BigDecimal"/>
-    <field name="CLIENTNAME" class="java.lang.String"/>
-    <field name="IBAN" class="java.lang.String"/>
-    <field name="ACCOUNTNAME" class="java.lang.String"/>
+-->
+
+    <field name="CORPCLIENTID" class="java.lang.Long"/>
+    <field name="CORPCLIENTNAME" class="java.lang.String"/>
+    <field name="FROMDATE" class="oracle.sql.TIMESTAMPTZ"/>
+    <field name="TILLDATE" class="oracle.sql.TIMESTAMPTZ"/>
+    <field name="CURRENCYID" class="java.lang.Integer"/>
     <field name="CURRENCYCODE" class="java.lang.String"/>
+    <field name="MASKEDPAN" class="java.lang.String"/>
+    <field name="CARDTOKEN" class="java.lang.String"/>
+    <field name="CLIENTNAME" class="java.lang.String"/>
+    <field name="PHONENO" class="java.lang.String"/>
     <field name="OPENBALANCE" class="java.math.BigDecimal"/>
     <field name="INMOVE" class="java.math.BigDecimal"/>
     <field name="OUTMOVE" class="java.math.BigDecimal"/>
     <field name="CLOSEBALANCE" class="java.math.BigDecimal"/>
+    <field name="PRIORITY" class="java.lang.Integer"/>
     <variable name="total_open" 
               class="java.math.BigDecimal" 
               calculation="Sum"
@@ -138,7 +151,6 @@
         <variableExpression><![CDATA[$F{CURRENCYCODE}]]></variableExpression>
     </variable>
     
-    
     <group name="Summary">
         <groupExpression><![CDATA[$F{CURRENCYCODE}]]></groupExpression>
         <groupHeader>
@@ -149,11 +161,11 @@
                 </textField>
                 <textField>
                     <reportElement style="Heading table name" x="0" y="20" width="141" height="10" uuid="37707f30-50b0-4053-8f82-9b80767530ff"/>
-                    <textFieldExpression><![CDATA[$P{account_number}]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[$P{client}]]></textFieldExpression>
                 </textField>
                 <textField>
                     <reportElement style="Heading table name" x="140" y="20" width="81" height="10" uuid="eaf076b4-0ca8-4cb7-95a2-7778c0fd111c"/>
-                    <textFieldExpression><![CDATA[$P{account_name}]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[$P{card}]]></textFieldExpression>
                 </textField>
                 <textField>
                     <reportElement style="Heading table" x="220" y="20" width="61" height="10" uuid="db0b196b-abea-4477-a0bd-0e8ec644e3e2"/>
@@ -216,15 +228,16 @@
             </textField>
         </band>
     </pageHeader>
+    
     <detail>
         <band height="10" splitType="Stretch">
             <textField isStretchWithOverflow="true">
                 <reportElement style="Table default name" x="0" y="0" width="140" height="10" uuid="737c33d5-6d2c-4e1c-8a59-3e5fc0972ac7"/>
-                <textFieldExpression><![CDATA[$F{IBAN}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{CARDTOKEN} + "\n" + $F{MASKEDPAN}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement style="Table default name" x="140" y="0" width="80" height="10" uuid="fbbb56f1-5b3a-4e7d-ac22-670816f5dabc"/>
-                <textFieldExpression><![CDATA[$F{ACCOUNTNAME}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{PHONENO} + "\n" + $F{CLIENTNAME}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement style="Table default" x="220" y="0" width="60" height="10" uuid="f22eb4e5-50b5-448a-af30-dc5e6c191dbf"/>
