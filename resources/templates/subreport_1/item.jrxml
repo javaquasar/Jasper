@@ -95,25 +95,23 @@
     <parameter name="transaction_fee" class="java.lang.String">
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
+    <!--    
     <queryString>
 	<![CDATA[
-            SELECT
-                STATEMENTID,
-                SUMMARYID,
-                ACCOUNTNAME,
-                OPENBAL,
-                CLOSEBAL,
-                ISSHARED,
-                FULLNAME,
-                DETAILS,
+            SELECT 
                 ITEMDATE,
                 EVENTDATE,
-                TRNAMOUNT,
+                MASKEDPAN,
+                CARDTOKEN,
+                TYPENAME,
+                FULLNAME,
+                DETAILS,
                 TRNCURRENCYID,
-                TRNCURRENCYCODE,
-                ACCAMOUNT,
+                TRNCURRENCYCODE,       
+                TRNAMOUNT,       
                 ACCCURRENCYID,
-                ACCCURRENCYCODE,
+                ACCCURRENCYCODE,       
+                ACCAMOUNT,
                 RATE,
                 TRNFEEAMOUNT,
                 TRNFEECURRENCYID,
@@ -121,36 +119,58 @@
                 CONVFEEAMOUNT,
                 CONVFEECURRENCYID,
                 CONVFEECURRENCYCODE,
-                TYPENAME,
+                OPENBALANCE,
+                TOTALAMOUNT,
+                BALANCE,
+                CLOSEBALANCE,
                 MADEBY
             FROM 
+                VP_CARDSTMTITEM
+                
+            SELECT
+                -STATEMENTID,
+                -SUMMARYID,
+                -ACCOUNTNAME,
+                +-OPENBAL,
+                +-CLOSEBAL,
+                -ISSHARED,
+                +FULLNAME,
+                +DETAILS,
+                +ITEMDATE,
+                +EVENTDATE,
+                +TRNAMOUNT,
+                +TRNCURRENCYID,
+                +TRNCURRENCYCODE,
+                +ACCAMOUNT,
+                +ACCCURRENCYID,
+                +ACCCURRENCYCODE,
+                +RATE,
+                +TRNFEEAMOUNT,
+                +TRNFEECURRENCYID,
+                +TRNFEECURRENCYCODE,
+                +CONVFEEAMOUNT,
+                +CONVFEECURRENCYID,
+                +CONVFEECURRENCYCODE,
+                +TYPENAME,
+                +MADEBY
+            FROM 
                 VM_StatementItem
-            WHERE 
-                StatementID = $P{statement_id}
-            ORDER BY 
-                ISSHARED, 
-                ISMAINACC DESC, 
-                ACCOUNTNAME,
-                SUMMARYID, 
-                ITEMDATE
         ]]>
     </queryString>
-    <field name="STATEMENTID" class="java.math.BigDecimal"/>
-    <field name="SUMMARYID" class="java.math.BigDecimal"/>
-    <field name="ACCOUNTNAME" class="java.lang.String"/>
-    <field name="OPENBAL" class="java.math.BigDecimal"/>
-    <field name="CLOSEBAL" class="java.math.BigDecimal"/>
-    <field name="ISSHARED" class="java.math.BigDecimal"/>
-    <field name="FULLNAME" class="java.lang.String"/>
-    <field name="DETAILS" class="java.lang.String"/>
+    -->
     <field name="ITEMDATE" class="java.sql.Timestamp"/>
     <field name="EVENTDATE" class="java.sql.Timestamp"/>
-    <field name="TRNAMOUNT" class="java.math.BigDecimal"/>
+    <field name="MASKEDPAN" class="java.lang.String"/>
+    <field name="CARDTOKEN" class="java.lang.String"/>
+    <field name="TYPENAME" class="java.lang.String"/>
+    <field name="FULLNAME" class="java.lang.String"/>
+    <field name="DETAILS" class="java.lang.String"/>
     <field name="TRNCURRENCYID" class="java.math.BigDecimal"/>
     <field name="TRNCURRENCYCODE" class="java.lang.String"/>
-    <field name="ACCAMOUNT" class="java.math.BigDecimal"/>
+    <field name="TRNAMOUNT" class="java.math.BigDecimal"/>
     <field name="ACCCURRENCYID" class="java.math.BigDecimal"/>
     <field name="ACCCURRENCYCODE" class="java.lang.String"/>
+    <field name="ACCAMOUNT" class="java.math.BigDecimal"/>
     <field name="RATE" class="java.math.BigDecimal"/>
     <field name="TRNFEEAMOUNT" class="java.math.BigDecimal"/>
     <field name="TRNFEECURRENCYID" class="java.math.BigDecimal"/>
@@ -158,8 +178,10 @@
     <field name="CONVFEEAMOUNT" class="java.math.BigDecimal"/>
     <field name="CONVFEECURRENCYID" class="java.math.BigDecimal"/>
     <field name="CONVFEECURRENCYCODE" class="java.lang.String"/>
-    <field name="TYPENAME" class="java.lang.String"/>
-    <field name="MADEBY" class="java.lang.String"/>
+    <field name="OPENBAL" class="java.math.BigDecimal"/>
+    <field name="TOTALAMOUNT" class="java.math.BigDecimal"/>
+    <field name="BALANCE" class="java.lang.String"/>   
+    <field name="CLOSEBALANCE" class="java.math.BigDecimal"/>
     <group name="Account">
         <groupExpression><![CDATA[$F{SUMMARYID}]]></groupExpression>
         <groupHeader>
@@ -191,7 +213,7 @@
                 </textField>
                 <textField>
                     <reportElement style="Table default" x="320" y="35" width="100" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e426a829"/>
-                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
                 </textField>
             </band>
             <band height="45">
@@ -222,7 +244,7 @@
                 </textField>
                 <textField>
                     <reportElement style="Table default" x="320" y="35" width="100" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e426a829"/>
-                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
                 </textField>
             </band>
         </groupHeader>
@@ -240,7 +262,7 @@
                 </textField>
                 <textField>
                     <reportElement style="Table default" x="320" y="1" width="100" height="10" uuid="54676a3e-dcc1-42ac-9f8c-2891b78e799a"/>
-                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBAL}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
                 </textField>
                 <line>
                     <reportElement x="0" y="10" width="420" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
