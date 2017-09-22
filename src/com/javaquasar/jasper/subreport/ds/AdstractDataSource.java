@@ -1,6 +1,5 @@
 package com.javaquasar.jasper.subreport.ds;
 
-import com.javaquasar.jasper.subreport_1.ds.ItemDataSource;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

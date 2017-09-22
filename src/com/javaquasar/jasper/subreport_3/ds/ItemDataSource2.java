@@ -1,18 +1,12 @@
 package com.javaquasar.jasper.subreport_3.ds;
 
-import com.javaquasar.jasper.subreport_2.ds.*;
+import com.javaquasar.jasper.subreport.ds.AdstractDataSource;
 import java.math.BigDecimal;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-public class ItemDataSource2 implements JRDataSource {
+public class ItemDataSource2 extends AdstractDataSource {
 
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -26,30 +20,6 @@ public class ItemDataSource2 implements JRDataSource {
         {826, "PLN", "PL10124069604100800000000216", new BigDecimal("5020"), "545598******8936", "768243675", "+380503333333", "Name 30", createDate("2017-06-01"), "Przelew FiP", new BigDecimal("20000"), null},
         {826, "PLN", "PL10124069604100800000000216", new BigDecimal("5020"), "545598******8936", "768243675", "+380503333333", "Name 30", createDate("2017-08-01"), "Przelew ZiP", new BigDecimal("10050"), new BigDecimal("-10000")}
     };
-
-    private int index = -1;
-
-    public ItemDataSource2() {
-    }
-
-    private java.sql.Timestamp createDate(String date) {
-        try {
-            Date parsed = format.parse(date);
-            java.sql.Date sqlDate = new java.sql.Date(parsed.getTime());
-            java.sql.Timestamp time = new java.sql.Timestamp(sqlDate.getTime());
-            return time;
-        } catch (ParseException ex) {
-            Logger.getLogger(ItemDataSource2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return new java.sql.Timestamp((new Date()).getTime());
-    }
-
-    @Override
-    public boolean next() throws JRException {
-        index++;
-
-        return (index < data.length);
-    }
 
     @Override
     public Object getFieldValue(JRField field) throws JRException {
@@ -102,5 +72,11 @@ public class ItemDataSource2 implements JRDataSource {
 
         return value;
     }
+    
+    @Override
+    protected Object[][] getData() {
+        return data;
+    }
+    
 
 }

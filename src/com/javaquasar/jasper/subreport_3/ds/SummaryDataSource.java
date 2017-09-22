@@ -1,29 +1,17 @@
 package com.javaquasar.jasper.subreport_3.ds;
 
+import com.javaquasar.jasper.subreport.ds.AdstractDataSource;
 import java.math.BigDecimal;
-import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-public class SummaryDataSource implements JRDataSource {
+public class SummaryDataSource extends AdstractDataSource {
 
     private final Object[][] data = {
         {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", 985, "PLN", "PL10124069604100800000000215", "Main Account", null, new BigDecimal("-1000000"), new ItemDataSource1()},
         {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", 985, "PLN", "PL10124069604100800000000216", "Main Account", null, new BigDecimal("-1000000"), new ItemDataSource1()},
         {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", 826, "EUR", "PL10124069604100800000000217", "EUR Account", new BigDecimal("+10010"), null, new ItemDataSource2()}
     };
-
-    private int index = -1;
-
-    public SummaryDataSource() {
-    }
-
-    @Override
-    public boolean next() throws JRException {
-        index++;
-
-        return (index < data.length);
-    }
 
     @Override
     public Object getFieldValue(JRField field) throws JRException {
@@ -73,5 +61,11 @@ public class SummaryDataSource implements JRDataSource {
 
         return value;
     }
+    
+    @Override
+    protected Object[][] getData() {
+        return data;
+    }
+    
 
 }

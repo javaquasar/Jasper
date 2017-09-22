@@ -46,7 +46,7 @@
         <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
     </parameter>
     <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-        <defaultValueExpression><![CDATA["./resources/templates/subreport/"]]></defaultValueExpression>
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
     <parameter name="summary_ds" class="net.sf.jasperreports.engine.JRDataSource">
         <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>

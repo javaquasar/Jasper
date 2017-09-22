@@ -47,7 +47,7 @@
         <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
     </parameter>
     <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-        <defaultValueExpression><![CDATA["./src/main/java/dipocket/"]]></defaultValueExpression>
+        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
     </parameter>
     <parameter name="summary_ds" class="net.sf.jasperreports.engine.JRDataSource">
         <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
@@ -83,7 +83,7 @@
         <band height="15" splitType="Stretch">
             <subreport>
                 <reportElement x="0" y="0" width="417" height="15" uuid="e038e28a-cf6b-45f0-92b7-98e1c47fe305"/>
-                <subreportParameter name="summary_my_acc">
+                <subreportParameter name="summary">
                     <subreportParameterExpression><![CDATA[$R{summary}]]></subreportParameterExpression>
                 </subreportParameter>
                 <subreportParameter name="client">

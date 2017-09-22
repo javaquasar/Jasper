@@ -1,5 +1,6 @@
 package com.javaquasar.jasper.subreport_1;
 
+import com.javaquasar.jasper.subreport.AbstractSubreportPdfGenerator;
 import com.javaquasar.jasper.subreport_1.ds.SummaryDataSource;
 import com.javaquasar.jasper.subreport.SubreportJasperLocale;
 import com.javaquasar.jasper.subreport_1.ds.ItemDataSource;
@@ -33,7 +34,7 @@ import net.sf.jasperreports.engine.JasperPrint;
  *
  * @author Java Quasar
  */
-public class SubreportPdfGenerator {
+public class SubreportPdfGenerator extends AbstractSubreportPdfGenerator {
 
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     private static final String JDBC_URL = "";
@@ -118,33 +119,10 @@ public class SubreportPdfGenerator {
         map.put("SUBREPORT_DIR", "./resources/templates/subreport_1/");
 
         //JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/templates/subreport/statements_final.jasper", map, connection/*new JREmptyDataSource()*/);
-        JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/templates/subreport_2/statements_final.jasper", map, new JREmptyDataSource());
+        JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/templates/subreport_1/statements_final.jasper", map, new JREmptyDataSource());
 
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathForReport);
         byte[] mass = JasperExportManager.exportReportToPdf(jasperPrint);
-    }
-
-    private static List<List<String>> convertResultSetToList(ResultSet rs) throws SQLException {
-        List<List<String>> dataList = new ArrayList<>();
-        dataList.add(new ArrayList<>());
-        ResultSetMetaData metaData = rs.getMetaData();
-        int countColumn = metaData.getColumnCount();
-        for (int i = 1; i <= countColumn; i++) {
-            dataList.get(0).add(metaData.getColumnName(i));
-        }
-        int row = 1;
-        while (rs.next()) {
-            dataList.add(new ArrayList<>());
-            for (int i = 1; i <= countColumn; i++) {
-                String result = rs.getString(i);
-                System.out.print(result);
-                System.out.print(" ");
-                dataList.get(row).add(result);
-            }
-            row++;
-            System.out.println("");
-        }
-        return dataList;
     }
 
 }

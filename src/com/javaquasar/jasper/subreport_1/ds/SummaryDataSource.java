@@ -9,28 +9,64 @@ import net.sf.jasperreports.engine.JRField;
 public class SummaryDataSource extends AdstractDataSource {
 
     private final Object[][] data = {
-         {
+        {
              2410L, 
              "BFX Investements LLC", 
-             createDate("08/01/17"), 
-             createDate("09/01/17"), 
-             "PL10124069604100800000000215",
+             createDate("2017-08-5"), 
+             createDate("2017-08-20"),             
              826,
+             
              "PLN",
              "4564********1234",
              "12345678",  
              "Name Name",
              "380505214545",
+             
              new BigDecimal("1107720"), 
-             new BigDecimal("550"), 
+             new BigDecimal("6550"), 
              new BigDecimal("28800"), 
              new BigDecimal("1078920"),
              1
-         }
+        },
+        {
+             2410L, 
+             "BFX Investements LLC", 
+             createDate("2017-08-5"), 
+             createDate("2017-08-20"),             
+             826,
+             
+             "PLN",
+             "4564********1234",
+             "12345678",  
+             "Name Name",
+             "380505214545",
+             
+             new BigDecimal("1107720"), 
+             new BigDecimal("6550"), 
+             new BigDecimal("28800"), 
+             new BigDecimal("1078920"),
+             1
+        },
+        {
+             2410L, 
+             "BFX Investements LLC", 
+             createDate("2017-08-5"), 
+             createDate("2017-08-20"),             
+             826,
+             
+             "EUR",
+             "4564********1234",
+             "12345678",  
+             "Name Name",
+             "380505214545",
+             
+             new BigDecimal("1107720"), 
+             new BigDecimal("6550"), 
+             new BigDecimal("28800"), 
+             new BigDecimal("1078920"),
+             1
+        }
     };
-
-    public SummaryDataSource() {
-    }
 
     @Override
     public Object getFieldValue(JRField field) throws JRException {

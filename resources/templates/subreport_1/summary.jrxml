@@ -18,12 +18,15 @@
 
     <style name="Heading info" 
            hAlign="Left" 
-           vAlign="Middle"
+           vAlign="Bottom"
            fontName="JasperFont"
            fontSize="12"/>
     <style style="Heading info" 
            name="Heading info right" 
-           hAlign="Right"/>
+           hAlign="Right">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
     <style name="Heading table" 
            mode="Opaque" 
            backcolor="#FF3333" 
@@ -106,8 +109,8 @@
 
     <field name="CORPCLIENTID" class="java.lang.Long"/>
     <field name="CORPCLIENTNAME" class="java.lang.String"/>
-    <field name="FROMDATE" class="oracle.sql.TIMESTAMPTZ"/>
-    <field name="TILLDATE" class="oracle.sql.TIMESTAMPTZ"/>
+    <field name="FROMDATE" class="java.sql.Timestamp"/>
+    <field name="TILLDATE" class="java.sql.Timestamp"/>
     <field name="CURRENCYID" class="java.lang.Integer"/>
     <field name="CURRENCYCODE" class="java.lang.String"/>
     <field name="MASKEDPAN" class="java.lang.String"/>
@@ -160,12 +163,12 @@
                     <textFieldExpression><![CDATA[$F{CURRENCYCODE}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table name" x="0" y="20" width="141" height="10" uuid="37707f30-50b0-4053-8f82-9b80767530ff"/>
-                    <textFieldExpression><![CDATA[$P{client}]]></textFieldExpression>
+                    <reportElement style="Heading table name" x="0" y="20" width="81" height="10" uuid="37707f30-50b0-4053-8f82-9b80767530ff"/>
+                    <textFieldExpression><![CDATA[$P{card}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Heading table name" x="140" y="20" width="81" height="10" uuid="eaf076b4-0ca8-4cb7-95a2-7778c0fd111c"/>
-                    <textFieldExpression><![CDATA[$P{card}]]></textFieldExpression>
+                    <reportElement style="Heading table name" x="80" y="20" width="141" height="10" uuid="eaf076b4-0ca8-4cb7-95a2-7778c0fd111c"/>
+                    <textFieldExpression><![CDATA[$P{client}]]></textFieldExpression>
                 </textField>
                 <textField>
                     <reportElement style="Heading table" x="220" y="20" width="61" height="10" uuid="db0b196b-abea-4477-a0bd-0e8ec644e3e2"/>
@@ -232,11 +235,11 @@
     <detail>
         <band height="10" splitType="Stretch">
             <textField isStretchWithOverflow="true">
-                <reportElement style="Table default name" x="0" y="0" width="140" height="10" uuid="737c33d5-6d2c-4e1c-8a59-3e5fc0972ac7"/>
+                <reportElement style="Table default name" x="0" y="0" width="80" height="10" uuid="737c33d5-6d2c-4e1c-8a59-3e5fc0972ac7"/>
                 <textFieldExpression><![CDATA[$F{CARDTOKEN} + "\n" + $F{MASKEDPAN}]]></textFieldExpression>
             </textField>
-            <textField>
-                <reportElement style="Table default name" x="140" y="0" width="80" height="10" uuid="fbbb56f1-5b3a-4e7d-ac22-670816f5dabc"/>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default name" x="80" y="0" width="140" height="10" uuid="fbbb56f1-5b3a-4e7d-ac22-670816f5dabc"/>
                 <textFieldExpression><![CDATA[$F{PHONENO} + "\n" + $F{CLIENTNAME}]]></textFieldExpression>
             </textField>
             <textField>
