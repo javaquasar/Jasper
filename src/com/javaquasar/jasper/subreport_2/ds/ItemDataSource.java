@@ -1,19 +1,12 @@
 package com.javaquasar.jasper.subreport_2.ds;
 
+import com.javaquasar.jasper.subreport.ds.AdstractDataSource;
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-public class ItemDataSource implements JRDataSource {
-
-    private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+public class ItemDataSource extends AdstractDataSource {
 
     private final Object[][] data = {
         {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
@@ -34,28 +27,7 @@ public class ItemDataSource implements JRDataSource {
         {"ER10124069604100800000000216", "EUR", createDate("2017-03-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")}
     };
 
-    private int index = -1;
-
     public ItemDataSource() {
-    }
-
-    private java.sql.Timestamp createDate(String date) {
-        try {
-            Date parsed = format.parse(date);
-            java.sql.Date sqlDate = new java.sql.Date(parsed.getTime());
-            java.sql.Timestamp time = new java.sql.Timestamp(sqlDate.getTime());
-            return time;
-        } catch (ParseException ex) {
-            Logger.getLogger(ItemDataSource.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return new java.sql.Timestamp((new Date()).getTime());
-    }
-
-    @Override
-    public boolean next() throws JRException {
-        index++;
-
-        return (index < data.length);
     }
 
     @Override
@@ -104,6 +76,11 @@ public class ItemDataSource implements JRDataSource {
         return value;
     }
 
+    @Override
+    protected Object[][] getData() {
+        return data;
+    }
+    
 }
 
 

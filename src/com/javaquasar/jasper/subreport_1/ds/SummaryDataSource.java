@@ -1,30 +1,35 @@
 package com.javaquasar.jasper.subreport_1.ds;
 
-import com.javaquasar.jasper.subreport_2.ds.*;
+import com.javaquasar.jasper.subreport.ds.AdstractDataSource;
 import java.math.BigDecimal;
-import net.sf.jasperreports.engine.JRDataSource;
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-public class SummaryDataSource implements JRDataSource {
+public class SummaryDataSource extends AdstractDataSource {
 
     private final Object[][] data = {
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000215", "Main Account", "PLN", new BigDecimal("1107720"), new BigDecimal("550"), new BigDecimal("28800"), new BigDecimal("1078920")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000216", "Main Account", "PLN", new BigDecimal("1107720"), new BigDecimal("450"), new BigDecimal("28800"), new BigDecimal("1078920")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000217", "EUR Account", "EUR", new BigDecimal("1107720"), new BigDecimal("10"), new BigDecimal("25000"), new BigDecimal("1078920")},
-        {new BigDecimal("2410"), "BFX Investements LLC", "08/01/17", "09/01/17", "PL10124069604100800000000218", "EUR Account", "EUR", new BigDecimal("1107720"), new BigDecimal("10"), new BigDecimal("20000"), new BigDecimal("1078920")}
+         {
+             2410L, 
+             "BFX Investements LLC", 
+             createDate("08/01/17"), 
+             createDate("09/01/17"), 
+             "PL10124069604100800000000215",
+             826,
+             "PLN",
+             "4564********1234",
+             "12345678",  
+             "Name Name",
+             "380505214545",
+             new BigDecimal("1107720"), 
+             new BigDecimal("550"), 
+             new BigDecimal("28800"), 
+             new BigDecimal("1078920"),
+             1
+         }
     };
 
-    private int index = -1;
-
     public SummaryDataSource() {
-    }
-
-    @Override
-    public boolean next() throws JRException {
-        index++;
-
-        return (index < data.length);
     }
 
     @Override
@@ -35,10 +40,10 @@ public class SummaryDataSource implements JRDataSource {
 
         if (null != fieldName) {
             switch (fieldName) {
-                case "CLIENTID":
+                case "CORPCLIENTID":
                     value = data[index][0];
                     break;
-                case "CLIENTNAME":
+                case "CORPCLIENTNAME":
                     value = data[index][1];
                     break;
                 case "FROMDATE":
@@ -47,26 +52,38 @@ public class SummaryDataSource implements JRDataSource {
                 case "TILLDATE":
                     value = data[index][3];
                     break;
-                case "IBAN":
+                case "CURRENCYID":
                     value = data[index][4];
                     break;
-                case "ACCOUNTNAME":
+                case "CURRENCYCODE":
                     value = data[index][5];
                     break;
-                case "CURRENCYCODE":
+                case "MASKEDPAN":
                     value = data[index][6];
                     break;
-                case "OPENBALANCE":
+                case "CARDTOKEN":
                     value = data[index][7];
                     break;
-                case "INMOVE":
+                case "CLIENTNAME":
                     value = data[index][8];
                     break;
-                case "OUTMOVE":
+                 case "PHONENO":
                     value = data[index][9];
                     break;
-                case "CLOSEBALANCE":
+                case "OPENBALANCE":
                     value = data[index][10];
+                    break;
+                case "INMOVE":
+                    value = data[index][11];
+                    break;
+                case "OUTMOVE":
+                    value = data[index][12];
+                    break;
+                case "CLOSEBALANCE":
+                    value = data[index][13];
+                    break;
+                case "PRIORITY":
+                    value = data[index][14];
                     break;
                 default:
                     break;
@@ -74,6 +91,11 @@ public class SummaryDataSource implements JRDataSource {
         }
 
         return value;
+    }
+    
+    @Override
+    protected Object[][] getData() {
+        return data;
     }
 
 }
