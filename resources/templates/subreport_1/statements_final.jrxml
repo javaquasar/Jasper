@@ -108,11 +108,11 @@
                     <subreportParameterExpression><![CDATA[$R{total}]]></subreportParameterExpression>
                 </subreportParameter>
                 <dataSourceExpression><![CDATA[$P{summary_ds}]]></dataSourceExpression>
-<!--                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
+                <!--                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
                 <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "summary.jasper"]]></subreportExpression>
             </subreport>
         </band>
-<!--        <band height="20">
+        <band height="20">
             <subreport>
                 <reportElement x="0" y="5" width="417" height="15" uuid="82d374ad-6c0c-4b97-b8d1-537caa04223c"/>
                 <subreportParameter name="locale">
@@ -133,6 +133,9 @@
                 <subreportParameter name="how_much">
                     <subreportParameterExpression><![CDATA[$R{how_much}]]></subreportParameterExpression>
                 </subreportParameter>
+                <subreportParameter name="balance">
+                    <subreportParameterExpression><![CDATA[$R{balance}]]></subreportParameterExpression>
+                </subreportParameter>
                 <subreportParameter name="rate">
                     <subreportParameterExpression><![CDATA[$R{rate}]]></subreportParameterExpression>
                 </subreportParameter>
@@ -145,10 +148,11 @@
                 <subreportParameter name="SUBREPORT_DIR">
                     <subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
                 </subreportParameter>
-                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <dataSourceExpression><![CDATA[$P{item_ds}]]></dataSourceExpression>
+                <!--<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
                 <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "item.jasper"]]></subreportExpression>
             </subreport>
-        </band>-->
+        </band>
     </detail>
     <summary>
         <band height="42" splitType="Stretch"/>
