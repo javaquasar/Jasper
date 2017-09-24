@@ -11,22 +11,33 @@ public class ItemDataSource extends AdstractDataSource {
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     private final Object[][] data = {
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", null, "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-09-01"), "Przelew DiP", null, null, new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-10-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2019-08-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000217", "EUR", createDate("2017-08-25"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000217", "EUR", createDate("2017-08-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000217", "EUR", createDate("2017-12-01"), "Przelew DiP", "Bla bla bla", "495561689", new BigDecimal("110772100"), new BigDecimal("0"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000216", "EUR", createDate("2017-08-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000216", "EUR", createDate("2017-01-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},
-        {"ER10124069604100800000000216", "EUR", createDate("2017-03-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")}
+        {
+            createDate("2017-08-01"),
+            createDate("2017-08-01"),
+            "545598******4813",
+            "495148291",
+            "Przelew DiP",
+            "BFX Investements LLC",
+            "DETAILS",
+            826,
+            "EUR",
+            new BigDecimal(100),
+            826,
+            "EUR",
+            new BigDecimal(100),
+            new BigDecimal(0.43),
+            new BigDecimal(100),
+            985,
+            "PLN",
+            new BigDecimal(100),
+            985,
+            "PLN",
+            new BigDecimal("7700"),
+            new BigDecimal("100"),
+            new BigDecimal("7800"),
+            new BigDecimal("9300"),
+            "MADEBY"
+        }
     };
 
     @Override
@@ -37,35 +48,80 @@ public class ItemDataSource extends AdstractDataSource {
 
         if (null != fieldName) {
             switch (fieldName) {
-                case "IBAN":
+                case "ITEMDATE":
                     value = data[index][0];
                     break;
-                case "CURRENCYCODE":
+                case "EVENTDATE":
                     value = data[index][1];
                     break;
-                case "ITEMDATE":
+                case "MASKEDPAN":
                     value = data[index][2];
                     break;
-                case "TYPENAME":
+                case "CARDTOKEN":
                     value = data[index][3];
                     break;
-                case "FULLNAME":
+                case "TYPENAME":
                     value = data[index][4];
                     break;
-                case "DETAILS":
+                case "FULLNAME":
                     value = data[index][5];
                     break;
-                case "OPENBALANCE":
+                case "DETAILS":
                     value = data[index][6];
                     break;
-                case "AMOUNT":
+                case "TRNCURRENCYID":
                     value = data[index][7];
                     break;
-                case "BALANCE":
+                case "TRNCURRENCYCODE":
                     value = data[index][8];
                     break;
-                case "CLOSEBALANCE":
+                case "TRNAMOUNT":
                     value = data[index][9];
+                    break;
+                case "ACCCURRENCYID":
+                    value = data[index][10];
+                    break;
+                case "ACCCURRENCYCODE":
+                    value = data[index][11];
+                    break;
+                case "ACCAMOUNT":
+                    value = data[index][12];
+                    break;
+                case "RATE":
+                    value = data[index][13];
+                    break;
+                case "TRNFEEAMOUNT":
+                    value = data[index][14];
+                    break;
+                case "TRNFEECURRENCYID":
+                    value = data[index][15];
+                    break;
+                case "TRNFEECURRENCYCODE":
+                    value = data[index][16];
+                    break;
+                case "CONVFEEAMOUNT":
+                    value = data[index][17];
+                    break;
+                case "CONVFEECURRENCYID":
+                    value = data[index][18];
+                    break;
+                case "CONVFEECURRENCYCODE":
+                    value = data[index][19];
+                    break;
+                case "OPENBALANCE":
+                    value = data[index][20];
+                    break;
+                case "TOTALAMOUNT":
+                    value = data[index][21];
+                    break;
+                case "BALANCE":
+                    value = data[index][22];
+                    break;
+                case "CLOSEBALANCE":
+                    value = data[index][23];
+                    break;
+                case "MADEBY":
+                    value = data[index][24];
                     break;
                 default:
                     break;
@@ -74,11 +130,10 @@ public class ItemDataSource extends AdstractDataSource {
 
         return value;
     }
-    
+
     @Override
     protected Object[][] getData() {
         return data;
     }
 
 }
-
