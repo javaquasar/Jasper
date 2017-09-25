@@ -59,6 +59,9 @@
     <style name="Table default name"
            style="Table default"
            hAlign="Left"/>
+    <style name="Table default name top"
+           style="Table default name"
+           vAlign="Top"/>
     <style name="Table default name gray"
            style="Table default name"
            forecolor="#9093A3"/>
@@ -324,7 +327,7 @@
                 </graphicElement>
             </line>
             <textField isStretchWithOverflow="true">
-                <reportElement style="Table default name" x="50" y="2" width="220" height="10" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
+                <reportElement style="Table default name top" x="50" y="2" width="220" height="30" uuid="df10609b-da78-4077-b604-16e4601e2cf9"/>
                 <textFieldExpression>
                     <![CDATA[
                         $F{TYPENAME}
