@@ -20,7 +20,10 @@
            hAlign="Left"
            vAlign="Bottom"
            fontName="JasperFont"
-           fontSize="12"/>
+           fontSize="12">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
     <style name="Heading info right"
            style="Heading info"
            hAlign="Right"/>
@@ -183,7 +186,7 @@
     <field name="CONVFEECURRENCYCODE" class="java.lang.String"/>
     <field name="OPENBALANCE" class="java.math.BigDecimal"/>
     <field name="TOTALAMOUNT" class="java.math.BigDecimal"/>
-    <field name="BALANCE" class="java.lang.String"/>   
+    <field name="BALANCE" class="java.math.BigDecimal"/>   
     <field name="CLOSEBALANCE" class="java.math.BigDecimal"/>
     <field name="MADEBY" class="java.lang.String"/>  
     <group name="Account">
@@ -253,7 +256,7 @@
         <band splitType="Stretch"/>
     </background>
     <detail>
-        <band height="42" splitType="Stretch">
+        <band height="32" splitType="Stretch">
             <!--<printWhenExpression><![CDATA[($F{MADEBY} != null) && (!$F{ACCCURRENCYCODE}.equals($F{TRNCURRENCYCODE})) && ($F{RATE} != null) && (($F{CONVFEEAMOUNT} != null) || ($F{TRNFEEAMOUNT} != null))]]></printWhenExpression>-->
             <line>
                 <reportElement x="0" y="0" width="460" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
@@ -266,7 +269,7 @@
                 <textFieldExpression><![CDATA[$F{TYPENAME}]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Table default gray" x="300" y="2" width="100" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <reportElement style="Table default gray" x="270" y="2" width="130" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
                 <textFieldExpression>
                     <![CDATA[
                         $F{TRNCURRENCYCODE} 
@@ -298,7 +301,7 @@
                 <textFieldExpression><![CDATA[$F{MADEBY}]]></textFieldExpression>
             </textField>
             <textField isStretchWithOverflow="true">
-                <reportElement style="Table default name" x="50" y="22" width="220" height="20" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
+                <reportElement style="Table default name" x="50" y="22" width="220" height="10" uuid="0ca66214-919d-427a-bf75-3c22ce437d53"/>
                 <textElement verticalAlignment="Top">
                     <paragraph lineSpacing="1_1_2"/>
                 </textElement>
@@ -317,22 +320,18 @@
                 </textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Table default" x="320" y="12" width="100" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <reportElement style="Table default" x="270" y="12" width="130" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TOTALAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement style="Table default gray" x="320" y="22" width="100" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
+                <reportElement style="Table default" x="400" y="12" width="60" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e499a829"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{BALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="Table default gray" x="270" y="22" width="130" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
                     <printWhenExpression><![CDATA[$F{RATE} != null]]></printWhenExpression>
                 </reportElement>
-                <textFieldExpression><![CDATA[$P{rate} + " " + $F{RATE}]]></textFieldExpression>
-            </textField>
-            <textField isStretchWithOverflow="true">
-                <reportElement style="Table default" x="270" y="32" width="150" height="10" isRemoveLineWhenBlank="true" uuid="e7c9772e-d9f9-4a06-8254-da5751818e86"/>
-                <textElement>
-                    <paragraph lineSpacing="1_1_2"/>
-                </textElement>
-                <textFieldExpression><![CDATA[($F{CONVFEEAMOUNT} != null ? $P{conversion_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "") +
-($F{TRNFEEAMOUNT} != null ? ($F{CONVFEEAMOUNT} != null ? "\n" : "") + $P{transaction_fee} + " " + String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100"))) : "")]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$P{rate} + " " + String.format(Locale.ENGLISH, "%,.5f", $F{RATE})]]></textFieldExpression>
             </textField>
         </band>
         <band height="11" splitType="Stretch">

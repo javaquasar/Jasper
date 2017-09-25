@@ -29,7 +29,7 @@
     </style>
     <style name="Heading table" 
            mode="Opaque" 
-           backcolor="#FF3333" 
+           backcolor="#FF422A" 
            hAlign="Right" 
            vAlign="Middle" 
            forecolor="#FFFFFF"
@@ -233,29 +233,29 @@
     </pageHeader>
     
     <detail>
-        <band height="10" splitType="Stretch">
+        <band height="11" splitType="Stretch">
             <textField isStretchWithOverflow="true">
-                <reportElement style="Table default name" x="0" y="0" width="80" height="10" uuid="737c33d5-6d2c-4e1c-8a59-3e5fc0972ac7"/>
+                <reportElement style="Table default name" x="0" y="1" width="80" height="10" uuid="737c33d5-6d2c-4e1c-8a59-3e5fc0972ac7"/>
                 <textFieldExpression><![CDATA[$F{CARDTOKEN} + "\n" + $F{MASKEDPAN}]]></textFieldExpression>
             </textField>
             <textField isStretchWithOverflow="true">
-                <reportElement style="Table default name" x="80" y="0" width="140" height="10" uuid="fbbb56f1-5b3a-4e7d-ac22-670816f5dabc"/>
+                <reportElement style="Table default name" x="80" y="1" width="140" height="10" uuid="fbbb56f1-5b3a-4e7d-ac22-670816f5dabc"/>
                 <textFieldExpression><![CDATA[$F{PHONENO} + "\n" + $F{CLIENTNAME}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="220" y="0" width="60" height="10" uuid="f22eb4e5-50b5-448a-af30-dc5e6c191dbf"/>
+                <reportElement style="Table default" x="220" y="1" width="60" height="10" uuid="f22eb4e5-50b5-448a-af30-dc5e6c191dbf"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OPENBALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="280" y="0" width="60" height="10" uuid="c0bddf89-3c93-486d-be52-900c288766e0"/>
+                <reportElement style="Table default" x="280" y="1" width="60" height="10" uuid="c0bddf89-3c93-486d-be52-900c288766e0"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{INMOVE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="340" y="0" width="60" height="10" uuid="2b21f5d4-b2b9-460a-9002-94162178e68b"/>
+                <reportElement style="Table default" x="340" y="1" width="60" height="10" uuid="2b21f5d4-b2b9-460a-9002-94162178e68b"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{OUTMOVE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Table default" x="400" y="0" width="60" height="10" uuid="a7182124-f8fd-4e96-983e-6c520860b9cd"/>
+                <reportElement style="Table default" x="400" y="1" width="60" height="10" uuid="a7182124-f8fd-4e96-983e-6c520860b9cd"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CLOSEBALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
         </band>

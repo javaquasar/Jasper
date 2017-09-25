@@ -25,7 +25,7 @@ public class ItemDataSource extends AdstractDataSource {
             826,
             "EUR",
             new BigDecimal(100),
-            new BigDecimal(0.43),
+            new BigDecimal(0.1245),
             new BigDecimal(100),
             985,
             "PLN",
@@ -37,6 +37,33 @@ public class ItemDataSource extends AdstractDataSource {
             new BigDecimal("7800"),
             new BigDecimal("9300"),
             "MADEBY"
+        },
+        {
+            createDate("2017-08-01"),
+            null,
+            "545598******4813",
+            "495148291",
+            "Przelew DiP",
+            "BFX Investements LLC",
+            "DETAILS",
+            826,
+            "EUR",
+            new BigDecimal(200),
+            826,
+            "EUR",
+            new BigDecimal(100),
+            new BigDecimal(0.5),
+            new BigDecimal(60),
+            985,
+            "PLN",
+            new BigDecimal(40),
+            985,
+            "PLN",
+            new BigDecimal("7700"),
+            new BigDecimal("1000"),
+            new BigDecimal("7700"),
+            new BigDecimal("9300"),
+            null
         }
     };
 
