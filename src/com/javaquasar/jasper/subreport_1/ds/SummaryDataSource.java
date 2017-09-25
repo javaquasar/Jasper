@@ -17,15 +17,15 @@ public class SummaryDataSource extends AdstractDataSource {
              826,
              
              "PLN",
-             "4564********1234",
-             "12345678",  
-             "Name Name",
-             "380505214545",
+             "545598******1111",
+             "111111",  
+             "Konstantin Konstantinov",
+             "+48123456789",
              
-             new BigDecimal("1107720"), 
-             new BigDecimal("6550"), 
-             new BigDecimal("28800"), 
-             new BigDecimal("1078920"),
+             new BigDecimal("100050"), 
+             new BigDecimal("70552"), 
+             new BigDecimal("13035"), 
+             new BigDecimal("157567"),
              1
         },
         {
@@ -36,15 +36,34 @@ public class SummaryDataSource extends AdstractDataSource {
              826,
              
              "PLN",
-             "4564********1234",
-             "12345678",  
-             "Name Name",
-             "380505214545",
+             "545598******2222",
+             "222222",  
+             "Tomasz Czernik",
+             "+48888333252",
              
-             new BigDecimal("1107720"), 
-             new BigDecimal("6550"), 
-             new BigDecimal("28800"), 
-             new BigDecimal("1078920"),
+             new BigDecimal("53444"), 
+             new BigDecimal("7200"), 
+             new BigDecimal("45286"), 
+             new BigDecimal("13558"),
+             1
+        },
+        {
+             2410L, 
+             "BFX Investements LLC", 
+             createDate("2017-08-5"), 
+             createDate("2017-08-20"),             
+             826,
+             
+             "PLN",
+             "545598******5555",
+             "555555",  
+             "Domasz Dzernik",
+             "+48888333253",
+             
+             new BigDecimal("53444"), 
+             new BigDecimal("0"), 
+             new BigDecimal("0"), 
+             new BigDecimal("53444"),
              1
         },
         {
@@ -55,15 +74,34 @@ public class SummaryDataSource extends AdstractDataSource {
              826,
              
              "EUR",
-             "4564********1234",
-             "12345678",  
-             "Name Name",
-             "380505214545",
+             "545598******3333",
+             "333333",  
+             "Łukasz Krysiak",
+             "+48882509944",
              
-             new BigDecimal("1107720"), 
-             new BigDecimal("6550"), 
-             new BigDecimal("28800"), 
-             new BigDecimal("1078920"),
+             new BigDecimal("100050"), 
+             new BigDecimal("70552"), 
+             new BigDecimal("13035"), 
+             new BigDecimal("157567"),
+             1
+        },
+        {
+             2410L, 
+             "BFX Investements LLC", 
+             createDate("2017-08-5"), 
+             createDate("2017-08-20"),             
+             826,
+             
+             "EUR",
+             "545598******4444",
+             "444444",  
+             "Bohdan Potocki-Bielecki",
+             "+48888333252",
+             
+             new BigDecimal("53444"), 
+             new BigDecimal("7200"), 
+             new BigDecimal("45286"), 
+             new BigDecimal("13558"),
              1
         }
     };
