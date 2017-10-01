@@ -12,10 +12,13 @@
     <property name="ireport.zoom" value="1.0"/>
     <property name="ireport.x" value="0"/>
     <property name="ireport.y" value="0"/>
+    
+    <style name="Font"
+           fontName="JasperFont"/>
     <style name="Heading info" 
+           style="Font"
            hAlign="Left" 
            vAlign="Bottom" 
-           fontName="JasperFont" 
            fontSize="12"/>
     <style name="Heading info right" 
            style="Heading info" 
@@ -24,12 +27,12 @@
              rightPadding="5"/>
     </style>
     <style name="Heading table" 
+           style="Font"
            mode="Opaque" 
            forecolor="#FFFFFF" 
            backcolor="#FF3333" 
            hAlign="Right" 
            vAlign="Middle" 
-           fontName="JasperFont" 
            fontSize="8" 
            isBold="false" 
            isItalic="false">
@@ -40,9 +43,9 @@
            style="Heading table" 
            hAlign="Left"/>
     <style name="Table default" 
+           style="Font"
            hAlign="Right" 
            vAlign="Middle" 
-           fontName="JasperFont" 
            fontSize="8">
         <box leftPadding="5" 
              rightPadding="5"/>

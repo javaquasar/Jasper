@@ -16,7 +16,10 @@
     <property name="ireport.x" value="0"/>
     <property name="ireport.y" value="236"/>
     
+    <style name="Font"
+           fontName="JasperFont"/>
     <style name="Heading info"
+           style="Font"
            hAlign="Left"
            vAlign="Bottom"
            fontName="JasperFont"
@@ -28,12 +31,12 @@
            style="Heading info"
            hAlign="Right"/>
     <style name="Heading table"
+           style="Font"
            mode="Opaque"
            forecolor="#FFFFFF"
            backcolor="#383F5A"
            hAlign="Right"
            vAlign="Middle"
-           fontName="JasperFont"
            fontSize="8"
            isBold="false"
            isItalic="false">
@@ -49,9 +52,9 @@
     <style name="Heading table name red" 
            style="Heading table name" backcolor="#FF422A"/>
     <style name="Table default"
+           style="Font"
            hAlign="Right"
            vAlign="Middle"
-           fontName="JasperFont"
            fontSize="8">
         <box leftPadding="5"
              rightPadding="5"/>

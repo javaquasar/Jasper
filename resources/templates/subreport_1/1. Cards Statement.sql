@@ -97,14 +97,3 @@ SELECT ItemDate,
        CloseBalance,
        MadeBy
   FROM VP_CardStmtItem
-/
-
-
-         1. Field not found : SUMMARYID
-	 2. Field not found : ISSHARED
-	 3. Field not found : ACCOUNTNAME
-	 4. Field not found : OPENBALANCE
-	 5. Field not found : ISSHARED
-	 6. Field not found : ACCOUNTNAME
-	 7. Field not found : OPENBALANCE
-	 8. Field not found : MADEBY

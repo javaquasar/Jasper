@@ -2,26 +2,24 @@ package com.javaquasar.jasper.subreport;
 
 import com.javaquasar.jasper.subreport_1.ds.SummaryDataSource;
 import com.javaquasar.jasper.subreport.SubreportJasperLocale;
+import com.javaquasar.jasper.subreport.pojo.DataSourceContainer;
 import com.javaquasar.jasper.subreport_1.ds.ItemDataSource;
-import com.javaquasar.jasper.util.JasperCompailer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.PropertyResourceBundle;
+import java.util.TreeMap;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRParameter;
@@ -51,7 +49,7 @@ public class AbstractSubreportPdfGenerator {
         map.put("client_name", "Corp Corp");
         map.put("summary_ds", new SummaryDataSource());
         map.put("item_ds", new ItemDataSource());
-        
+
         map.put(JRParameter.REPORT_LOCALE, new Locale(jl.getLocale()));
 
         FileInputStream fis = new FileInputStream(jl.getPathToFile());
@@ -88,6 +86,44 @@ public class AbstractSubreportPdfGenerator {
             System.out.println("");
         }
         return dataList;
+    }
+
+    private static DataSourceContainer convertResultSetToВЫ(ResultSet rs) throws SQLException {
+        Map<String, Integer> key = new TreeMap<>();
+
+        ResultSetMetaData metaData = rs.getMetaData();
+        int countColumn = metaData.getColumnCount();
+        for (int i = 1; i <= countColumn; i++) {
+            key.put(metaData.getColumnName(i), i - 1);
+            //java.sql.Types
+            //metaData.getColumnType(countColumn);
+            //metaData.getColumnClassName(countColumn)
+        }
+
+        List<List<Object>> dataList = new ArrayList<>();
+        int row = 0;
+        while (rs.next()) {
+            dataList.add(new ArrayList<>());
+            for (int i = 1; i <= countColumn; i++) {
+                List<Object> tempRow = dataList.get(row);
+                switch (metaData.getColumnClassName(i)) {
+                    case "java.lang.String":
+                        tempRow.add(rs.getString(i));
+                        break;
+                    case "java.sql.Timestamp":
+                        tempRow.add(rs.getTimestamp(i));
+                        break;
+                    case "java.math.BigDecimal":
+                        tempRow.add(rs.getBigDecimal(i));
+                        break;
+                    default:
+                        tempRow.add(rs.getObject(i));
+                }
+
+            }
+            row++;
+        }
+        return new DataSourceContainer(key, dataList);
     }
 
 }
