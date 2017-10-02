@@ -309,11 +309,33 @@
             </textField>
             <textField isBlankWhenNull="true">
                 <reportElement style="Table default" x="270" y="2" width="130" height="10" uuid="90efac74-294a-4b6a-bba1-0e1299d3fa8b"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TOTALAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
                 <reportElement style="Table default" x="400" y="2" width="60" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e499a829"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{BALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression>
+                    <![CDATA[
+                        String.format(
+                            Locale.ENGLISH, 
+                            "%,.2f", 
+                            ($F{TRNFEEAMOUNT} != null 
+                                ? ($F{CONVFEEAMOUNT} != null
+                                    ? $F{BALANCE}
+                                        .add($F{TRNFEEAMOUNT})
+                                        .add($F{CONVFEEAMOUNT})
+                                    : $F{BALANCE}
+                                        .add($F{TRNFEEAMOUNT})
+                                  )
+                                : ($F{CONVFEEAMOUNT} != null
+                                    ? $F{BALANCE}
+                                        .add($F{CONVFEEAMOUNT})
+                                    : $F{BALANCE}
+                                  )
+                            )
+                            .divide(new java.math.BigDecimal("100"))
+                        )
+                    ]]>
+                </textFieldExpression>
             </textField>
         </band>
         <band height="32" splitType="Stretch">
@@ -377,7 +399,29 @@
             </textField>
             <textField isBlankWhenNull="true">
                 <reportElement style="Table default" x="400" y="12" width="60" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e499a829"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{BALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression>
+                    <![CDATA[
+                        String.format(
+                            Locale.ENGLISH, 
+                            "%,.2f", 
+                            ($F{TRNFEEAMOUNT} != null 
+                                ? ($F{CONVFEEAMOUNT} != null
+                                    ? $F{BALANCE}
+                                        .add($F{TRNFEEAMOUNT})
+                                        .add($F{CONVFEEAMOUNT})
+                                    : $F{BALANCE}
+                                        .add($F{TRNFEEAMOUNT})
+                                  )
+                                : ($F{CONVFEEAMOUNT} != null
+                                    ? $F{BALANCE}
+                                        .add($F{CONVFEEAMOUNT})
+                                    : $F{BALANCE}
+                                  )
+                            )
+                            .divide(new java.math.BigDecimal("100"))
+                        )
+                    ]]>
+                </textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
                 <reportElement style="Table default gray" x="270" y="22" width="130" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
@@ -460,7 +504,29 @@
             </textField>
             <textField isBlankWhenNull="true">
                 <reportElement style="Table default" x="400" y="12" width="60" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e499a829"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{BALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression>
+                    <![CDATA[
+                        String.format(
+                            Locale.ENGLISH, 
+                            "%,.2f", 
+                            ($F{TRNFEEAMOUNT} != null 
+                                ? ($F{CONVFEEAMOUNT} != null
+                                    ? $F{BALANCE}
+                                        .add($F{TRNFEEAMOUNT})
+                                        .add($F{CONVFEEAMOUNT})
+                                    : $F{BALANCE}
+                                        .add($F{TRNFEEAMOUNT})
+                                  )
+                                : ($F{CONVFEEAMOUNT} != null
+                                    ? $F{BALANCE}
+                                        .add($F{CONVFEEAMOUNT})
+                                    : $F{BALANCE}
+                                  )
+                            )
+                            .divide(new java.math.BigDecimal("100"))
+                        )
+                    ]]>
+                </textFieldExpression>            
             </textField>
             <textField isBlankWhenNull="true">
                 <reportElement style="Table default gray" x="270" y="22" width="130" height="10" uuid="b53babe3-21ec-405d-82f6-e8f63530929b">
@@ -533,7 +599,29 @@
             </textField>
             <textField isBlankWhenNull="true">
                 <reportElement style="Table default" x="400" y="2" width="60" height="10" uuid="a7ab744a-849e-41fd-9ce0-a594e499a829"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{BALANCE}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression>
+                    <![CDATA[
+                        String.format(
+                            Locale.ENGLISH, 
+                            "%,.2f", 
+                            ($F{TRNFEEAMOUNT} != null 
+                                ? ($F{CONVFEEAMOUNT} != null
+                                    ? $F{BALANCE}
+                                        .add($F{TRNFEEAMOUNT})
+                                        .add($F{CONVFEEAMOUNT})
+                                    : $F{BALANCE}
+                                        .add($F{TRNFEEAMOUNT})
+                                  )
+                                : ($F{CONVFEEAMOUNT} != null
+                                    ? $F{BALANCE}
+                                        .add($F{CONVFEEAMOUNT})
+                                    : $F{BALANCE}
+                                  )
+                            )
+                            .divide(new java.math.BigDecimal("100"))
+                        )
+                    ]]>
+                </textFieldExpression>
             </textField>
         </band>
         <band height="11" splitType="Stretch">
@@ -568,8 +656,12 @@
                         String.format(
                             Locale.ENGLISH, 
                             "%,.2f", 
-                            ($F{BALANCE}.add($F{CONVFEEAMOUNT}))
-                                .divide(new java.math.BigDecimal("100"))
+                            ($F{TRNFEEAMOUNT} != null 
+                                ? $F{BALANCE}
+                                    .add($F{TRNFEEAMOUNT})
+                                : $F{BALANCE}
+                            )
+                            .divide(new java.math.BigDecimal("100"))
                         )
                     ]]>
                 </textFieldExpression>
@@ -601,13 +693,7 @@
                         String.format(
                             Locale.ENGLISH, 
                             "%,.2f", 
-                            ($F{CONVFEEAMOUNT} != null 
-                                ? $F{BALANCE}
-                                    .add($F{CONVFEEAMOUNT})
-                                    .add($F{TRNFEEAMOUNT})
-                                : $F{BALANCE}
-                                    .add($F{TRNFEEAMOUNT})
-                            )
+                            $F{BALANCE}
                             .divide(new java.math.BigDecimal("100"))
                         )
                     ]]>

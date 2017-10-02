@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="statements_final"
+              pageWidth="850"
+              pageHeight="842"
+              columnWidth="750"
+              leftMargin="50"
+              rightMargin="50"
+              topMargin="15"
+              bottomMargin="14"
+              resourceBundle="localization"
+              uuid="24ebbb1c-f380-4370-b464-3de2e2a587f7">
+    
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+        
+    <style name="Font"
+           fontName="JasperFont"/>
+        
+
+    <parameter name="locale" class="java.lang.String">
+        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
+    </parameter>
+
+    <field name="ITEMDATE" class="java.sql.Timestamp"/>
+    <field name="EVENTDATE" class="java.sql.Timestamp"/>
+    <field name="MASKEDPAN" class="java.lang.String"/>
+    <field name="CARDTOKEN" class="java.lang.String"/>
+    <field name="TYPENAME" class="java.lang.String"/>
+    <field name="FULLNAME" class="java.lang.String"/>
+    <field name="DETAILS" class="java.lang.String"/>
+    <field name="TRNCURRENCYID" class="java.math.BigDecimal"/>
+    <field name="TRNCURRENCYCODE" class="java.lang.String"/>
+    <field name="TRNAMOUNT" class="java.math.BigDecimal"/>
+    <field name="ACCCURRENCYID" class="java.math.BigDecimal"/>
+    <field name="ACCCURRENCYCODE" class="java.lang.String"/>
+    <field name="ACCAMOUNT" class="java.math.BigDecimal"/>
+    <field name="RATE" class="java.math.BigDecimal"/>
+    <field name="TRNFEEAMOUNT" class="java.math.BigDecimal"/>
+    <field name="TRNFEECURRENCYID" class="java.math.BigDecimal"/>
+    <field name="TRNFEECURRENCYCODE" class="java.lang.String"/>
+    <field name="CONVFEEAMOUNT" class="java.math.BigDecimal"/>
+    <field name="CONVFEECURRENCYID" class="java.math.BigDecimal"/>
+    <field name="CONVFEECURRENCYCODE" class="java.lang.String"/>
+    <field name="TOTALAMOUNT" class="java.math.BigDecimal"/>
+
+    <group name="Account">
+        <groupHeader>
+            <band height="10">
+                <textField>
+                    <reportElement style="Heading info" x="0" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_transaction_date}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="50" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_posting_date}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="100" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_card_number}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="150" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_card_token}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="200" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_transatcion_type}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="250" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_description}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="300" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_other_details}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="350" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_transaction_currency}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="400" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_transaction_amount}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="450" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_rate}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="500" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_currency}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="550" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_amount_posted}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="600" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_conversion_fee}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="650" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_transaction_fee}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Heading info" x="700" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_total_amount}]]></textFieldExpression>
+                </textField>
+            </band>
+        </groupHeader>
+    </group>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <detail>
+        <band height="12" splitType="Stretch">
+            <line>
+                <reportElement x="0" y="0" width="750" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField>
+                <reportElement style="Heading info" x="0" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression>
+                    <![CDATA[
+                        ($F{ITEMDATE} != null 
+                            ? new SimpleDateFormat("dd.MM.yyyy").format($F{ITEMDATE}) 
+                            : "") 
+                        )
+                    ]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="50" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression>
+                    <![CDATA[
+                        ($F{EVENTDATE} != null 
+                            ? new SimpleDateFormat("dd.MM.yyyy").format($F{EVENTDATE}) 
+                            : "") 
+                        )
+                    ]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="100" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{MASKEDPAN}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="150" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{CARDTOKEN}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="200" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{TYPENAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="250" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="300" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{DETAILS}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="350" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{TRNCURRENCYCODE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="400" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="450" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{RATE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="500" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{ACCCURRENCYCODE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="550" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="600" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="650" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Heading info" x="700" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TOTALAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+            </textField>           
+        </band>
+    </detail>
+</jasperReport>

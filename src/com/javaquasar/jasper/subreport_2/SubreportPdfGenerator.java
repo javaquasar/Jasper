@@ -131,6 +131,8 @@ public class SubreportPdfGenerator {
         int countColumn = metaData.getColumnCount();
         for (int i = 1; i <= countColumn; i++) {
             dataList.get(0).add(metaData.getColumnName(i));
+            System.out.print(metaData.getColumnName(i));
+            System.out.print(" ");
         }
         int row = 1;
         while (rs.next()) {
