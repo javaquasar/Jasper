@@ -19,7 +19,23 @@
         
     <style name="Font"
            fontName="JasperFont"/>
-        
+    <style name="Heading info"
+           style="Font"
+           hAlign="Left"
+           vAlign="Bottom"
+           fontName="JasperFont"
+           fontSize="12">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
+        <style name="Table default"
+           style="Font"
+           hAlign="Right"
+           vAlign="Middle"
+           fontSize="8">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
 
     <parameter name="locale" class="java.lang.String">
         <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
@@ -32,19 +48,13 @@
     <field name="TYPENAME" class="java.lang.String"/>
     <field name="FULLNAME" class="java.lang.String"/>
     <field name="DETAILS" class="java.lang.String"/>
-    <field name="TRNCURRENCYID" class="java.math.BigDecimal"/>
     <field name="TRNCURRENCYCODE" class="java.lang.String"/>
     <field name="TRNAMOUNT" class="java.math.BigDecimal"/>
-    <field name="ACCCURRENCYID" class="java.math.BigDecimal"/>
     <field name="ACCCURRENCYCODE" class="java.lang.String"/>
     <field name="ACCAMOUNT" class="java.math.BigDecimal"/>
     <field name="RATE" class="java.math.BigDecimal"/>
     <field name="TRNFEEAMOUNT" class="java.math.BigDecimal"/>
-    <field name="TRNFEECURRENCYID" class="java.math.BigDecimal"/>
-    <field name="TRNFEECURRENCYCODE" class="java.lang.String"/>
     <field name="CONVFEEAMOUNT" class="java.math.BigDecimal"/>
-    <field name="CONVFEECURRENCYID" class="java.math.BigDecimal"/>
-    <field name="CONVFEECURRENCYCODE" class="java.lang.String"/>
     <field name="TOTALAMOUNT" class="java.math.BigDecimal"/>
 
     <group name="Account">
@@ -125,77 +135,77 @@
                 </graphicElement>
             </line>
             <textField>
-                <reportElement style="Heading info" x="0" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="0" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression>
                     <![CDATA[
                         ($F{ITEMDATE} != null 
                             ? new SimpleDateFormat("dd.MM.yyyy").format($F{ITEMDATE}) 
-                            : "") 
-                        )
+                            : ""
+                        ) 
                     ]]>
                 </textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="50" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="50" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression>
                     <![CDATA[
                         ($F{EVENTDATE} != null 
                             ? new SimpleDateFormat("dd.MM.yyyy").format($F{EVENTDATE}) 
-                            : "") 
+                            : ""
                         )
                     ]]>
                 </textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="100" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="100" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{MASKEDPAN}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="150" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="150" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{CARDTOKEN}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="200" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="200" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{TYPENAME}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="250" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="250" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="300" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="300" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{DETAILS}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="350" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="350" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{TRNCURRENCYCODE}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="400" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="400" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="450" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="450" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{RATE}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="500" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="500" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{ACCCURRENCYCODE}]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="550" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="550" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="600" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="600" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="650" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="650" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
             <textField>
-                <reportElement style="Heading info" x="700" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <reportElement style="Table default" x="700" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TOTALAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>           
         </band>

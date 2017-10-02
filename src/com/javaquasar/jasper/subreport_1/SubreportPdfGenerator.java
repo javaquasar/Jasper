@@ -45,7 +45,7 @@ public class SubreportPdfGenerator extends AbstractSubreportPdfGenerator {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //String s = new SimpleDateFormat("MMMM, yyyy", new Locale("en")).format(new Date());
         //System.out.println(s);
-        JasperCompailer.compaile("./resources/templates/subreport_1/");
+        JasperCompailer.compaile("./resources/templates/portal/");
         //Class.forName(DRIVER_NAME);
         //conn = DriverManager.getConnection(JDBC_URL, USER_NAME, PASSWORD);
         try /*(Connection conn = DriverManager.getConnection(JDBC_URL, USER_NAME, PASSWORD);
@@ -116,10 +116,10 @@ public class SubreportPdfGenerator extends AbstractSubreportPdfGenerator {
         PropertyResourceBundle prop = new PropertyResourceBundle(fis);
 
         map.put("REPORT_RESOURCE_BUNDLE", prop);
-        map.put("SUBREPORT_DIR", "./resources/templates/subreport_1/");
+        map.put("SUBREPORT_DIR", "./resources/templates/portal/1_cards/pdf/");
 
         //JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/templates/subreport/statements_final.jasper", map, connection/*new JREmptyDataSource()*/);
-        JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/templates/subreport_1/statements_final.jasper", map, new JREmptyDataSource());
+        JasperPrint jasperPrint = JasperFillManager.fillReport("./resources/templates/portal/1_cards/pdf/statements_final.jasper", map, new JREmptyDataSource());
 
         JasperExportManager.exportReportToPdfFile(jasperPrint, pathForReport);
         byte[] mass = JasperExportManager.exportReportToPdf(jasperPrint);

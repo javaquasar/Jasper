@@ -1,12 +1,12 @@
 package com.javaquasar.jasper.subreport_2.ds;
 
-import com.javaquasar.jasper.subreport.ds.AdstractDataSource;
+import com.javaquasar.jasper.subreport.ds.AdstractDataSourceOld;
 import java.math.BigDecimal;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-public class ItemDataSource extends AdstractDataSource {
+public class ItemDataSource extends AdstractDataSourceOld {
 
     private final Object[][] data = {
         {"PL10124069604100800000000215", "PLN", createDate("2017-08-01"), "Przelew DiP", "Name Name", "495561689", new BigDecimal("110772100"), new BigDecimal("-28800"), new BigDecimal("28800"), new BigDecimal("107892100")},

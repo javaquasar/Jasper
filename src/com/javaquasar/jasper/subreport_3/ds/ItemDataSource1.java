@@ -1,12 +1,12 @@
 package com.javaquasar.jasper.subreport_3.ds;
 
-import com.javaquasar.jasper.subreport.ds.AdstractDataSource;
+import com.javaquasar.jasper.subreport.ds.AdstractDataSourceOld;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-public class ItemDataSource1 extends AdstractDataSource {
+public class ItemDataSource1 extends AdstractDataSourceOld {
     
     //isTitleNewPage="true"
 

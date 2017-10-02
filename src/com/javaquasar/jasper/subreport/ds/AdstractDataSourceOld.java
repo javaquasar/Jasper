@@ -3,20 +3,19 @@ package com.javaquasar.jasper.subreport.ds;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 
-public abstract class AdstractDataSourceNew implements JRDataSource {
+public abstract class AdstractDataSourceOld implements JRDataSource {
 
     protected static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     protected int index = -1;
 
-    public AdstractDataSourceNew() {
+    public AdstractDataSourceOld() {
     }
 
     protected java.sql.Timestamp createDate(String date) {
@@ -26,7 +25,7 @@ public abstract class AdstractDataSourceNew implements JRDataSource {
             java.sql.Timestamp time = new java.sql.Timestamp(sqlDate.getTime());
             return time;
         } catch (ParseException ex) {
-            Logger.getLogger(AdstractDataSourceNew.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdstractDataSourceOld.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new java.sql.Timestamp((new Date()).getTime());
     }
@@ -34,10 +33,10 @@ public abstract class AdstractDataSourceNew implements JRDataSource {
     @Override
     public boolean next() throws JRException {
         index++;
-        return (index < getData().size());
+        return (index < getData().length);
     }
     
-    protected abstract List<List<Object>> getData();
+    protected abstract Object[][] getData();
  
 }
 

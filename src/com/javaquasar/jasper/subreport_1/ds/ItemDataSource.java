@@ -1,12 +1,12 @@
 package com.javaquasar.jasper.subreport_1.ds;
 
-import com.javaquasar.jasper.subreport.ds.AdstractDataSource;
+import com.javaquasar.jasper.subreport.ds.AdstractDataSourceOld;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-public class ItemDataSource extends AdstractDataSource {
+public class ItemDataSource extends AdstractDataSourceOld {
 
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
