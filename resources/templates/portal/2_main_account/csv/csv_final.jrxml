@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="statements_final"
+              pageWidth="850"
+              pageHeight="842"
+              columnWidth="750"
+              leftMargin="50"
+              rightMargin="50"
+              topMargin="15"
+              bottomMargin="14"
+              resourceBundle="localization"
+              uuid="24ebbb1c-f380-4370-b464-3de2e2a587f7">
+    
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+        
+    <style name="Font"
+           fontName="JasperFont"/>
+    <style name="Heading info"
+           style="Font"
+           hAlign="Left"
+           vAlign="Bottom"
+           fontName="JasperFont"
+           fontSize="12">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
+    <style name="Heading table"
+           style="Font"
+           mode="Opaque"
+           forecolor="#FFFFFF"
+           backcolor="#383F5A"
+           hAlign="Right"
+           vAlign="Middle"
+           fontSize="8"
+           isBold="false"
+           isItalic="false">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
+    <style name="Heading table red"
+           style="Heading table"
+           backcolor="#FF422A"/>
+    <style name="Table default"
+           style="Font"
+           hAlign="Right"
+           vAlign="Middle"
+           fontSize="8">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
+
+    <parameter name="locale" class="java.lang.String">
+        <defaultValueExpression><![CDATA["en"]]></defaultValueExpression>
+    </parameter>
+
+    <field name="ITEMDATE" class="java.sql.Timestamp"/>
+    <field name="IBAN" class="java.lang.String"/>
+    <field name="ACCOUNTNAME" class="java.lang.String"/>
+    <field name="TYPENAME" class="java.lang.String"/>
+    <field name="FULLNAME" class="java.lang.String"/>
+    <field name="DETAILS" class="java.lang.String"/>
+    <field name="CURRENCYCODE" class="java.lang.String"/>
+    <field name="AMOUNT" class="java.math.BigDecimal"/>
+
+    <group name="Account">
+        <groupHeader>
+            <band height="10">
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="0" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_transaction_date}]]></textFieldExpression>
+                </textField>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="50" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_account_number}]]></textFieldExpression>
+                </textField>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="100" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_account_name}]]></textFieldExpression>
+                </textField>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="150" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_transatcion_type}]]></textFieldExpression>
+                </textField>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="200" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_payee_payer}]]></textFieldExpression>
+                </textField>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="250" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_other_details}]]></textFieldExpression>
+                </textField>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="300" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_transaction_currency}]]></textFieldExpression>
+                </textField>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="350" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                    <textFieldExpression><![CDATA[$R{csv_amount}]]></textFieldExpression>
+                </textField>
+            </band>
+        </groupHeader>
+    </group>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <detail>
+        <band height="12" splitType="Stretch">
+            <line>
+                <reportElement x="0" y="0" width="750" height="1" uuid="176dc2ba-aceb-49a8-8f2c-c1086ce6755e"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </line>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="0" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression>
+                    <![CDATA[
+                        ($F{ITEMDATE} != null 
+                            ? new SimpleDateFormat("dd.MM.yyyy").format($F{ITEMDATE}) 
+                            : ""
+                        ) 
+                    ]]>
+                </textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="50" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{IBAN}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="100" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{ACCOUNTNAME}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="150" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{TYPENAME}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="200" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="250" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{DETAILS}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="300" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression><![CDATA[$F{CURRENCYCODE}]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true">
+                <reportElement style="Table default" x="350" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textFieldExpression>
+                    <![CDATA[
+                        $F{AMOUNT} != null
+                            ? String.format("%.2f", $F{AMOUNT}.divide(new java.math.BigDecimal("100"))).toString()
+                            : ""
+                    ]]>
+                </textFieldExpression>
+            </textField>           
+        </band>
+    </detail>
+</jasperReport>
