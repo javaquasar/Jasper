@@ -52,7 +52,7 @@ public abstract class AdstractDataSource implements JRDataSource {
             }
         }
         System.out.print(" ");
-        System.out.println(o.toString());
+        System.out.println(o);
         return o;
     }
     

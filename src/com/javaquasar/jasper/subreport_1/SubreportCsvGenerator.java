@@ -33,7 +33,7 @@ public class SubreportCsvGenerator extends AbstractSubreportPdfGenerator {
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        //JasperCompailer.compaile("./resources/templates/portal/");
+        JasperCompailer.compaile("./resources/templates/portal/");
         try {
             generateReport(null, "en", "./pdf/subreport/subreport_1.csv");
         } catch (Exception ex) {

@@ -28,7 +28,23 @@
         <box leftPadding="5"
              rightPadding="5"/>
     </style>
-        <style name="Table default"
+    <style name="Heading table"
+           style="Font"
+           mode="Opaque"
+           forecolor="#FFFFFF"
+           backcolor="#383F5A"
+           hAlign="Right"
+           vAlign="Middle"
+           fontSize="8"
+           isBold="false"
+           isItalic="false">
+        <box leftPadding="5"
+             rightPadding="5"/>
+    </style>
+    <style name="Heading table red"
+           style="Heading table"
+           backcolor="#FF422A"/>
+    <style name="Table default"
            style="Font"
            hAlign="Right"
            vAlign="Middle"
@@ -60,64 +76,64 @@
     <group name="Account">
         <groupHeader>
             <band height="10">
-                <textField>
-                    <reportElement style="Heading info" x="0" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="0" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_transaction_date}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="50" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="50" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_posting_date}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="100" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="100" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_card_number}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="150" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="150" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_card_token}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="200" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="200" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_transatcion_type}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="250" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="250" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_description}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="300" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="300" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_other_details}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="350" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="350" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_transaction_currency}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="400" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="400" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_transaction_amount}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="450" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="450" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_rate}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="500" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="500" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_currency}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="550" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="550" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_amount_posted}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="600" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="600" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_conversion_fee}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="650" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="650" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_transaction_fee}]]></textFieldExpression>
                 </textField>
-                <textField>
-                    <reportElement style="Heading info" x="700" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
+                <textField isStretchWithOverflow="true">
+                    <reportElement style="Heading table red" x="700" y="0" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                     <textFieldExpression><![CDATA[$R{csv_total_amount}]]></textFieldExpression>
                 </textField>
             </band>
@@ -182,11 +198,23 @@
             </textField>
             <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="400" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression>
+                    <![CDATA[
+                        $F{TRNAMOUNT} != null
+                            ? String.format("%.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))
+                            : ""
+                    ]]>
+                </textFieldExpression>
             </textField>
             <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="450" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
-                <textFieldExpression><![CDATA[$F{RATE}]]></textFieldExpression>
+                <textFieldExpression>
+                    <![CDATA[
+                        $F{RATE} != null 
+                            ? String.format("%.5f", $F{RATE})
+                            : ""
+                    ]]>
+                </textFieldExpression>
             </textField>
             <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="500" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
@@ -194,19 +222,43 @@
             </textField>
             <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="550" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression>
+                    <![CDATA[
+                        $F{ACCAMOUNT} != null
+                            ? String.format("%.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))
+                            : ""
+                    ]]>
+                </textFieldExpression>
             </textField>
             <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="600" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression>
+                    <![CDATA[
+                        $F{CONVFEEAMOUNT} != null
+                            ? String.format("%.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100")))
+                            : ""
+                    ]]>
+                </textFieldExpression>
             </textField>
             <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="650" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression>
+                    <![CDATA[
+                        $F{TRNFEEAMOUNT} != null
+                            ? String.format("%.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100")))
+                            : ""
+                    ]]>
+                </textFieldExpression>
             </textField>
             <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="700" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
-                <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TOTALAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
+                <textFieldExpression>
+                    <![CDATA[
+                        $F{TOTALAMOUNT} != null
+                            ? String.format("%.2f", $F{TOTALAMOUNT}.divide(new java.math.BigDecimal("100")))
+                            : ""
+                    ]]>
+                </textFieldExpression>
             </textField>           
         </band>
     </detail>

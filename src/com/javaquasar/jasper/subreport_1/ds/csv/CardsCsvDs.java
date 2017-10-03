@@ -49,6 +49,40 @@ public class CardsCsvDs extends AdstractDataSource {
         row1.add(new BigDecimal("50"));
         row1.add(new BigDecimal("100050"));
         list.add(row1);
+        row1 = new ArrayList<>();
+        row1.add(createDate("2017-08-5"));
+        row1.add(createDate("2017-08-8"));
+        row1.add("545598******1111");
+        row1.add("1234token5678");
+        row1.add("Transfer");
+        row1.add("ROST");
+        row1.add("sales box");
+        row1.add("PLN");
+        row1.add(new BigDecimal("100050"));
+        row1.add(new BigDecimal(0.003567));
+        row1.add("PLN");
+        row1.add(new BigDecimal("100050"));
+        row1.add(null);
+        row1.add(null);
+        row1.add(new BigDecimal("100050"));
+        list.add(row1);
+        row1 = new ArrayList<>();
+        row1.add(createDate("2017-08-5"));
+        row1.add(createDate("2017-08-8"));
+        row1.add("545598******1111");
+        row1.add("1234token5678");
+        row1.add("Transfer");
+        row1.add("ROST");
+        row1.add("sales box");
+        row1.add("PLN");
+        row1.add(new BigDecimal("100050"));
+        row1.add(new BigDecimal(0.003564));
+        row1.add("PLN");
+        row1.add(new BigDecimal("100050"));
+        row1.add(null);
+        row1.add(null);
+        row1.add(new BigDecimal("100050"));
+        list.add(row1);
         
     }
 
