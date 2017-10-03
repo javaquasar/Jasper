@@ -1,4 +1,4 @@
-Transaction date,Posting date,Card number,Card token,Transatcion type,Description,Other details,Transaction currency,Transaction amount,Rate,Currency,Amount posted,Conversion fee,Transaction fee,Total amount;
-05.08.2017,08.08.2017,545598******1111,1234token5678,Transfer,ROST,sales box,PLN,"1000,50","1,00000",PLN,"1000,50","0,50","0,50","1000,50";
-05.08.2017,08.08.2017,545598******1111,1234token5678,Transfer,ROST,sales box,PLN,"1000,50","0,00357",PLN,"1000,50",,,"1000,50";
-05.08.2017,08.08.2017,545598******1111,1234token5678,Transfer,ROST,sales box,PLN,"1000,50","0,00356",PLN,"1000,50",,,"1000,50";
+Transaction date,Posting date,Card number,Card token,Transatcion type,Description,Other details,Transaction currency,Transaction amount,Rate,Currency,Amount posted,Conversion fee,Transaction fee,Total amount
+05.08.2017,08.08.2017,545598******1111,1234token5678,Transfer,ROST,sales box,PLN,1000.50,1.00000,PLN,1000.50,0.50,0.50,1000.50
+05.08.2017,08.08.2017,545598******1111,1234token5678,Transfer,ROST,sales box,PLN,1000.50,0.00357,PLN,1000.50,,,1000.50
+05.08.2017,08.08.2017,545598******1111,1234token5678,Transfer,ROST,sales box,PLN,1000.50,0.00356,PLN,1000.50,,,1000.50

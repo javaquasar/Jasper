@@ -201,7 +201,7 @@
                 <textFieldExpression>
                     <![CDATA[
                         $F{TRNAMOUNT} != null
-                            ? String.format("%.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))
+                            ? String.format(Locale.ENGLISH, "%.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))
                             : ""
                     ]]>
                 </textFieldExpression>
@@ -211,7 +211,7 @@
                 <textFieldExpression>
                     <![CDATA[
                         $F{RATE} != null 
-                            ? String.format("%.5f", $F{RATE})
+                            ? String.format(Locale.ENGLISH, "%.5f", $F{RATE})
                             : ""
                     ]]>
                 </textFieldExpression>
@@ -225,7 +225,7 @@
                 <textFieldExpression>
                     <![CDATA[
                         $F{ACCAMOUNT} != null
-                            ? String.format("%.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))
+                            ? String.format(Locale.ENGLISH, "%.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))
                             : ""
                     ]]>
                 </textFieldExpression>
@@ -235,7 +235,7 @@
                 <textFieldExpression>
                     <![CDATA[
                         $F{CONVFEEAMOUNT} != null
-                            ? String.format("%.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100")))
+                            ? String.format(Locale.ENGLISH, "%.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100")))
                             : ""
                     ]]>
                 </textFieldExpression>
@@ -245,7 +245,7 @@
                 <textFieldExpression>
                     <![CDATA[
                         $F{TRNFEEAMOUNT} != null
-                            ? String.format("%.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100")))
+                            ? String.format(Locale.ENGLISH, "%.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100")))
                             : ""
                     ]]>
                 </textFieldExpression>
@@ -255,7 +255,7 @@
                 <textFieldExpression>
                     <![CDATA[
                         $F{TOTALAMOUNT} != null
-                            ? String.format("%.2f", $F{TOTALAMOUNT}.divide(new java.math.BigDecimal("100")))
+                            ? String.format(Locale.ENGLISH, "%.2f", $F{TOTALAMOUNT}.divide(new java.math.BigDecimal("100")))
                             : ""
                     ]]>
                 </textFieldExpression>

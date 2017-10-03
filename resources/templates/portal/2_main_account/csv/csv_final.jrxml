@@ -155,7 +155,7 @@
                 <textFieldExpression>
                     <![CDATA[
                         $F{AMOUNT} != null
-                            ? String.format("%.2f", $F{AMOUNT}.divide(new java.math.BigDecimal("100"))).toString()
+                            ? String.format(Locale.ENGLISH, "%.2f", $F{AMOUNT}.divide(new java.math.BigDecimal("100"))).toString()
                             : ""
                     ]]>
                 </textFieldExpression>
