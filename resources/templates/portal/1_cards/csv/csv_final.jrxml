@@ -134,7 +134,7 @@
                     <pen lineWidth="0.5"/>
                 </graphicElement>
             </line>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="0" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression>
                     <![CDATA[
@@ -145,7 +145,7 @@
                     ]]>
                 </textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="50" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression>
                     <![CDATA[
@@ -156,55 +156,55 @@
                     ]]>
                 </textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="100" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{MASKEDPAN}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="150" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{CARDTOKEN}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="200" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{TYPENAME}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="250" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{FULLNAME}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="300" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{DETAILS}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="350" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{TRNCURRENCYCODE}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="400" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TRNAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="450" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{RATE}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="500" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[$F{ACCCURRENCYCODE}]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="550" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{ACCAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="600" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{CONVFEEAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="650" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TRNFEEAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>
-            <textField>
+            <textField isStretchWithOverflow="true">
                 <reportElement style="Table default" x="700" y="2" width="50" height="10" uuid="e0fb2110-8306-4724-8418-1e60f335213d"/>
                 <textFieldExpression><![CDATA[String.format(Locale.ENGLISH, "%,.2f", $F{TOTALAMOUNT}.divide(new java.math.BigDecimal("100")))]]></textFieldExpression>
             </textField>           
